@@ -11,6 +11,7 @@
 <script src="./threejs/ViewHelper.js"></script>
 <script src="./tweenjs/tween.js"></script>
 <script src="./Qgis2threejs.js"></script>
+<script src="./threejs/loaders/GLTFLoader.js"></script>
 <script src="./dat-gui/dat.gui.min.js"></script>
 <script src="./dat-gui_panel.js"></script>
 </head>
@@ -87,24 +88,45 @@
 <div id="progress"><div id="progressbar"></div></div>
 
 <!-- header and footer -->
-<div id="header">Header: Draft of visbility analysis in 3D for windfarm</div>
-<div id="footer">footer: I can write something here..... the header and footer are in the index.html :)</div>
+<div id="header"><h1>3D windfarms model</h1></div>
+<div id="footer"><p style="font-size:11px"><i>data source: IslandsDEM v1.2 10m, Maxar Iceland 50</i></p></div>
 
 <!-- animation -->
 <div id="narrativebox" class="ef1">
   <div id="narbody">
-
+    <div id="nar_1c462d22" class="narcontent">
+      <h2>Basic Information</h2>
+      <p>The animation can be stopped in the layer pane where you can also turn on/off different layers. </p>
+      <p>The aim of this animation is to highlight important landmark and explore windfarm visbility throught the 3d model from the selected place</p>
+    </div>
+    <div id="nar_78a33569" class="narcontent">
+      <h3>Perlan</h3>
+      <p><img src="./data/index/img/Picture1.png" width="100%"></p>
+      <p>image and text is just temporary. It is basicaly for me, something like table of content or how I want to have it :)</p>
+    </div>
+    <div id="nar_ad131630" class="narcontent">
+      <h3>Esja</h3>
+    </div>
+    <div id="nar_1e92497e" class="narcontent">
+      <h3>Þingvellir</h3>
+    </div>
+    <div id="nar_60c6eacc" class="narcontent">
+      <h3>Langjokull</h3>
+    </div>
+    <div id="nar_62b40055" class="narcontent">
+      <h3>???</h3>
+    </div>
   </div>
   <div id="nextbtn"></div>
 </div>
 
 <script>
-Q3D.Config.viewpoint = {lookAt:{x:389805.32833768125,y:393281.99032791634,z:536.3946638107276},pos:{x:475035.57040723914,y:536833.3672042165,z:44404.6668615267}};
+Q3D.Config.viewpoint = {lookAt:{x:382299.07939860405,y:402180.50042431237,z:9.460958606100615e-13},pos:{x:394314.68928042514,y:337106.3125155932,z:106856.14812721264}};
 Q3D.Config.localMode = true;
+Q3D.Config.gui.customPlane = true;
 Q3D.Config.animation.enabled = true;
-Q3D.Config.animation.startOnLoad = true;
 Q3D.Config.northArrow.enabled = true;
-Q3D.Config.northArrow.color = 0x666666;
+Q3D.Config.northArrow.color = 0x252525;
 
 var container = document.getElementById("view"),
     app = Q3D.application,
