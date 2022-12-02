@@ -107,7 +107,7 @@ require([
       view: view
     }),
     group: "top-right",
-    expanded: true
+    expanded: false
   });
 
   const daylightExpand = new Expand({
