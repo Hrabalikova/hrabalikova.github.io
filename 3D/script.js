@@ -12,15 +12,16 @@ require([
   "esri/widgets/LayerList" //Layer list to turn on/off layers visibility
 ], (WebScene, SceneView, Expand, Weather, Daylight, Map, GeoJSONLayer, LineOfSight, Point, GraphicLayer, LayerList) => {
 
+
+
 /********************************
 * experiment with layers
 ***********************************/
   const url =
         "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";//"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2Fjson";
-        //"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
-  // Paste the url into a browser's address bar to download and view the attributes
-  // in the GeoJSON file. These attributes include:
+
+  // Attributes include:
   // * heiti - name
   // * svf_nafn - municipaly
   // * lysing - the story behind
@@ -30,11 +31,13 @@ require([
   // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
   // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
 
+  //pop-up windows
   const template = {
     title: "Land marks",
     content: "{heiti} in {svf_nafn} municipitality. <br/><br/> {flokkar}",
   };
 
+  // visualization........
   const renderer = {
     type: "simple",
     field: "addrattarafl",
@@ -48,9 +51,11 @@ require([
     }
   };
 
-  const geojsonLayer = new GeoJSONLayer({
+  const VidkomustadirLayer = new GeoJSONLayer({
     url: url,
+    id: "Vidkomustadir",
     copyright: "Ferðumálastofnun",
+    visible: false,
     popupTemplate: template,
     renderer: renderer,
     title: "Viðkomustaðir",
@@ -70,7 +75,7 @@ require([
     portalItem: {
       id: "4526032f665f45a2bc4305af00dc29d9"
     },
-     layers: [geojsonLayer]
+     layers: [VidkomustadirLayer]
   });
 
  // Create a new SceneView and set the weather to cloudy
@@ -93,7 +98,6 @@ require([
       }
     }
   });
-  
   
   
 
