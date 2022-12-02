@@ -79,7 +79,7 @@ require([
     environment: {
       weather: {
         type: "cloudy", // autocasts as new CloudyWeather({ cloudCover: 1 })
-        cloudCover: 1
+        cloudCover: 0.3
       },
       atmosphere: {
         quality: "high"
