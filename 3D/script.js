@@ -15,21 +15,13 @@ require([
 
 
 /********************************
-* experiment with layers
+* upload layers
 ***********************************/
-  const url =
+// sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
+// or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
+
+  const vidkomUrl =
         "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";//"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2Fjson";
-
-
-  // Attributes include:
-  // * heiti - name
-  // * svf_nafn - municipaly
-  // * lysing - the story behind
-  // * flokkar - type of landmark
-  // * addrattarafl
-  // * adgengi - .....
-  // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
-  // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
 
   //pop-up windows
   const template = {
@@ -52,7 +44,7 @@ require([
   };
 
   const VidkomustadirLayer = new GeoJSONLayer({
-    url: url,
+    url: vidkomUrl,
     id: "Vidkomustadir",
     copyright: "Ferðumálastofnun",
     visible: false,
