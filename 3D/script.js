@@ -55,7 +55,7 @@ require([
     url: url,
     id: "Vidkomustadir",
     copyright: "Ferðumálastofnun",
-    visible: false,
+    visible: true,
     popupTemplate: template,
     renderer: renderer,
     title: "Viðkomustaðir",
