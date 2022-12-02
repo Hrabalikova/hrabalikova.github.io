@@ -73,7 +73,7 @@ require([
  // Load a webscene
   const scene = new WebScene({
     portalItem: {
-      id: "4526032f665f45a2bc4305af00dc29d9"
+      id: "f3b79c16e4a84c278ab69d94a938f49e"
     },
      layers: [VidkomustadirLayer]
   });

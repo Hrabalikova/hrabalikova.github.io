@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" >
+
 <head>
   <meta charset="UTF-8">
   <title>DRAFT - Wind farms visualization - </title>
   <link rel="stylesheet" href="./style.css">
-
 </head>
+
 <body>
 <!-- partial:index.partial.html -->
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <meta
@@ -18,32 +20,39 @@
     <title>
       Windfarms visualization | ArcGIS API for JavaScript 4.25
     </title>
-
-
     <link
       rel="stylesheet"
       href="https://js.arcgis.com/4.25/esri/themes/light/main.css"
     />
     <script src="https://js.arcgis.com/4.25/"></script>
+    <script  src="./js/script.js"></script>
+ <!--   <script  src="./js/dataload.js"></script>
+    <script  src="./js/widgets.js"></script>-->
   </head>
 
   <body>
+    <div class="header">
+      <div class="img">
+        <img src="image/LMI.png" alt="LMI logo" height="50" width="50">
+      </div>
+
+    </div>
+
+
     <div id="viewDiv">
       <div id="viewDiv">
-        <div id="menu" class="esri-widget">
+        <div id="layermenu" class="esri-widget">
           <h3>Layer list</h3>
           <div id="LayerList"></div>
         </div>
       </div>
     </div>
-    
-    
-    
+
+    <div class="footer"></div>
   </body>
   
 </html>
 <!-- partial -->
-  <script  src="./script.js"></script>
 
-</body>
+
 </html>

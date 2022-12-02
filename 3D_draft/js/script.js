@@ -13,22 +13,12 @@ require([
 ], (WebScene, SceneView, Expand, Weather, Daylight, Map, GeoJSONLayer, LineOfSight, Point, GraphicLayer, LayerList) => {
 
 /********************************
-* experiment with layers
+* upload layers
 ***********************************/
-  const url =
-        "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";//"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2Fjson";
-        //"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
-
-  // Paste the url into a browser's address bar to download and view the attributes
-  // in the GeoJSON file. These attributes include:
-  // * heiti - name
-  // * svf_nafn - municipaly
-  // * lysing - the story behind
-  // * flokkar - type of landmark
-  // * addrattarafl
-  // * adgengi - .....
   // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
   // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
+  const vidkomustadirUrl =
+        "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";
 
   const template = {
     title: "Land marks",
@@ -48,9 +38,10 @@ require([
     }
   };
 
-  const geojsonLayer = new GeoJSONLayer({
-    url: url,
+  const vidkomustadir = new GeoJSONLayer({
+    url: vidkomustadirUrl,
     copyright: "Ferðumálastofnun",
+    visible: false, 
     popupTemplate: template,
     renderer: renderer,
     title: "Viðkomustaðir",
@@ -68,9 +59,9 @@ require([
  // Load a webscene
   const scene = new WebScene({
     portalItem: {
-      id: "4526032f665f45a2bc4305af00dc29d9"
+      id: "f3b79c16e4a84c278ab69d94a938f49e"
     },
-     layers: [geojsonLayer]
+     layers: [vidkomustadir]
   });
 
  // Create a new SceneView and set the weather to cloudy
