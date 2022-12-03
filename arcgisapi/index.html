@@ -2,55 +2,34 @@
 <html lang="en" >
 
 <head>
-    <meta charset="UTF-8">
-    <title>DRAFT </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Intro to MapView - Create a 2D map</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.25/"></script>
+    <script  src="./js/script.js"></script>
 </head>
 
-<!-- partial:index.partial.html -->
-<html lang="en" >
-    <head>
-        <meta charset="utf-8" />
-        <meta
-          name="viewport"
-          content="initial-scale=1,maximum-scale=1,user-scalable=no"
-        />
-        <title>
-          Windfarms visualization | ArcGIS API for JavaScript 4.25
-        </title>
-        <link
-          rel="stylesheet"
-          href="https://js.arcgis.com/4.25/esri/themes/light/main.css"
-        />
-        <script src="https://js.arcgis.com/4.25/"></script>
-        <script  src="./js/script.js"></script>
-     <!--   <script  src="./js/dataload.js"></script>
-        <script  src="./js/widgets.js"></script>-->
-    </head>
 
-
-    <body>
-        <div class="header">
-            <div class="img">
-              <img src="image/lmi_logo_crop.jpg" alt="LMI logo" height="5%" width="5%">
-            </div>
-        </div>      
-      
+<body>
+    <div class="header">
+        <div class="img">
+            <img src="image/lmi_logo_crop.jpg" alt="LMI logo" height="5%" width="5%">
+        </div>
+    </div>      
+    
+    <div id="viewDiv">
         <div id="viewDiv">
-            <div id="viewDiv">
-                <div id="layermenu" class="esri-widget">
-                <h3>Layer list</h3>
-                <div id="LayerList"></div>
-                </div>
+            <div id="layermenu" class="esri-widget">
+            <h3>Layer list</h3>
+            <div id="LayerList"></div>
             </div>
         </div>
+    </div>
 
-        <div class="footer">
-        </div>
-    </body>
-
-</html>
-<!-- partial -->
-
+    <div class="footer">
+    </div>
+</bod>
 
 </html>
