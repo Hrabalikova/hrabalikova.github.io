@@ -15,6 +15,17 @@ body, /* Don't understand why this is it here*/
   padding: 1em;
 }
 
+
+#measurements {
+  padding: 4px 8px;
+  font-size: 16px;
+  bottom: 15px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%,-50%);
+}
+
+
 /**********************
 HEADER
 ************************/

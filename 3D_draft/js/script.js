@@ -1,16 +1,47 @@
 require([
+  "esri/config",
   "esri/WebScene",
   "esri/views/SceneView",
   "esri/widgets/Expand",
+
   "esri/widgets/Weather",
   "esri/widgets/Daylight",
-  "esri/Map", //Map and GeoJSON layer is needed for my experiment with adding Json layers.....
-  "esri/layers/GeoJSONLayer",
+
+  "esri/layers/GeoJSONLayer", //Map and GeoJSON layer is needed for my experiment with adding Json layers.....
+
   "esri/widgets/LineOfSight", //Line of sight widget + point and graphic
   "esri/geometry/Point",
   "esri/Graphic",
-  "esri/widgets/LayerList" //Layer list to turn on/off layers visibility
-], (WebScene, SceneView, Expand, Weather, Daylight, Map, GeoJSONLayer, LineOfSight, Point, GraphicLayer, LayerList) => {
+
+  "esri/widgets/LayerList", //Layer list to turn on/off layers visibility
+
+  "esri/widgets/ScaleBar",
+  "esri/widgets/Sketch",
+  "esri/layers/GraphicsLayer",
+  "esri/geometry/geometryEngine"
+], (EsriConfig,
+    WebScene, 
+    SceneView, 
+    Expand, 
+
+    Weather, 
+    Daylight, 
+
+    GeoJSONLayer, 
+
+    LineOfSight, 
+    Point, 
+    Graphic,
+
+    LayerList,
+
+    ScaleBar,
+    Sketch,
+    GraphicsLayer,
+    geometryEngine
+  ) => {
+
+  EsriConfig.apiKey = "AAPK4999614db859444ebb2fd72980876bbcMLvkNBlXWIVJUDfNg59ZM4YYEX4bsk1djDxeZH6ju7YMMGeDFqlm2u6dQ5vbKsUS"
 
 /********************************
 * upload layers
@@ -84,10 +115,10 @@ require([
       }
     }
   });
-  
-  
+
+
 /***********************************
-* Add the widgets' UI elements to the view
+* Add weather and day widget
 ***********************************/
   const weatherExpand = new Expand({
     view: view,
@@ -109,31 +140,31 @@ require([
   });
   view.ui.add([weatherExpand, daylightExpand], "top-right");
   
+
+/****************************
+* Add Layer list to the Scene
+****************************/
   const layerList = new LayerList({
     view: view,
     container: "LayerList"
   });
   view.ui.add(layerList, "bottom-right");
-
+ 
+  
 
 
       
 /**************************************
 * LineOfSight widget
 **************************************/
-//add widget and let......
-const lineOfSight = new LineOfSight({
-  view: view,
-  container: "losWidget"
-});
+  //add widget and let......
+  const lineOfSight = new LineOfSight({
+    view: view,
+    container: "losWidget"
+  });
 
 
-
-/**************************************
- * Add symbols to mark the intersections
- * for the line of sight
- **************************************/
-
+  //Add symbols to mark the intersections for the line of sight
   const viewModel = lineOfSight.viewModel;
 
   // watch when observer location changes
@@ -162,9 +193,9 @@ const lineOfSight = new LineOfSight({
         type: "object",
         resource: { primitive: "inverted-cone" },
         material: { color: [255, 100, 100] },
-        height: 10,
-        depth: 10,
-        width: 10,
+        height: 5,
+        depth: 5,
+        width: 5,
         anchor: "relative",
         anchorPosition: { x: 0, y: 0, z: -0.7 }
       }
@@ -216,9 +247,17 @@ const lineOfSight = new LineOfSight({
   const expand = new Expand({
     expandTooltip: "Expand line of sight widget",
     view: view,
-    content: document.getElementById("menu"),
+  //  content: document.getElementById("menu"),
+    content: new LineOfSight({
+      view: view,
+      content: document.getElementById("menu")
+    }),
+    group: "top-right",
     expanded: false
   });
+
+
+
 
   view.ui.add(expand, "top-right");
 
