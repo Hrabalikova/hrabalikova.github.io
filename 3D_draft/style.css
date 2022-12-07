@@ -8,6 +8,10 @@ body, /* Don't understand why this is it here*/
 }
 
 #layermenu {
+  padding: 0em;
+}
+
+#menu {
   padding: 1em;
 }
 
