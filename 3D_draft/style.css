@@ -2,7 +2,7 @@ html, /* Don't understand why this is it here*/
 body, /* Don't understand why this is it here*/
 #viewDiv {
   width: 100%;
-  height: 100%;
+  height: 97%;
   margin: 0;
   padding: 0;
 }
@@ -24,7 +24,7 @@ the website name*/
 .header {
   background-color: #0a0a0a;
   text-align: left;
-  padding-top: 4%;
+  padding: 1px;
 }
 
 .img {
