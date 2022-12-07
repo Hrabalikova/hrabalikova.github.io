@@ -148,7 +148,7 @@ require([
     view: view,
     container: "LayerList"
   });
-//  view.ui.add(layerList, "bottom-right");
+  view.ui.add(layerList, "bottom-right");
  
   
 
