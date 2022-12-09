@@ -4,6 +4,8 @@ require([
   "esri/views/SceneView",
   "esri/widgets/Expand",
 
+  "esri/widgets/Home",
+
   "esri/widgets/Weather",
   "esri/widgets/Daylight",
 
@@ -23,6 +25,8 @@ require([
     WebScene, 
     SceneView, 
     Expand, 
+
+    Home,
 
     Weather, 
     Daylight, 
@@ -115,6 +119,13 @@ require([
       }
     }
   });
+
+  const homeBtn = new Home({
+    view: view
+  });
+
+  // Add the home button to the top left corner of the view
+  view.ui.add(homeBtn, "top-left");
 
 
 /***********************************
