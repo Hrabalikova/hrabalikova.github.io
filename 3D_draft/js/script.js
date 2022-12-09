@@ -17,6 +17,10 @@ require([
 
   "esri/widgets/LayerList", //Layer list to turn on/off layers visibility
 
+  "esri/widgets/DirectLineMeasurement3D",
+  "esri/widgets/AreaMeasurement3D",
+  "esri/core/promiseUtils",
+
   "esri/widgets/ScaleBar",
   "esri/widgets/Sketch",
   "esri/layers/GraphicsLayer",
@@ -39,13 +43,19 @@ require([
 
     LayerList,
 
+    DirectLineMeasurement3D,
+    AreaMeasurement3D,
+    promiseUtils,
+
     ScaleBar,
     Sketch,
     GraphicsLayer,
     geometryEngine
   ) => {
 
-  EsriConfig.apiKey = "AAPK4999614db859444ebb2fd72980876bbcMLvkNBlXWIVJUDfNg59ZM4YYEX4bsk1djDxeZH6ju7YMMGeDFqlm2u6dQ5vbKsUS"
+  //EsriConfig.apiKey = "my api key"
+  
+  let activeWidget = null;
 
 /********************************
 * upload layers
@@ -126,6 +136,91 @@ require([
 
   // Add the home button to the top left corner of the view
   view.ui.add(homeBtn, "top-left");
+
+/***********************************
+* Add measurement widget
+***********************************/
+  // add the toolbar for the measurement widgets
+  view.ui.add("topbar", "top-right");
+
+  document
+    .getElementById("distanceButton")
+    .addEventListener("click", (event) => {
+      setActiveWidget(null);
+      if (!event.target.classList.contains("active")) {
+        setActiveWidget("distance");
+      } else {
+        setActiveButton(null);
+      }
+    });
+
+  document
+    .getElementById("areaButton")
+    .addEventListener("click", (event) => {
+      setActiveWidget(null);
+      if (!event.target.classList.contains("active")) {
+        setActiveWidget("area");
+      } else {
+        setActiveButton(null);
+      }
+    });
+
+  function setActiveWidget(type) {
+    switch (type) {
+      case "distance":
+        activeWidget = new DirectLineMeasurement3D({
+          view: view
+        });
+
+        // skip the initial 'new measurement' button
+        activeWidget.viewModel.start().catch((error) => {
+          if (promiseUtils.isAbortError(error)) {
+            return; // don't display abort errors
+          }
+          throw error; // throw other errors since they are of interest
+        });
+
+        view.ui.add(activeWidget, "top-right");
+        setActiveButton(document.getElementById("distanceButton"));
+        break;
+      case "area":
+        activeWidget = new AreaMeasurement3D({
+          view: view
+        });
+
+        // skip the initial 'new measurement' button
+        activeWidget.viewModel.start().catch((error) => {
+          if (promiseUtils.isAbortError(error)) {
+            return; // don't display abort errors
+          }
+          throw error; // throw other errors since they are of interest
+        });
+
+        view.ui.add(activeWidget, "top-right");
+        setActiveButton(document.getElementById("areaButton"));
+        break;
+      case null:
+        if (activeWidget) {
+          view.ui.remove(activeWidget);
+          activeWidget.destroy();
+          activeWidget = null;
+        }
+        break;
+    }
+  }
+
+  function setActiveButton(selectedButton) {
+    // focus the view to activate keyboard shortcuts for sketching
+    view.focus();
+    const elements = document.getElementsByClassName("active");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("active");
+    }
+    if (selectedButton) {
+      selectedButton.classList.add("active");
+    }
+  }
+
 
 
 /***********************************
