@@ -1,5 +1,5 @@
-html,
-body,
+html, /* Don't understand why this is it here*/
+body, /* Don't understand why this is it here*/
 #viewDiv {
   width: 100%;
   height: 98%;
@@ -13,6 +13,44 @@ body,
 
 #menu {
   padding: 1em;
+}
+
+
+#measurements {
+  padding: 4px 8px;
+  font-size: 16px;
+  bottom: 15px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%,-50%);
+}
+
+
+#topbar {
+  background: #fff;
+  padding: 10px;
+}
+
+.action-button {
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #d3d3d3;
+  color: #6e6e6e;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.action-button:hover,
+.action-button:focus {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+
+.active {
+  background: #0079c1;
+  color: #e4e4e4;
 }
 
 
@@ -33,5 +71,56 @@ the website name*/
   align-self: start;
 }
 
+/*************************
+NAVIGATION BAR
+**************************/
+/*A navigation bar contains a list of links to help visitors 
+navigating through your website*/
 
-/*add style for slides
+/* the navbar container, add black background */
+.topnav {
+  background-color: rgb(34, 34, 34);
+  overflow: hidden;
+}
+
+/* Navbar links. Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: rgb(13, 32, 202);
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #0c52e9;
+  color: white;
+}
+
+
+/******************************
+FOOTER
+*********************************/
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
