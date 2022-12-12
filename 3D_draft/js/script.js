@@ -136,7 +136,7 @@ const layerList = new LayerList({
   container: "LayerList"
 });
 
-//  view.ui.add(layerList, "bottom-right");
+//view.ui.add(layerList, "bottom-right");
 
 // create home button 
   const homeBtn = new Home({
@@ -316,34 +316,6 @@ const layerList = new LayerList({
         view.graphics.add(graphic);
       }
     });
-  }
-
-  /**************************************
-  * Create an analysis by setting
-  * the initial observer and four targets
-  **************************************/
-
-  viewModel.observer = new Point({
-    latitude: 42.3521,
-    longitude: -71.0564,
-    z: 2
-  });
-
-  viewModel.targets = [
-    createTarget(42.3492, -71.0529),
-    createTarget(42.3477, -71.0542),
-    createTarget(42.3485, -71.0533),
-    createTarget(42.3467, -71.0549)
-  ];
-
-  function createTarget(lat, lon, z) {
-    return {
-      location: new Point({
-        latitude: lat,
-        longitude: lon,
-        z: z || 0
-      })
-    };
   }
 
   // add an Expand widget to make the menu responsive
