@@ -53,12 +53,12 @@ require([
     geometryEngine
   ) => {
 
-  //EsriConfig.apiKey = "my api key"
+  //EsriConfig.apiKey = "my api key" //for now I do not need to generate api, it is mostly for living atlas, basemaps and ready-to-use tools
   
   let activeWidget = null;
 
 /********************************
-* upload layers
+* upload layers - this is just try
 ***********************************/
   // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
   // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
@@ -98,10 +98,10 @@ require([
 
  
   
-/***********************************
-* Create the SceneView
-***********************************/
- // Load a webscene
+/******************************************************
+* Create the SceneView and setting up the initial view
+********************************************************/
+ // Load a webscene - I have two option, create Scene in AGOL or create a new scene directly here
   const scene = new WebScene({
     portalItem: {
       id: "f3b79c16e4a84c278ab69d94a938f49e"
@@ -130,19 +130,26 @@ require([
     }
   });
 
+// Add Layer list to the Scene
+const layerList = new LayerList({
+  view: view,
+  container: "LayerList"
+});
+
+//  view.ui.add(layerList, "bottom-right");
+
+// create home button 
   const homeBtn = new Home({
     view: view
   });
 
-  // Add the home button to the top left corner of the view
-  view.ui.add(homeBtn, "top-left");
+  view.ui.add(homeBtn, "top-left"); //I want home button on the left
+
+
 
 /***********************************
 * Add measurement widget
 ***********************************/
-  // add the toolbar for the measurement widgets
-  view.ui.add("topbar", "top-right");
-
   document
     .getElementById("distanceButton")
     .addEventListener("click", (event) => {
@@ -221,6 +228,7 @@ require([
     }
   }
 
+  view.ui.add("topbar", "top-right"); // add the toolbar for the measurement widgets
 
 
 /***********************************
@@ -244,19 +252,8 @@ require([
     }),
     group: "top-right"
   });
-  view.ui.add([weatherExpand, daylightExpand], "top-right");
-  
 
-/****************************
-* Add Layer list to the Scene
-****************************/
-  const layerList = new LayerList({
-    view: view,
-    container: "LayerList"
-  });
-//  view.ui.add(layerList, "bottom-right");
- 
-  
+  view.ui.add([weatherExpand, daylightExpand], "top-right"); 
 
 
       
@@ -363,9 +360,8 @@ require([
   });
 
 
-
-
   view.ui.add(expand, "top-right");
+
 
   view.when(() => {
     // allow user to turn the layer with new planned buildings on/off
