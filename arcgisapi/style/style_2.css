@@ -1,11 +1,15 @@
-html, body, 
+html, 
+body, 
+
+
 
 #viewDiv {
   width: 100%;
-  height: 98%;
+  height: 96%;
   margin: 0;
   padding: 0;
 }
+
 
 /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
 @media screen and (max-width: 400px) {
@@ -18,10 +22,12 @@ html, body,
 /* HEADER */
 .header {
   background-color: #eee;
+  text-align: left;
+  overflow: hidden;
   padding: 0;
   margin: 0;
-  max-height: 20%;
 }
+
 /* Navbar links*/
 .header a {
   float: left;
@@ -31,31 +37,22 @@ html, body,
   text-decoration: none;
   font-size: 17px;
 }
+
 .header img {
   padding-top: 10px;
   align-items: center;
   background-position: center;
-  width: 65%;
-  height: auto;
+  width: 70%;
 }
-
-/* Navbar button*/
-.nav-button {
-  padding: 0px;
-  background-color: #eee;
-  border: 1px solid #b9b7b7;
-  color: #646363;
-  height: 50px;
-  width: 200px;
-  text-align: bottom;
-  box-shadow: 0 0 1px rgba(122, 122, 122, 0.3);
-}
-
 
 
 
 /* WIDGETS AND LAYER MENU*/
-#layer-menu {
+#layermenu {
+  padding: 0em;
+}
+
+#menu {
   padding: 1em;
 }
 
@@ -74,6 +71,7 @@ html, body,
   background: #fff;
   padding: 10px;
 }
+
 .action-button {
   font-size: 16px;
   background-color: transparent;
@@ -84,13 +82,43 @@ html, body,
   text-align: center;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
+
 .action-button:hover,
 .action-button:focus {
   background: #0079c1;
   color: #e4e4e4;
 }
+
 .active {
   background: #0079c1;
   color: #e4e4e4;
 }
+
+
+
+/*NAVIGATION BAR*/
+
+/* the navbar container, add light grey background*/
+.footernav {
+  padding: 3px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+/* Navbar links. Style the links inside the navigation bar */
+.footernav a {
+  float: left;
+  color: #070707;
+  text-align: center;
+  padding: 0px 10px;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+/* Change the color of links on hover */
+.footernav a:hover {
+  background-color: rgb(73, 72, 75);
+  color: rgb(234, 235, 240);
+}
+
 
