@@ -2,13 +2,22 @@ html,
 body, 
 
 
+
 #viewDiv {
   width: 100%;
-  height: 97%;
+  height: 96%;
   margin: 0;
   padding: 0;
 }
 
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
 
 /* HEADER */
 .header {
@@ -35,10 +44,6 @@ body,
   background-position: center;
   width: 70%;
 }
-
-
-
-
 
 
 
@@ -91,39 +96,11 @@ body,
 
 
 
-
-
-
-
-
-
-
-
-/******************************
-FOOTER
-*********************************/
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-  margin-top: 20px;
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
-}
-
-
-
-
 /*NAVIGATION BAR*/
 
-/* the navbar container, add black background */
+/* the navbar container, add light grey background*/
 .footernav {
+  padding: 3px;
   background-color: #eee;
   overflow: hidden;
 }
@@ -131,23 +108,17 @@ FOOTER
 /* Navbar links. Style the links inside the navigation bar */
 .footernav a {
   float: left;
-  color: #111010;
+  color: #070707;
   text-align: center;
-  padding: 14px 16px;
+  padding: 0px 10px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 10px;
 }
 
 /* Change the color of links on hover */
 .footernav a:hover {
-  background-color: #ddd;
-  color: rgb(13, 32, 202);
-}
-
-/* Add a color to the active/current link */
-.footernav a.active {
-  background-color: #0c52e9;
-  color: white;
+  background-color: rgb(73, 72, 75);
+  color: rgb(234, 235, 240);
 }
 
 
