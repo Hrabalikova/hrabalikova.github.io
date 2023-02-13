@@ -1,21 +1,24 @@
 body{
-  /*background: gray;*/
-  background: url(http://www.resortcollection.com/wp-content/themes/resortcollection/property-images/summit/summit-beach-resort-panama-city-beach-fl-beach-01.jpg);
-  background-repeat:no-repeat;
+  /* background: gray; */
+  background: url(https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg);
+  /* background: url(https://res.cloudinary.com/dtpgi0zck/image/upload/s--zOSmBEhk--/c_fit,h_580,w_860/v1/EducationHub/photos/pebble-beach.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 div{
-  background: blue;
-  border: orange;
-  border-width: thick; /* 10 px */
+  background: rgb(167, 167, 171);
+  border: rgb(12, 85, 29);
+  border-width: thick;
+ /* border-width: 10px;  */
   border-style: dotted;
 
   }
 
 p{
-  color: yellow;
+  color: rgb(234, 234, 238);
 }
 span{
-  background: red;
+  background: rgb(232, 221, 29);
   color: black;
 }

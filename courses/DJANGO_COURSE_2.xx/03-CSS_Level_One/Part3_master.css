@@ -5,12 +5,15 @@
 /*  https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors */
 /*Class selectors start with a dot . */
 
+
+
+
 .firstDiv{
-  color: blue;
+  color: rgb(207, 20, 173);
 }
 
 .secondDiv{
-  background-color: gray;
+  background-color: rgb(243, 235, 231);
 }
 
 /* Use an id to single out html elements*/
@@ -21,10 +24,10 @@
   text-decoration: underline;
 }
 
-/*Use an asterisk to select all elements*/
-*{
-  color: green;
-}
+/*Use an asterisk to select all elements, it will be overwrite if you have id*/
+/* *{
+  color: rgb(9, 10, 9);
+} */
 
 /*Adjacent sibling: Elements that are next to each other*/
 h3 + ul{
@@ -33,11 +36,13 @@ h3 + ul{
 
 /*Descendants*/
 li a{
-  color: black;
+  color: rgb(9, 55, 182);
 }
 
 /*Attributes*/
 li a[href="www.npr.org"]{
-  color: red;
-  border: 5px solid orange;
+  color: rgb(249, 247, 247);
+  background-color: black;
+  padding: auto;
+  border: 1px solid rgb(10, 10, 10);
 }
