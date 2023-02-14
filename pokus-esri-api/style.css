@@ -2,18 +2,13 @@ html, body,
 
 #viewDiv {
   width: 100%;
-  height: 98%;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
-}
+
+
 
 /* HEADER */
 .header {
@@ -38,6 +33,7 @@ html, body,
   width: 65%;
   height: auto;
 }
+
 
 /* Navbar button*/
 .nav-button {
