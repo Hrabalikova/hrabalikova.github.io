@@ -6,11 +6,12 @@ require([
   "esri/widgets/Daylight",
   "esri/Map", //Map and GeoJSON layer is needed for my experiment with adding Json layers.....
   "esri/layers/GeoJSONLayer",
+  "esri/layers/OGCFeatureLayer",
   "esri/widgets/LineOfSight", //Line of sight widget + point and graphic
   "esri/geometry/Point",
   "esri/Graphic",
   "esri/widgets/LayerList" //Layer list to turn on/off layers visibility
-], (WebScene, SceneView, Expand, Weather, Daylight, Map, GeoJSONLayer, LineOfSight, Point, GraphicLayer, LayerList) => {
+], (WebScene, SceneView, Expand, Weather, Daylight, Map, GeoJSONLayer, OGCFeatureLayer, LineOfSight, Point, GraphicLayer, LayerList) => {
 
 
 
@@ -19,9 +20,13 @@ require([
 ***********************************/
 // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
 // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
-
-  const vidkomUrl =
-        "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";//"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2Fjson";
+/*
+ const Url =
+  //"https://gis.is/geoserver/ramma/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ramma:r5_yfirlit&CRS=EPSG%3A4326&outputFormat=json";
+  //"https://gis.lmi.is/geoserver/ERM/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ERM%3ALake_Reservoir&maxFeatures=100000&outputFormat=application%2Fjson";
+  //"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
+  //"hrabalikova.github.io/arcgisapi/json/exp.geojson";      
+  "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";//"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2Fjson";
 
   //pop-up windows
   const template = {
@@ -32,7 +37,7 @@ require([
   // visualization........
   const renderer = {
     type: "simple",
-    field: "addrattarafl",
+    field: "id",
     symbol: {
       type: "simple-marker",
       size: 6,
@@ -43,20 +48,34 @@ require([
     }
   };
 
-  const VidkomustadirLayer = new GeoJSONLayer({
-    url: vidkomUrl,
-    id: "Vidkomustadir",
+  const Experiment = new GeoJSONLayer({
+    url: Url,
+    id: "1",
     copyright: "Ferðumálastofnun",
     visible: false,
     popupTemplate: template,
     renderer: renderer,
     title: "Viðkomustaðir",
     orderBy: {
-      field: "addrattarafl"
+      field: "id"
     }
-  });
+  });*/
 
 
+const Experiment = new OGCFeatureLayer({
+  url: "https://gis.lmi.is/geoserver/LMI_vektor/wms?";
+
+//  "https://demo.pygeoapi.io/stable", // url to the OGC service
+  collectionId: "gos_Reykjanes_hraun_aoi_20210329", // unique id of the collection
+  // define rendering
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "simple-marker",
+      color: "orange"
+    }
+  },
+});
  
   
 /***********************************
@@ -67,7 +86,7 @@ require([
     portalItem: {
       id: "f3b79c16e4a84c278ab69d94a938f49e"
     },
-     layers: [VidkomustadirLayer]
+     layers: [Experiment]
   });
 
  // Create a new SceneView and set the weather to cloudy
