@@ -62,17 +62,19 @@ require([
 ***********************************/
   // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
   // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
-  const vidkomustadirUrl =
-        "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";
+  const vidkomustadirUrl =  
+   "https://ftp.lmi.is/stm/michaela/Ramma/exp.geojson";
+   //"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"; 
+   //"https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";
 
   const template = {
-    title: "Land marks",
-    content: "{heiti} in {svf_nafn} municipitality. <br/><br/> {flokkar}",
+    title: "Ramma",
+    content: "{nr_ramma} in {id_vindorka} municipitality. <br/><br/> {nr_ramma}",
   };
 
   const renderer = {
     type: "simple",
-    field: "addrattarafl",
+    field: "nr_ramma",
     symbol: {
       type: "simple-marker",
       size: 6,
@@ -85,13 +87,13 @@ require([
 
   const vidkomustadir = new GeoJSONLayer({
     url: vidkomustadirUrl,
-    copyright: "Ferðumálastofnun",
+    copyright: "NEvim nejaky copy",
     visible: false, 
     popupTemplate: template,
     renderer: renderer,
-    title: "Viðkomustaðir",
+    title: "Ramma",
     orderBy: {
-      field: "addrattarafl"
+      field: "nr_ramma"
     }
   });
 
