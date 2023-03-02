@@ -21,12 +21,14 @@ require([
 // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
 // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
 /*
- const Url =
+ const Url = 
+  "	vjp:gongugrunnur_v0";
+  //"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2FjsonINSPIRE:INSPIRE_ProtectedSites";
   //"https://gis.is/geoserver/ramma/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ramma:r5_yfirlit&CRS=EPSG%3A4326&outputFormat=json";
   //"https://gis.lmi.is/geoserver/ERM/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ERM%3ALake_Reservoir&maxFeatures=100000&outputFormat=application%2Fjson";
   //"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
   //"hrabalikova.github.io/arcgisapi/json/exp.geojson";      
-  "https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";//"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2Fjson";
+  //"https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&service=WFS&version=1.1.0&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";//"https://gis.lmi.is/geoserver/ferdamalastofa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ferdamalastofa%3Avidkomustadir&maxFeatures=100000&outputFormat=application%2Fjson";
 
   //pop-up windows
   const template = {
@@ -63,10 +65,9 @@ require([
 
 
 const Experiment = new OGCFeatureLayer({
-  url: "https://gis.lmi.is/geoserver/LMI_vektor/wms?";
-
+  url: "https://gis.is";
 //  "https://demo.pygeoapi.io/stable", // url to the OGC service
-  collectionId: "gos_Reykjanes_hraun_aoi_20210329", // unique id of the collection
+  collectionId: "ferdamalastofa:vidkomustadir", // unique id of the collection
   // define rendering
   renderer: {
     type: "simple",
