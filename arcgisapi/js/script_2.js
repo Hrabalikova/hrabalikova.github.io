@@ -63,7 +63,7 @@ require([
   // sample: https://developers.arcgis.com/javascript/latest/sample-code/layers-geojson/
   // or https://developers.arcgis.com/javascript/latest/sample-code/sandbox/?sample=layers-geojson-refresh
   const vidkomustadirUrl =  
-   "https://ftp.lmi.is/stm/michaela/Ramma/exp.geojson";
+   "https://hrabalikova.github.io/arcgisapi/json/exp.geojson";
    //"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"; 
    //"https://gis.is/geoserver/ferdamalastofa/wfs?request=GetFeature&typeName=ferdamalastofa:vidkomustadir&outputFormat=json";
 
