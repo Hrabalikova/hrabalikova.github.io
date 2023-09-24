@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramma þrívíddarkort</title>
+  <link rel="icon" type="image" href="https://www.ramma.is/skin/basic9k/i/sitelogo.png">
+
+
+  <!-- connect to ESRI API, the basic :)-->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <!-- additional styles-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <!-- own scripts and styles-->
+  <link rel="stylesheet" href="style.css">
+ <!-- <script src="js/splashScreen.js"></script>-->
+  <script  src="js/script.js"></script>
+  
+
+</head>
+
+
+<body>
+<!-- header: project log and map title-->
+  <div class="header" >
+    <div class="w3-cell-row">
+      <div class="w3-conatiner w3-cell">
+        <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
+          <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
+        </a>
+        <h1>Ramma þrívíddarkort</h1>
+      </div>
+      <div class="w3-container w3-cell w3-right">
+        <a class="w3-padding-large w3-hover-grey w3-hide-small nav-button"
+           href="https://kortasja.lmi.is/mapview/?application=ramma" 
+           title="Innri kortasjá"
+           style="margin-top: 10px;">
+          <i class="fa fa-map">  Innri kortasja</i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- splash screen--> 
+  <div id="myModal" class="modal">
+    <div class="modal-content" style="position: relative;"> <!-- Add relative positioning here -->
+      <!--<button class="language-switch">EN</button>--> <!-- Language switch button -->
+      <span class="close">&times;</span>
+      <h2>Rammaáætlun þrívíddarkort</h2>
+      <p>Fyrirvari/Disclaimer: [disclaimer text.....]</p>
+      <p>Leiðbeiningar/User Guide: <a href="[Link to user guide]">Click here</a></p>
+      <p>Viðbótarupplýsingar/Additional Information: [Any other info]</p>
+    </div>
+  </div>
+  
+
+
+
+
+  <!-- the main map window with all the widgets and scripts-->
+  <div id="viewDiv">
+    <!-- mesure buttons-->
+    <div id="topbar">
+      <button
+        class="action-button esri-icon-measure-line"
+        id="distanceButton"
+        type="button"
+        title="Measure distance between two points"
+      ></button>
+      <button
+        class="action-button esri-icon-measure-area"
+        id="areaButton"
+        type="button"
+        title="Measure area"
+      ></button>
+    </div>
+
+    <!-- Layer list-->
+    <div id="layer-menu" class="esri-widget">
+      <h3>Gögn</h3>
+      <div id="LayerList"></div>
+    </div>
+
+
+    <!-- Bookmark widget -->
+    <div id="bookmarkWidget" class="esri-widget">
+
+    </div> <!-- New div for Bookmark widget -->
+
+  </div>
+
+
+</body>
+</html>

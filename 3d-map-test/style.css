@@ -1,0 +1,166 @@
+html, body, 
+
+#viewDiv {
+  width: 100%;
+  height: 95%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+
+
+/* HEADER */
+.header {
+  background-color: #eee;
+  padding: 0;
+  margin: 0;
+  max-height: 15%;
+}
+/* Navbar links*/
+.header a {
+  float: left;
+  color: #111010;
+  text-align: bottom;
+  padding: 0px 10px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.header img {
+  padding-top: 10px;
+  align-items: center;
+  background-position: center;
+  width: 65%;
+  height: auto;
+}
+
+/* Navbar button*/
+.nav-button {
+  padding: 0px;
+  background-color: #eee;
+  border: 1px solid #b9b7b7;
+  color: #646363;
+  height: 50px;
+  width: 200px;
+  text-align: bottom;
+  box-shadow: 0 0 1px rgba(122, 122, 122, 0.3);
+}
+
+
+
+
+/* WIDGETS AND LAYER MENU*/
+#layer-menu {
+  padding: 1em;
+}
+
+
+#measurements {
+  padding: 4px 8px;
+  font-size: 16px;
+  bottom: 15px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%,-50%);
+}
+
+
+#topbar {
+  background: #fff;
+  padding: 10px;
+}
+.action-button {
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #d3d3d3;
+  color: #6e6e6e;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+.action-button:hover,
+.action-button:focus {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+.active {
+  background: #0079c1;
+  color: #e4e4e4;
+}
+
+
+/* Splash screen*/
+/* Modal container */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D effect */
+}
+
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -20px; /* Adjust the position slightly upwards */
+}
+
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Header */
+.modal-content h2 {
+  border-bottom: 1px solid #b9b7b7; /* Light grey border */
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+
+/* Language switch button */
+.language-switch {
+  background: #0079c1; /* Background color */
+  color: #e4e4e4; /* Text color */
+  padding: 5px 10px; /* Smaller padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute; /* Absolute positioning */
+  top: 10px; /* Position from the top */
+  right: 55px; /* Adjusted position from the right */
+  font-size: 12px; /* Smaller font size */
+}
+
+.language-switch:hover {
+  background: #005a8d; /* Darker shade for hover */
+}
+
