@@ -18,8 +18,9 @@
 
   <!-- own scripts and styles-->
   <link rel="stylesheet" href="style.css">
- <!-- <script src="js/splashScreen.js"></script>-->
+  <script src="js/webscripts.js"></script>
   <script  src="js/script.js"></script>
+
   
 
 </head>
@@ -48,15 +49,58 @@
 
   <!-- splash screen--> 
   <div id="myModal" class="modal">
-    <div class="modal-content" style="position: relative;"> <!-- Add relative positioning here -->
-      <!--<button class="language-switch">EN</button>--> <!-- Language switch button -->
+    <div class="modal-content">
       <span class="close">&times;</span>
-      <h2>Rammaáætlun þrívíddarkort</h2>
-      <p>Fyrirvari/Disclaimer: [disclaimer text.....]</p>
-      <p>Leiðbeiningar/User Guide: <a href="[Link to user guide]">Click here</a></p>
-      <p>Viðbótarupplýsingar/Additional Information: [Any other info]</p>
+      <h2 class="modal-title">Rammaáætlun þrívíddarkort</h2>
+      <!-- ... -->
+      <h4 class="modal-disclaimer-title">Fyrirvari/Disclaimer</h4>
+      <p class="modal-disclaimer">This 3D map, titled "Rammaáætlun 3D Map," is created to present wind farm projects evaluated in the 5th phase of Ramma. 
+        While we strive for accuracy, we make no claims, promises, or guarantees about the absolute accuracy or completeness of the information provided in this map. 
+        Users should not use this map for navigational purposes, and we disclaim any responsibility for any decisions made based on this map.
+        The map offers various tools such as measurement tools, weather widgets, daylight widgets, and a line-of-sight tool with an observer height set at 1.75 m, among others. 
+        These tools are provided for informational purposes only and should not replace professional judgment.
+        Use of this map is at the user's own risk.</p>
+      <!-- ... -->
+      <h4 class="modal-guide-title">Leiðbeiningar/User Guide</h4>
+      <p class="modal-guide">Leiðbeiningar/User Guide: <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Click here</a></p>  
+      <!-- ... -->     
+      <h4 class="modal-guide-title">Viðbótarupplýsingar/Additional Information:</h4>
+      <ul class="modal-info-list">
+        <li><strong>Data Sources:</strong> The wind farm projects presented are evaluated as part of Ramma's 5th phase.</li>
+        <li><strong>Updates:</strong> The map is updated quarterly.</li>
+        <li><strong>Usage Restrictions:</strong> Please consult the disclaimer for usage limitations.</li>
+        <li><strong>Features:</strong> This map provides measurement tools, a weather widget, daylight widget, and a line-of-sight tool with observer height set at 1.75 m.</li>
+        <li><strong>Related Resources:</strong> For more information on Ramma projects, visit Official Ramma Website.</li>
+      </ul>
+      <!-- ... -->
+      <!-- Trigger text/icon -->
+      <span class="modal-tooltip-trigger">Mouse Navigation Guide 🖱️</span>
+      <!-- Tooltip container -->
+      <div class="modal-tooltip">
+        <img src="\3d-map-test\image\mpuse.png" alt="Mouse Navigation Guide"> 
+        <script>
+          // Get the tooltip and its trigger
+          const tooltip = document.querySelector('.modal-tooltip');
+          const trigger = document.querySelector('.modal-tooltip-trigger');
+          // Show tooltip on hover
+          trigger.addEventListener('mouseover', function() {
+            tooltip.style.display = 'block';
+          });
+          // Hide tooltip when mouse leaves
+          trigger.addEventListener('mouseout', function() {
+            tooltip.style.display = 'none';
+          });
+          // Optional: Show tooltip on click instead of hover
+          //trigger.addEventListener('click', function() {
+          //   tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+          // });
+        </script>
+      </div>
+
+
     </div>
   </div>
+
   
 
 

@@ -110,7 +110,7 @@ html, body,
   background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal content */
+/* Modal content*/
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -130,13 +130,13 @@ html, body,
   margin-top: -20px; /* Adjust the position slightly upwards */
 }
 
-
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
+
 
 /* Header */
 .modal-content h2 {
@@ -145,22 +145,68 @@ html, body,
   margin-bottom: 20px;
 }
 
+/* Styles for text */
+.modal-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #2e2d2d;
+  font-weight: bold;
+}
 
-/* Language switch button */
-.language-switch {
-  background: #0079c1; /* Background color */
-  color: #e4e4e4; /* Text color */
-  padding: 5px 10px; /* Smaller padding */
-  border: none;
-  border-radius: 5px;
+.modal-disclaimer-title,
+.modal-guide-title {
+  font-weight: bold; /* or text-decoration: underline; based on the preference */
+  font-size: 17px;
+}
+
+.modal-disclaimer,
+.modal-guide, 
+.modal-info-list {
+  font-size: 14px;
+  line-height: 1.5;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  color: #393838;
+}
+
+.modal-link {
+  color: #0079c1;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.modal-info-list li {
+  margin-bottom: 8px;
+}
+
+.modal-info-list li strong {
+  font-weight: bold;
+}
+
+/* Tooltip Trigger */
+.modal-tooltip-trigger {
   cursor: pointer;
-  position: absolute; /* Absolute positioning */
-  top: 10px; /* Position from the top */
-  right: 55px; /* Adjusted position from the right */
-  font-size: 12px; /* Smaller font size */
+  text-decoration: underline;
+  color: #0079c1;
 }
 
-.language-switch:hover {
-  background: #005a8d; /* Darker shade for hover */
+/* Tooltip Container */
+.modal-tooltip {
+  display: none;
+  position: fixed; /*fixed vs. absolute position*/
+  top: 70%; /* Center it vertically */
+  left: 20%; /* Center it horizontally */
+  transform: translate(-50%, -50%); /* Fine-tune the position, for example -50%, -10px */
+  z-index: 2;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Tooltip Image */
+.modal-tooltip img {
+  max-width: 100%;
+  height: auto;
+}

@@ -113,22 +113,7 @@ require([
   // run splash screen function 
   view.when(() => {
     showSplashScreen();
-    // the function run splash screen
-    function showSplashScreen() {
-      var modal = document.getElementById("myModal");
-      var span = document.getElementsByClassName("close")[0];
-      modal.style.display = "block";
-    
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-    
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-    }
+    // the function run splash screen from another js file
   });
   
 
