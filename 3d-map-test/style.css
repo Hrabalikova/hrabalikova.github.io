@@ -100,7 +100,7 @@ html, body,
 /* Modal container */
 .modal {
   display: none;
-  position: absolute;
+  position: absolute;  /* Changed from absolute to fixed */
   z-index: 1;
   left: 0;
   top: 0;
@@ -112,11 +112,13 @@ html, body,
 
 /* Modal content*/
 .modal-content {
+  position: relative; /*should change to fixed?*/
   background-color: #fefefe;
-  margin: 15% auto;
+  /*margin: 15% auto;*/
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  z-index: 9999;
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D effect */
 }

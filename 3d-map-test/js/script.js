@@ -109,11 +109,51 @@ require([
 
   view.ui.add(homeBtn, "top-left"); //home button on the left
 
-
+/***********************************
+* run splash screen  
+***********************************/
   // run splash screen function 
+  function showSplashScreen() {
+    var modal = document.getElementById("myModal");
+    var modalContent = document.querySelector(".modal-content");
+    var span = document.getElementsByClassName("close")[0];
+    var offsetX, offsetY, isDragging = false;
+  
+    // Center the modal initially
+    modalContent.style.left = "50%";
+    modalContent.style.top = "50%";
+    modalContent.style.transform = "translate(-50%, -50%)";
+  
+    modal.style.display = "block";
+  
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  
+    // Dragging logic
+    modalContent.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      offsetX = e.clientX - modalContent.getBoundingClientRect().left;
+      offsetY = e.clientY - modalContent.getBoundingClientRect().top;
+      modalContent.style.transform = "none"; // Remove the transform to allow dragging
+    });
+  
+    window.addEventListener('mousemove', function(e) {
+      if (isDragging) {
+        modalContent.style.left = e.clientX - offsetX + 'px';
+        modalContent.style.top = e.clientY - offsetY + 'px';
+      }
+    });
+  
+    window.addEventListener('mouseup', function() {
+      isDragging = false;
+    });
+  }
+
+
   view.when(() => {
     showSplashScreen();
-    // the function run splash screen from another js file
+    // the function run splash screen
   });
   
 
