@@ -1,19 +1,14 @@
 html, body, 
 
+/*Basic Configuration of the main map window container */
 #viewDiv {
   width: 100%;
-  height: 95%;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
-}
+
 
 
 /* HEADER */
@@ -43,9 +38,9 @@ html, body,
 /* Navbar button*/
 .nav-button {
   padding: 0px;
-  background-color: #eee;
-  border: 1px solid #b9b7b7;
-  color: #646363;
+  background-color: var(--calcite-ui-foreground-1);
+  border: 1px solid var(--calcite-ui-border-1);
+  color: var(--calcite-ui-text-1);
   height: 50px;
   width: 200px;
   text-align: bottom;
@@ -95,12 +90,13 @@ html, body,
   color: #e4e4e4;
 }
 
-
-/* SPLASH SCREEN*/
-/* Modal container */
-.modal {
+/*//////////////////////////////
+ SPLASH SCREEN
+///////////////////////////////*/
+/*Splash container for Splash screen*/
+.splash {
   display: none;
-  position: absolute;  /* Changed from absolute to fixed */
+  position: fixed;  /* Changed from absolute to fixed otherwise the window jumped like rabbit*/
   z-index: 1;
   left: 0;
   top: 0;
@@ -110,11 +106,10 @@ html, body,
   background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal content*/
-.modal-content {
+/* Splash content of the Splash*/
+.splash-content {
   position: relative; /*should change to fixed?*/
   background-color: #fefefe;
-  /*margin: 15% auto;*/
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -123,7 +118,7 @@ html, body,
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D effect */
 }
 
-/* Close button */
+/* Close button for Splash screen*/
 .close {
   color: #aaa;
   float: right;
@@ -141,60 +136,60 @@ html, body,
 
 
 /* Header of the splash screen*/
-.modal-content h2 {
+.splash-content h2 {
   border-bottom: 1px solid #b9b7b7; /* Light grey border */
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
 /* Styles for text of splash screen*/
-.modal-title {
+.splash-title {
   font-size: 24px;
   margin-bottom: 16px;
   color: #2e2d2d;
   font-weight: bold;
 }
 
-.modal-disclaimer-title,
-.modal-guide-title {
+.splash-disclaimer-title,
+.splash-guide-title {
   font-weight: bold; /* or text-decoration: underline; based on the preference */
   font-size: 17px;
 }
 
-.modal-disclaimer,
-.modal-guide, 
-.modal-info-list {
-  font-size: 14px;
+.splash-disclaimer,
+.splash-guide, 
+.splash-info-list {
+  font-size: 15px;
   line-height: 1.5;
   list-style-type: disc;
-  padding-left: 20px;
+  padding-left: 30px;
   margin-bottom: 12px;
   color: #393838;
 }
 
-.modal-link {
+.splash-link {
   color: #0079c1;
-  font-size: 14px;
+  font-size: 11px;
   text-decoration: underline;
 }
 
-.modal-info-list li {
+.splash-info-list li {
   margin-bottom: 8px;
 }
 
-.modal-info-list li strong {
+.splasj-info-list li strong {
   font-weight: bold;
 }
 
 /* Tooltip Trigger */
-.modal-tooltip-trigger {
+.splash-tooltip-trigger {
   cursor: pointer;
   text-decoration: underline;
   color: #0079c1;
 }
 
 /* Tooltip Container */
-.modal-tooltip {
+.splash-tooltip {
   display: none;
   position: fixed; /*fixed vs. absolute position*/
   top: 70%; /* Center it vertically */
@@ -208,7 +203,7 @@ html, body,
 }
 
 /* Tooltip Image */
-.modal-tooltip img {
+.splash-tooltip img {
   max-width: 100%;
   height: auto;
 }
