@@ -4,13 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Landmælingar Íslands, 2023">
+  <meta name="description" content="3D kortasjá fyrir vindkostirverkefni í 5. þætti Rammaæátlunar.">
+   <!-- License: MIT License -->
   <title>Ramma þrívíddarkort</title>
   <link rel="icon" type="image" href="https://www.ramma.is/skin/basic9k/i/sitelogo.png">
 
 
   <!-- connect to ESRI API, the basic :)-->
-  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
-  <script src="https://js.arcgis.com/4.25/"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.27/"></script>
+    <!-- load Dojo -->
+  <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+  data-dojo-config="async: true"></script>
 
   <!-- additional styles-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,12 +24,12 @@
 
   <!-- own scripts and styles-->
   <link rel="stylesheet" href="style.css">
-  <script src="js/webscripts.js"></script>
   <script  src="js/script.js"></script>
 </head>
 
 
 <body>
+
 <!-- header: project log and map title-->
   <div class="header" >
     <div class="w3-cell-row">
@@ -43,13 +49,12 @@
       </div>
     </div>
   </div>
-
   <!-- splash screen--> 
   <div id="myModal" class="modal drag-area">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2 class="modal-title ">Rammaáætlun þrívíddarkort</h2>
-      <!-- ... -->
+      <!-- Disclaimer -->
       <h4 class="modal-disclaimer-title">Fyrirvari/Disclaimer</h4>
       <p class="modal-disclaimer">This 3D map, titled "Rammaáætlun 3D Map," is created to present wind farm projects evaluated in the 5th phase of Ramma. 
         While we strive for accuracy, we make no claims, promises, or guarantees about the absolute accuracy or completeness of the information provided in this map. 
@@ -57,10 +62,10 @@
         The map offers various tools such as measurement tools, weather widgets, daylight widgets, and a line-of-sight tool with an observer height set at 1.75 m, among others. 
         These tools are provided for informational purposes only and should not replace professional judgment.
         Use of this map is at the user's own risk.</p>
-      <!-- ... -->
+      <!-- User guide -->
       <h4 class="modal-guide-title">Leiðbeiningar/User Guide</h4>
       <p class="modal-guide">Leiðbeiningar/User Guide: <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Click here</a></p>  
-      <!-- ... -->     
+      <!-- Data source and additional info -->     
       <h4 class="modal-guide-title">Viðbótarupplýsingar/Additional Information:</h4>
       <ul class="modal-info-list">
         <li><strong>Data Sources:</strong> The wind farm projects presented are evaluated as part of Ramma's 5th phase.</li>
@@ -75,34 +80,9 @@
       <!-- Tooltip container -->
       <div class="modal-tooltip">
         <img src="\3d-map-test\image\mpuse.png" alt="Mouse Navigation Guide"> 
-        <script>
-          // Get the tooltip and its trigger
-          const tooltip = document.querySelector('.modal-tooltip');
-          const trigger = document.querySelector('.modal-tooltip-trigger');
-          // Show tooltip on hover
-          trigger.addEventListener('mouseover', function() {
-            tooltip.style.display = 'block';
-          });
-          // Hide tooltip when mouse leaves
-          trigger.addEventListener('mouseout', function() {
-            tooltip.style.display = 'none';
-          });
-          // Or: Show tooltip on click instead of hover
-          //trigger.addEventListener('click', function() {
-          //   tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
-          // });
-        </script>
       </div>
-
-
     </div>
   </div>
-
-  
-
-
-
-
   <!-- the main map window with all the widgets and scripts-->
   <div id="viewDiv">
     <!-- mesure buttons-->
@@ -120,21 +100,16 @@
         title="Measure area"
       ></button>
     </div>
-
     <!-- Layer list-->
     <div id="layer-menu" class="esri-widget">
       <h3>Gögn</h3>
       <div id="LayerList"></div>
     </div>
-
-
     <!-- Bookmark widget -->
     <div id="bookmarkWidget" class="esri-widget">
 
     </div> <!-- New div for Bookmark widget -->
 
   </div>
-
-
 </body>
 </html>

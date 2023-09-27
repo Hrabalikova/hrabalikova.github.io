@@ -1,7 +1,11 @@
+/*
+  Author: LMI
+  Description: JavaScript for a 3D map application for wind energy projects evaluated within the 5th phase of Rammaæátlun, www.ramma.is
+  License: MIT License
+*/
 
 
 require([
-  "esri/config",
   "esri/WebScene",
   "esri/views/SceneView",
   "esri/widgets/Expand",
@@ -10,8 +14,6 @@ require([
 
   "esri/widgets/Weather",
   "esri/widgets/Daylight",
-
-  "esri/layers/GeoJSONLayer", //Map and GeoJSON layer is needed for my experiment with adding Json layers.....
 
   "esri/widgets/LineOfSight", //Line of sight widget + point and graphic
   "esri/geometry/Point",
@@ -29,8 +31,8 @@ require([
   "esri/geometry/geometryEngine",
 
   "esri/widgets/Bookmarks"
-], (EsriConfig,
-    WebScene, 
+
+], (WebScene, 
     SceneView, 
     Expand, 
 
@@ -38,8 +40,6 @@ require([
 
     Weather, 
     Daylight, 
-
-    GeoJSONLayer, 
 
     LineOfSight, 
     Point, 
@@ -150,11 +150,28 @@ require([
     });
   }
 
-
   view.when(() => {
     showSplashScreen();
     // the function run splash screen
+    // Tooltip code
+    // Get the tooltip and its trigger
+    const tooltip = document.querySelector('.modal-tooltip');
+    const trigger = document.querySelector('.modal-tooltip-trigger');
+    // Show tooltip on hover
+    trigger.addEventListener('mouseover', function() {
+      tooltip.style.display = 'block';
+    });
+    // Hide tooltip when mouse leaves
+    trigger.addEventListener('mouseout', function() {
+      tooltip.style.display = 'none';
+    });
+    // Or: Show tooltip on click instead of hover
+    //trigger.addEventListener('click', function() {
+    //   tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+    // });
   });
+  
+
   
 
 
