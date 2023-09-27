@@ -140,14 +140,14 @@ html, body,
 }
 
 
-/* Header */
+/* Header of the splash screen*/
 .modal-content h2 {
   border-bottom: 1px solid #b9b7b7; /* Light grey border */
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
-/* Styles for text */
+/* Styles for text of splash screen*/
 .modal-title {
   font-size: 24px;
   margin-bottom: 16px;
