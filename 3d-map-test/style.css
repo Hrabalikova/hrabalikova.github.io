@@ -8,8 +8,28 @@ html, body,
   padding: 0;
 }
 
+body {
+  display: flex;
+}
 
+calcite-loader {
+  align-self: center;
+  justify-self: center;
+}
 
+#header-title {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#info-content {
+  padding: 0.75rem;
+}
+
+calcite-rating {
+  margin-top: 0.25rem;
+}
+/*///////////////////////////////////////////////*/
 
 /* HEADER */
 .header {

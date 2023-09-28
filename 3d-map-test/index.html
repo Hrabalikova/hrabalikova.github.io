@@ -26,59 +26,55 @@
 
 
 <body>
-<div id="viewDiv">
-<!-- header: project log and map title-->
-  <div class="header" >
-    <div class="calcite-row">
-      <div class="calcite-container calcite-cell">
-        <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
-          <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
-        </a>
-        <h1>Ramma þrívíddarkort</h1>
-    </div>
-  </div>
+<calcite-loader></calcite-loader>
+<calcite-shell content-behind>
+  <h2 id="header-title" slot="header">
+    <!-- Dynamically populated -->
 
-  <!-- splash screen--> 
-  <div id="mySplash" class="splash drag-area">
-    <div class="splash-content">
-      <span class="close">&times;</span>
-      <h2 class="splash-title ">Rammaáætlun þrívíddarkort</h2>
-      <!-- Disclaimer -->
-      <h4 class="splash-disclaimer-title">Fyrirvari/Disclaimer</h4>
-      <p class="splash-disclaimer">This 3D map, titled "Rammaáætlun 3D Map," is created to present wind farm projects evaluated in the 5th phase of Ramma. 
-        While we strive for accuracy, we make no claims, promises, or guarantees about the absolute accuracy or completeness of the information provided in this map. 
-        Users should not use this map for navigational purposes, and we disclaim any responsibility for any decisions made based on this map.
-        The map offers various tools such as measurement tools, weather widgets, daylight widgets, and a line-of-sight tool with an observer height set at 1.75 m, among others. 
-        These tools are provided for informational purposes only and should not replace professional judgment.
-        Use of this map is at the user's own risk.</p>
-      <!-- User guide -->
-      <h4 class="splash-guide-title">Leiðbeiningar/User Guide</h4>
-      <p class="splash-guide">User guide link  
-        <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="splash-link" target="_blank">Click here</a>
-      </p>  
-      <!-- Data source and additional info -->     
-      <h4 class="splash-guide-title">Viðbótarupplýsingar/Additional Information:</h4>
-      <ul class="splash-info-list">
-        <li><strong>Data Sources:</strong> The wind farm projects presented are evaluated as part of Ramma's 5th phase.</li>
-        <li><strong>Updates:</strong> The map is updated quarterly.</li>
-        <li><strong>Usage Restrictions:</strong> Please consult the disclaimer for usage limitations.</li>
-        <li><strong>Features:</strong> This map provides measurement tools, a weather widget, daylight widget, and a line-of-sight tool with observer height set at 1.75 m.</li>
-        <li><strong>Related Resources:</strong> For more information on Ramma projects, visit Official Ramma Website.</li>
-      </ul>
-      <!-- ... -->
-      <!-- Trigger text/icon -->
-      <span class="splash-tooltip-trigger">Mouse Navigation Guide 🖱️</span>
-      <!-- Tooltip container -->
-      <div class="splash-tooltip">
-        <img src="\3d-map-test\image\mpuse.png" alt="Mouse Navigation Guide"> 
+
+
+
+  </h2>
+  <calcite-shell-panel slot="panel-start" display-mode="float">
+    <calcite-action-bar slot="action-bar">
+      <calcite-action data-action-id="layers" icon="layers" text="Layers"></calcite-action>
+      <calcite-action data-action-id="basemaps" icon="basemap" text="Basemaps"></calcite-action>
+      <calcite-action data-action-id="bookmarks" icon="bookmark" text="Bookmarks"></calcite-action>
+      <calcite-action data-action-id="information" icon="information" text="Information"></calcite-action>
+    </calcite-action-bar>
+
+    <!-- Map-specific panels (each one provides a div for ArcGIS Maps SDK for JavaScript widgets) -->
+    <calcite-panel heading="Layers" height-scale="l" data-panel-id="layers" hidden>
+      <div id="layers-container"></div>
+    </calcite-panel>
+    <calcite-panel heading="Basemaps" height-scale="l" data-panel-id="basemaps" hidden>
+      <div id="basemaps-container"></div>
+    </calcite-panel>
+    <calcite-panel heading="Bookmarks" height-scale="l" data-panel-id="bookmarks" hidden>
+      <div id="bookmarks-container"></div>
+    </calcite-panel>
+
+    <!-- Info panel (populates with info from the web map) -->
+    <calcite-panel heading="Details" data-panel-id="information" hidden>
+      <div id="info-content">
+        <img id="item-thumbnail" alt="webmap thumbnail" />
+        <div id="item-description">
+          <!-- Dynamically populated -->
+        </div>
+        <calcite-label layout="inline">
+          <b>Rating:</b>
+          <calcite-rating id="item-rating" read-only>
+            <!-- Dynamically populated -->
+          </calcite-rating>
+        </calcite-label>
       </div>
-    </div>
-  </div>
+    </calcite-panel>
 
- 
- 
- 
-  <!-- mesure buttons-->
+  </calcite-shell-panel>
+
+
+  <div id="viewDiv">
+    <!-- mesure buttons-->
     <div id="topbar">
       <button
         class="action-button esri-icon-measure-line"
@@ -93,19 +89,10 @@
         title="Measure area"
       ></button>
     </div>
-    <!-- Layer list-->
-    <div id="layer-menu" class="esri-widget">
-      <h3>Gögn</h3>
-      <div id="LayerList"></div>
-    </div>
     <!-- Bookmark widget -->
-    <div id="bookmarkWidget" class="esri-widget">
+    <div id="bookmarkWidget" class="esri-widget"></div> 
+  </div>
 
- </div> <!-- New div for Bookmark widget -->
-
-
-
-
-</div>
+</calcite-shell>
 </body>
 </html>
