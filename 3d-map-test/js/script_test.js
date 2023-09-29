@@ -1,23 +1,27 @@
+/*
+  Author: LMI
+  Description: JavaScript for a 3D map application for wind energy projects evaluated within the 5th phase of Rammaæátlun, www.ramma.is
+  License: MIT License
+*/
 
 
 require([
-  "esri/config",
   "esri/WebScene",
   "esri/views/SceneView",
-  "esri/widgets/Expand",
-
   "esri/widgets/Home",
+
+  "esri/widgets/Expand",
+  "esri/widgets/BasemapGallery",
+ // "esri/widgets/Print", //not supported for 3D
+  "esri/widgets/LayerList", //Layer list to turn on/off layers visibility
+  "esri/widgets/Bookmarks",
 
   "esri/widgets/Weather",
   "esri/widgets/Daylight",
 
-  "esri/layers/GeoJSONLayer", //Map and GeoJSON layer is needed for my experiment with adding Json layers.....
-
   "esri/widgets/LineOfSight", //Line of sight widget + point and graphic
   "esri/geometry/Point",
   "esri/Graphic",
-
-  "esri/widgets/LayerList", //Layer list to turn on/off layers visibility
 
   "esri/widgets/DirectLineMeasurement3D",
   "esri/widgets/AreaMeasurement3D",
@@ -26,26 +30,23 @@ require([
   "esri/widgets/ScaleBar",
   "esri/widgets/Sketch",
   "esri/layers/GraphicsLayer",
-  "esri/geometry/geometryEngine",
-
-  "esri/widgets/Bookmarks"
-], (EsriConfig,
-    WebScene, 
+  "esri/geometry/geometryEngine"
+], (WebScene, 
     SceneView, 
-    Expand, 
-
     Home,
+
+    Expand, 
+    BasemapGallery,
+    //Print, //not supported for 3D map
+    LayerList,
+    Bookmarks,
 
     Weather, 
     Daylight, 
 
-    GeoJSONLayer, 
-
     LineOfSight, 
     Point, 
     Graphic,
-
-    LayerList,
 
     DirectLineMeasurement3D,
     AreaMeasurement3D,
@@ -54,19 +55,14 @@ require([
     ScaleBar,
     Sketch,
     GraphicsLayer,
-    geometryEngine,
-
-    Bookmarks
-  ) => {
-
-   
+    geometryEngine
+  ) => {   
   let activeWidget = null;
-
  
 /******************************************************
 * Create the SceneView and setting up the initial view
 ********************************************************/
- // Load a webscene - I have two option, create Scene in AGOL or create a new scene directly here
+ // Load a webscene
   const scene = new WebScene({
     portalItem: {
       id: "f3b79c16e4a84c278ab69d94a938f49e"
@@ -74,12 +70,13 @@ require([
   });
 
  // Create a new SceneView and set the weather to cloudy
-  const view = new SceneView({
+  const view = new SceneView({ 
     map: scene,
-    container: "viewDiv", //This your main container in HTML that contain all the widgeds
+    container: "viewDiv", //This is the main map container
     qualityProfile: "high",
-
-    environment: {
+    padding: {right: 49},
+    
+    environment: { //set the overall envirinmebt
       weather: {
         type: "cloudy", // autocasts as new CloudyWeather({ cloudCover: 1 })
         cloudCover: 0.2
@@ -91,16 +88,71 @@ require([
         waterReflectionEnabled: true,
         ambientOcclusionEnabled: true
       }
-    }
+   }
   });
 
-  // Add Layer list to the Scene
-  const layerList = new LayerList({
-    view: view,
-    container: "LayerList"
-  });
+  //initialize the ArcGIS Maps SDK for JavaScript widgets and placing them placing in containers
+    view.ui.move("zoom", "bottom-right");
+    const basemaps = new BasemapGallery({
+      view,
+      container: "basemaps-container"
+    });
+    const bookmarks = new Bookmarks({
+      view,
+      container: "bookmarks-container"
+    });
+    const layerList = new LayerList({
+      view,
+      selectionEnabled: true,
+      container: "layers-container"
+    });
+//    const print = new Print({
+//     view,
+//      container: "print-container"
+//    });
 
-  //view.ui.add(layerList, "bottom-right");
+//    view.when(() => {
+//      const { title, description, thumbnailUrl, avgRating } = scene.portalItem;
+//      document.querySelector("#header-title").textContent = title;
+//      document.querySelector("#item-description").innerHTML = description;
+//      document.querySelector("#item-thumbnail").src = thumbnailUrl;
+//      document.querySelector("#item-rating").value = avgRating;
+//    }); 
+//    let activeWidget;
+
+    const handleActionBarClick = ({ target }) => {
+      if (target.tagName !== "CALCITE-ACTION") {
+        return;
+      }
+
+      if (activeWidget) {
+        document.querySelector(`[data-action-id=${activeWidget}]`).active = false;
+        document.querySelector(`[data-panel-id=${activeWidget}]`).hidden = true;
+      }
+
+      const nextWidget = target.dataset.actionId;
+      if (nextWidget !== activeWidget) {
+        document.querySelector(`[data-action-id=${nextWidget}]`).active = true;
+        document.querySelector(`[data-panel-id=${nextWidget}]`).hidden = false;
+        activeWidget = nextWidget;
+      } else {
+        activeWidget = null;
+      }
+    };
+
+    document.querySelector("calcite-action-bar").addEventListener("click", handleActionBarClick);
+    
+    let actionBarExpanded = false;
+
+    document.addEventListener("calciteActionBarToggle", event => {
+      actionBarExpanded = !actionBarExpanded;
+      view.padding = {
+        left: actionBarExpanded ? 135 : 49
+      };
+    });
+    document.querySelector("calcite-shell").hidden = false;
+    document.querySelector("calcite-loader").hidden = true;
+
 
   // create home button 
   const homeBtn = new Home({
@@ -114,34 +166,34 @@ require([
 ***********************************/
   // run splash screen function 
   function showSplashScreen() {
-    var modal = document.getElementById("myModal");
-    var modalContent = document.querySelector(".modal-content");
+    var splash = document.getElementById("mySplash");
+    var splashContent = document.querySelector(".splash-content");
     var span = document.getElementsByClassName("close")[0];
     var offsetX, offsetY, isDragging = false;
   
-    // Center the modal initially
-    modalContent.style.left = "50%";
-    modalContent.style.top = "50%";
-    modalContent.style.transform = "translate(-50%, -50%)";
+    // Center the splash initially
+    splashContent.style.left = "50%";
+    splashContent.style.top = "50%";
+    splashContent.style.transform = "translate(-50%, -50%)";
   
-    modal.style.display = "block";
+    splash.style.display = "block";
   
     span.onclick = function() {
-      modal.style.display = "none";
+      splash.style.display = "none";
     }
   
     // Dragging logic
-    modalContent.addEventListener('mousedown', function(e) {
+    splashContent.addEventListener('mousedown', function(e) {
       isDragging = true;
-      offsetX = e.clientX - modalContent.getBoundingClientRect().left;
-      offsetY = e.clientY - modalContent.getBoundingClientRect().top;
-      modalContent.style.transform = "none"; // Remove the transform to allow dragging
+      offsetX = e.clientX - splashContent.getBoundingClientRect().left;
+      offsetY = e.clientY - splashContent.getBoundingClientRect().top;
+      splashContent.style.transform = "none"; // Remove the transform to allow dragging
     });
   
     window.addEventListener('mousemove', function(e) {
       if (isDragging) {
-        modalContent.style.left = e.clientX - offsetX + 'px';
-        modalContent.style.top = e.clientY - offsetY + 'px';
+        splashContent.style.left = e.clientX - offsetX + 'px';
+        splashContent.style.top = e.clientY - offsetY + 'px';
       }
     });
   
@@ -150,11 +202,28 @@ require([
     });
   }
 
-
   view.when(() => {
     showSplashScreen();
     // the function run splash screen
+    // Tooltip code
+    // Get the tooltip and its trigger
+    const tooltip = document.querySelector('.splash-tooltip');
+    const trigger = document.querySelector('.splash-tooltip-trigger');
+    // Show tooltip on hover
+    trigger.addEventListener('mouseover', function() {
+      tooltip.style.display = 'block';
+    });
+    // Hide tooltip when mouse leaves
+    trigger.addEventListener('mouseout', function() {
+      tooltip.style.display = 'none';
+    });
+    // Or: Show tooltip on click instead of hover
+    //trigger.addEventListener('click', function() {
+    //   tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+    // });
   });
+  
+
   
 
 
@@ -330,107 +399,6 @@ require([
       }
     });
   }
-
-  // add an Expand widget to make the menu responsive
-  const expand = new Expand({
-    expandTooltip: "Expand line of sight widget",
-    view: view,
-  //  content: document.getElementById("menu"),
-    content: new LineOfSight({
-      view: view,
-      content: document.getElementById("menu")
-    }),
-    group: "top-right",
-    expanded: false
-  });
-
-
-  view.ui.add(expand, "top-right");
-
-
-  view.when(() => {
-    // allow user to turn the layer with new planned buildings on/off
-    // and see how the line of sight analysis changes
-    const plannedBuildingsLayer = view.map.layers
-      .filter((layer) => {
-        return (
-          layer.title === "Boston major projects - MajorProjectsBuildings"
-        );
-      })
-      .getItemAt(0);
-
-    document
-      .getElementById("layerVisibility")
-      .addEventListener("change", (event) => {
-        plannedBuildingsLayer.visible = event.target.checked;
-      });
-  });
-
-/**************************************
-* Bookmarks
-**************************************/
-  function generateBookmarkLink(bookmark) {
-    const params = new URLSearchParams({
-      x: bookmark.extent.x,
-      y: bookmark.extent.y,
-      z: bookmark.extent.z,
-      // Add other state parameters here, like layers
-    });
-    return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
-  }
-
-
-
-
-
-// bookmarsk
-  const bookmarks = new Bookmarks({
-    view: view,
-    editingEnabled: true,
-    visibleElements: {
-      time: false
-    },
-
-  });
-  
-  
-  const bkExpand = new Expand({
-    view: view,
-    content: bookmarks,
-    expanded: false
-  });
-
-  view.ui.add(bkExpand, "top-right");
-
-
-  bookmarks.on("bookmark-add", function(event) {
-    const bookmark = event.bookmark;
-    const link = generateBookmarkLink(bookmark);
-    console.log("Generated link for bookmark:", link);
-    // You can display this link in a tooltip, copy it to the clipboard, etc.
-  });
-
-  
-
- 
-  function loadFromBookmark() {
-    const params = new URLSearchParams(window.location.search);
-    const x = parseFloat(params.get("x"));
-    const y = parseFloat(params.get("y"));
-    const z = parseFloat(params.get("z"));
-    // Add other state parameters here, like layers
-  
-    if (x && y && z) {
-      view.goTo({
-        target: [x, y, z]
-      });
-    }
-    // Set other map states like layers here
-  }
-  
-  // Call this function when the view is ready
-  view.when(loadFromBookmark);
-  
 
 
 
