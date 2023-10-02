@@ -9,8 +9,10 @@
 
 
   <!-- connect to ESRI API, the basic :)-->
-  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css" />
-  <script src="https://js.arcgis.com/4.25/"></script>
+  <script src="https://js.arcgis.com/calcite-components/1.8.0/calcite.esm.js" type="module"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/1.8.0/calcite.css" />
+  <script src="https://js.arcgis.com/4.27/"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
 
   <!-- additional styles-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,6 +26,8 @@
 
 
 <body>
+<calcite-loader></calcite-loader>
+<calcite-shell content-behind>
 <!-- header: project log and map title-->
   <div class="header" >
     <div class="w3-cell-row">
@@ -135,6 +139,6 @@
 
   </div>
 
-
+</calcite-shell>
 </body>
 </html>

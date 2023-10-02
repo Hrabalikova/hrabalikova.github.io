@@ -20,6 +20,8 @@ calcite-loader {
 #header-title {
   margin-left: 1rem;
   margin-right: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 #info-content {
@@ -30,6 +32,15 @@ calcite-rating {
   margin-top: 0.25rem;
 }
 /*///////////////////////////////////////////////*/
+.logo {
+  width: 45px;  /* Set the width */
+  height: auto;  /* Height will be set automatically */
+  margin-right: 20px;/* Add some margin around the logo */
+}
+
+
+
+
 
 /* HEADER */
 .header {

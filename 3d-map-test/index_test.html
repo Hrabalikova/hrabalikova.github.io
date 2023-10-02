@@ -28,13 +28,28 @@
 <body>
 <calcite-loader></calcite-loader>
 <calcite-shell content-behind>
-  <h2 id="header-title" slot="header">
+  <!-- <h1 id="header-title" slot="header"> -->
     <!-- Dynamically populated -->
+  <!--  <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
+      <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
+    </a>
+    <span>Ramma þrívíddarkort</span>  --><!-- Wrapped the title text in a span -->
+  <!--</h1>-->
+
+  <table id="header-row" slot="header">
+    <tr>
+      <td>
+        <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
+          <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
+        </a>
+      </td>
+      <td>
+        <h1>Ramma þrívíddarkort</h2>
+      </td>
+    </tr>
+  </table>
 
 
-
-
-  </h2>
   <calcite-shell-panel slot="panel-start" display-mode="float">
     <calcite-action-bar slot="action-bar">
       <calcite-action data-action-id="layers" icon="layers" text="Layers"></calcite-action>
