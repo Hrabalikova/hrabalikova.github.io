@@ -57,7 +57,7 @@ require([
     GraphicsLayer,
     geometryEngine
   ) => {   
-  let activeWidget = null;
+  let activeWidget; // = null;
  
 /******************************************************
 * Create the SceneView and setting up the initial view
@@ -76,7 +76,7 @@ require([
     qualityProfile: "high",
     padding: {right: 49},
     
-    environment: { //set the overall envirinmebt
+    environment: { //set the inital weather and lighting conditions for the scene
       weather: {
         type: "cloudy", // autocasts as new CloudyWeather({ cloudCover: 1 })
         cloudCover: 0.2
@@ -91,35 +91,31 @@ require([
    }
   });
 
-  //initialize the ArcGIS Maps SDK for JavaScript widgets and placing them placing in containers
-    view.ui.move("zoom", "bottom-right");
+  //initialize the ArcGIS Maps SDK for JavaScript basic widgets and placing them in containers
+    view.ui.move("zoom", "top-right");
+      
+    const homeBtn = new Home({// create home button 
+      view: view  
+    });
+    view.ui.add(homeBtn, "top-right"); //home button on the left
+
     const basemaps = new BasemapGallery({
-      view,
+      view: view,
       container: "basemaps-container"
     });
     const bookmarks = new Bookmarks({
-      view,
+      view: view,
       container: "bookmarks-container"
     });
     const layerList = new LayerList({
-      view,
+      view: view,
       selectionEnabled: true,
       container: "layers-container"
     });
-//    const print = new Print({
-//     view,
-//      container: "print-container"
-//    });
+// print functions is not supported for 3D web scenes
 
-//    view.when(() => {
-//      const { title, description, thumbnailUrl, avgRating } = scene.portalItem;
-//      document.querySelector("#header-title").textContent = title;
-//      document.querySelector("#item-description").innerHTML = description;
-//      document.querySelector("#item-thumbnail").src = thumbnailUrl;
-//      document.querySelector("#item-rating").value = avgRating;
-//    }); 
-//    let activeWidget;
-
+// Function to handle action bar click
+  const handleActionBarClick = ({ target }) => {
     const handleActionBarClick = ({ target }) => {
       if (target.tagName !== "CALCITE-ACTION") {
         return;
@@ -139,27 +135,41 @@ require([
         activeWidget = null;
       }
     };
+  };
 
     document.querySelector("calcite-action-bar").addEventListener("click", handleActionBarClick);
     
-    let actionBarExpanded = false;
+    let actionBarExpanded = true;
+    // Functions to show different panels
+    function showBasemap() {
+      // Show basemap panel
+    }
 
-    document.addEventListener("calciteActionBarToggle", event => {
-      actionBarExpanded = !actionBarExpanded;
-      view.padding = {
-        left: actionBarExpanded ? 135 : 49
-      };
-    });
-    document.querySelector("calcite-shell").hidden = false;
-    document.querySelector("calcite-loader").hidden = true;
+    function showLayers() {
+      // Show layers panel
+    }
+
+    function showBookmarks() {
+      // Show bookmarks panel
+    }
+
+    function showInfo() {
+      // Show info panel
+    }
 
 
-  // create home button 
-  const homeBtn = new Home({
-    view: view
-  });
 
-  view.ui.add(homeBtn, "top-left"); //home button on the left
+  //  document.addEventListener("calciteActionBarToggle", event => {
+  //   actionBarExpanded = !actionBarExpanded;
+  //    view.padding = {
+  //      left: actionBarExpanded ? 135 : 49
+  //    };
+  //  });
+  //  document.querySelector("calcite-shell").hidden = false;
+  //  document.querySelector("calcite-loader").hidden = true;
+
+
+
 
 /***********************************
 * run splash screen  

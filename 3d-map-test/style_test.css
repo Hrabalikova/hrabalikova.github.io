@@ -6,6 +6,7 @@ html, body,
   height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 body {
@@ -17,39 +18,47 @@ calcite-loader {
   justify-self: center;
 }
 
-#header-title {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  display: flex;
-  align-items: center;
-}
 
 #info-content {
   padding: 0.75rem;
 }
 
-calcite-rating {
-  margin-top: 0.25rem;
-}
+
+
+
+
 /*///////////////////////////////////////////////*/
+/*HEADER AND HEADER TITLE, LOGO AND BUTTON TO REDIRECT*/
+/*//////////////////////////////////////////////*/
+
+#header-left { /*header-title*/
+  /*margin-left: 1rem;*/
+  /*margin-right: 0.5rem;*/
+  /*max-height: fit-content;*/
+  display: flex;
+  align-items: center;
+}
+
 .logo {
-  width: 45px;  /* Set the width */
-  height: auto;  /* Height will be set automatically */
-  margin-right: 20px;/* Add some margin around the logo */
+  width: 50px;
+  height: auto; /* Height will be set automatically */
+  margin-right: 10px; /*0.75rem; Add some margin around the logo */
+  /*margin-top: 0.75rem;*/
+}
+
+#header-right {
+  margin-left: auto;
 }
 
 
-
-
-
-/* HEADER */
+/* HEADER *
 .header {
   background-color: #eee;
   padding: 0;
   margin: 0;
   max-height: 15%;
 }
-/* Navbar links*/
+/* Navbar links *
 .header a {
   float: left;
   color: #111010;
@@ -67,7 +76,7 @@ calcite-rating {
 }
 
 /* Navbar button*/
-.nav-button {
+/*.nav-button {
   padding: 0px;
   background-color: var(--calcite-ui-foreground-1);
   border: 1px solid var(--calcite-ui-border-1);
@@ -77,9 +86,11 @@ calcite-rating {
   text-align: bottom;
   box-shadow: 0 0 1px rgba(122, 122, 122, 0.3);
 }
+*/
 
-
-
+/*/////////////////////////////////////////////////////*/
+/*HEADER AND HEADER TITLE, LOGO AND BUTTON TO REDIRECT*/
+/*////////////////////////////////////////////////////*/
 
 /* WIDGETS AND LAYER MENU*/
 #layer-menu {
@@ -98,8 +109,12 @@ calcite-rating {
 
 
 #topbar {
-  background: #fff;
-  padding: 10px;
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  /*background: #fff;*/
+  /*padding: 10px;*/
 }
 .action-button {
   font-size: 16px;

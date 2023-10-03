@@ -100,7 +100,7 @@ require([
     container: "LayerList"
   });
 
-  //view.ui.add(layerList, "bottom-right");
+ // view.ui.add(layerList, "bottom-right");
 
   // create home button 
   const homeBtn = new Home({
@@ -131,17 +131,17 @@ require([
     }
   
     // Dragging logic
-    modalContent.addEventListener('mousedown', function(e) {
-      isDragging = true;
-      offsetX = e.clientX - modalContent.getBoundingClientRect().left;
-      offsetY = e.clientY - modalContent.getBoundingClientRect().top;
-      modalContent.style.transform = "none"; // Remove the transform to allow dragging
-    });
+   // modalContent.addEventListener('mousedown', function(e) {
+   //   isDragging = true;
+   //   offsetX = e.clientX - modalContent.getBoundingClientRect().left;
+   //   offsetY = e.clientY - modalContent.getBoundingClientRect().top;
+   //   modalContent.style.transform = "none"; // Remove the transform to allow dragging
+   // });
   
     window.addEventListener('mousemove', function(e) {
       if (isDragging) {
         modalContent.style.left = e.clientX - offsetX + 'px';
-        modalContent.style.top = e.clientY - offsetY + 'px';
+        modalContent.style.top = e.clientY - offsetX + 'px';
       }
     });
   

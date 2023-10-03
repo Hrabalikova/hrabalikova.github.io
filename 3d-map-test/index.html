@@ -4,11 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Landmælingar Íslands, 2023">
+  <meta name="description" content="3D kortasjá fyrir vindkostirverkefni í 5. þætti Rammaæátlunar.">
+   <!-- License: MIT License -->
   <title>Ramma þrívíddarkort</title>
   <link rel="icon" type="image" href="https://www.ramma.is/skin/basic9k/i/sitelogo.png">
+  
+  
+  <!-- Calcite Maps Bootstrap -->
+  <!--  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">-->
 
+  <!-- Calcite Maps -->
+  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css"><!--important-->
 
-  <!-- connect to ESRI API, the basic :)-->
+  <!-- ArcGIS JS 4 -->
   <script src="https://js.arcgis.com/calcite-components/1.8.0/calcite.esm.js" type="module"></script>
   <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/1.8.0/calcite.css" />
   <script src="https://js.arcgis.com/4.27/"></script>
@@ -18,7 +27,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-  <!-- own scripts and styles-->
+  <!-- scripts and styles-->
   <link rel="stylesheet" href="style.css">
   <script src="js/webscripts.js"></script>
   <script  src="js/script.js"></script>
@@ -28,7 +37,7 @@
 <body>
 <calcite-loader></calcite-loader>
 <calcite-shell content-behind>
-<!-- header: project log and map title-->
+<!-- header: project logo, map title and nav-button-->
   <div class="header" >
     <div class="w3-cell-row">
       <div class="w3-conatiner w3-cell">
@@ -54,31 +63,35 @@
       <span class="close">&times;</span>
       <h2 class="modal-title ">Rammaáætlun þrívíddarkort</h2>
       <!-- ... -->
-      <h4 class="modal-disclaimer-title">Fyrirvari/Disclaimer</h4>
-      <p class="modal-disclaimer">This 3D map, titled "Rammaáætlun 3D Map," is created to present wind farm projects evaluated in the 5th phase of Ramma. 
-        While we strive for accuracy, we make no claims, promises, or guarantees about the absolute accuracy or completeness of the information provided in this map. 
-        Users should not use this map for navigational purposes, and we disclaim any responsibility for any decisions made based on this map.
-        The map offers various tools such as measurement tools, weather widgets, daylight widgets, and a line-of-sight tool with an observer height set at 1.75 m, among others. 
-        These tools are provided for informational purposes only and should not replace professional judgment.
-        Use of this map is at the user's own risk.</p>
+      <h4 class="modal-disclaimer-title">Fyrirvari</h4>
+      <p class="modal-disclaimer">Þetta þrívíddarkort, sem ber heitið "Rammaáætlun þrívíddarkort," sýnir þau 
+        vindmylluverkefni sem eru metin í 5. áfanga Rammaáætlunar. 
+        Þótt við leggjum áherslu á nákvæmni gagnanna ábyrgjumst við ekki réttmæti þeirra upplýsinga sem birtast 
+        á kortinu. <br /><br />
+        Kortið býður upp á ýmsa möguleika; svo sem mælingu vegalengda, veðurhermi, dagsbirtuhermi, og sjónlínutól 
+        miðað við að hæð manneskju sé 1,75 m. Þessi tól eru einungis til viðmiðunar og koma ekki í stað faglegs mats.<br /><br />
+        Notkun þessa korts er á ábyrgð notanda.
+        </p>
       <!-- ... -->
-      <h4 class="modal-guide-title">Leiðbeiningar/User Guide</h4>
-      <p class="modal-guide">Leiðbeiningar/User Guide: <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Click here</a></p>  
+      <h4 class="modal-guide-title">Leiðbeiningar</h4>
+      <p class="modal-guide">Leiðbeiningar (á Ensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a></p>  
       <!-- ... -->     
-      <h4 class="modal-guide-title">Viðbótarupplýsingar/Additional Information:</h4>
+      <h4 class="modal-guide-title">Viðbótarupplýsingar:</h4>
       <ul class="modal-info-list">
-        <li><strong>Data Sources:</strong> The wind farm projects presented are evaluated as part of Ramma's 5th phase.</li>
-        <li><strong>Updates:</strong> The map is updated quarterly.</li>
-        <li><strong>Usage Restrictions:</strong> Please consult the disclaimer for usage limitations.</li>
-        <li><strong>Features:</strong> This map provides measurement tools, a weather widget, daylight widget, and a line-of-sight tool with observer height set at 1.75 m.</li>
-        <li><strong>Related Resources:</strong> For more information on Ramma projects, visit Official Ramma Website.</li>
+        <li><strong>Gagnagrunnur:</strong> Vindmylluverkefnin sem kynnt eru hafa verið metin í 5. áfanga Rammaáætlunar.</li>
+        <li><strong>Uppfærslur:</strong> Kortið er endurnýjað ársfjórðungslega.</li>
+        <li><strong>Takmörkun á notkun: </strong> Vinsamlegast sjáið fyrirvarann um notkunartakmarkanir.</li>
+        <li><strong>Eiginleikar:</strong> Kortið býður upp á mælitól, veðurhermi, dagsbirtuhermi, og sjónlínutól miðað við að hæð manneskju sé 1,75 m.</li>
+        <li><strong>Aðrar upplýsingar:</strong> Nánari upplýsingar um verkefni frá Ramma má finna á 
+          <a class= "modal-link" href="https://www.ramma.is/">Ramma vefsíðunni</a> eða 
+          <a class= "modal-link" href="https://orkustofnun.is/stjornsysla/rammaaaetlun">Orkustofnun vefsíðunni</a></li>
       </ul>
       <!-- ... -->
       <!-- Trigger text/icon -->
       <span class="modal-tooltip-trigger">Mouse Navigation Guide 🖱️</span>
       <!-- Tooltip container -->
       <div class="modal-tooltip">
-        <img src="\3d-map-test\image\mpuse.png" alt="Mouse Navigation Guide"> 
+        <img src="https://ftp.lmi.is/.stm/michaela/Thumbs/mpuse.png" alt="Mouse Navigation Guide"> 
         <script>
           // Get the tooltip and its trigger
           const tooltip = document.querySelector('.modal-tooltip');
@@ -91,14 +104,8 @@
           trigger.addEventListener('mouseout', function() {
             tooltip.style.display = 'none';
           });
-          // Or: Show tooltip on click instead of hover
-          //trigger.addEventListener('click', function() {
-          //   tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
-          // });
         </script>
       </div>
-
-
     </div>
   </div>
 
