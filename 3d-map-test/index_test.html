@@ -61,14 +61,12 @@
         </div>
       </header>
     -->
-
-
-    <header class="header" slot="header">
+    <header class="header" slot="header"> <!-- Slot je treba pouzoivat pokud pracuji s calcite shell-->
       <div id="header-left">
         <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
         <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
         </a>
-        <span style="font-size: 28px; font-weight: bold;">Ramma þrívíddarkort</span>
+        <span style="font-size: 23px; font-weight: bold;">Ramma þrívíddarkort</span>
       </div>
       <div id="header-right">
         <calcite-button icon-start="map-pin" appearance="solid" onclick="window.open('https://another-map-link.com', '_blank')">2D Sýnileiki kort</calcite-button>
@@ -87,7 +85,8 @@
     <!-- Menu with basic widget end-->
 
 
-    <!-- Map will go here -->    
+    <!-- Map will go here -->  
+  <calcite-shell>  
     <div class="calcite-map calcite-map-absolute">
       <div id="viewDiv">
         <!-- mesure buttons-->
@@ -107,6 +106,7 @@
         </div>
       </div>
     </div>
+  </calcite-shell>
 
 
 

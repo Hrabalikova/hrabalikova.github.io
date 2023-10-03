@@ -1,23 +1,27 @@
+/*
+  Author: LMI
+  Description: JavaScript for a 3D map application for wind energy projects evaluated within the 5th phase of Rammaæátlun, www.ramma.is
+  License: MIT License
+*/
 
 
 require([
-  "esri/config",
   "esri/WebScene",
   "esri/views/SceneView",
-  "esri/widgets/Expand",
-
   "esri/widgets/Home",
+
+  "esri/widgets/Expand",
+  "esri/widgets/BasemapGallery",
+ // "esri/widgets/Print", //not supported for 3D
+  "esri/widgets/LayerList", //Layer list to turn on/off layers visibility
+  "esri/widgets/Bookmarks",
 
   "esri/widgets/Weather",
   "esri/widgets/Daylight",
 
-  "esri/layers/GeoJSONLayer", //Map and GeoJSON layer is needed for my experiment with adding Json layers.....
-
   "esri/widgets/LineOfSight", //Line of sight widget + point and graphic
   "esri/geometry/Point",
   "esri/Graphic",
-
-  "esri/widgets/LayerList", //Layer list to turn on/off layers visibility
 
   "esri/widgets/DirectLineMeasurement3D",
   "esri/widgets/AreaMeasurement3D",
@@ -26,26 +30,23 @@ require([
   "esri/widgets/ScaleBar",
   "esri/widgets/Sketch",
   "esri/layers/GraphicsLayer",
-  "esri/geometry/geometryEngine",
-
-  "esri/widgets/Bookmarks"
-], (EsriConfig,
-    WebScene, 
+  "esri/geometry/geometryEngine"
+], (WebScene, 
     SceneView, 
-    Expand, 
-
     Home,
+
+    Expand, 
+    BasemapGallery,
+    //Print, //not supported for 3D map
+    LayerList,
+    Bookmarks,
 
     Weather, 
     Daylight, 
 
-    GeoJSONLayer, 
-
     LineOfSight, 
     Point, 
     Graphic,
-
-    LayerList,
 
     DirectLineMeasurement3D,
     AreaMeasurement3D,
@@ -54,19 +55,15 @@ require([
     ScaleBar,
     Sketch,
     GraphicsLayer,
-    geometryEngine,
-
-    Bookmarks
-  ) => {
-
-   
-  let activeWidget = null;
+    geometryEngine
+  ) => {   
+  let activeWidget; // = null;
 
  
 /******************************************************
 * Create the SceneView and setting up the initial view
 ********************************************************/
- // Load a webscene - I have two option, create Scene in AGOL or create a new scene directly here
+ // Load a webscene 
   const scene = new WebScene({
     portalItem: {
       id: "f3b79c16e4a84c278ab69d94a938f49e"
@@ -76,9 +73,9 @@ require([
  // Create a new SceneView and set the weather to cloudy
   const view = new SceneView({
     map: scene,
-    container: "viewDiv", //This your main container in HTML that contain all the widgeds
+    container: "viewDiv", //main map container
     qualityProfile: "high",
-
+    //set the inital weather and lighting conditions for the scene 
     environment: {
       weather: {
         type: "cloudy", // autocasts as new CloudyWeather({ cloudCover: 1 })
@@ -94,20 +91,46 @@ require([
     }
   });
 
-  // Add Layer list to the Scene
+  //initialize the ArcGIS Maps SDK for JavaScript basic widgets and placing them in containers
+  const homeBtn = new Home({// create home button 
+    view: view  
+  });
+  view.ui.add(homeBtn, "top-left"); //home button on the left
+  view.ui.move("zoom", "top-left");
+      
+
+
+
+
+  const basemaps = new BasemapGallery({
+    view: view,
+    container: "basemaps"
+  });
+  //const bookmarks = new Bookmarks({
+  //  view: view,
+  //  container: "bookmarks"
+  //});
   const layerList = new LayerList({
     view: view,
-    container: "LayerList"
+    selectionEnabled: true,
+    container: "layers"
   });
 
- // view.ui.add(layerList, "bottom-right");
+
+  // Add Layer list to the Scene
+  //const layerList = new LayerList({
+  //  view: view,
+  //  container: "LayerList"
+  //});
+
+  view.ui.add(layerList, "bottom-right");
 
   // create home button 
-  const homeBtn = new Home({
-    view: view
-  });
+ // const homeBtn = new Home({
+ //   view: view
+ // });
 
-  view.ui.add(homeBtn, "top-left"); //home button on the left
+
 
 /***********************************
 * run splash screen  
