@@ -48,38 +48,6 @@ calcite-loader {
   align-items: center;
 }
 
-/* Navbar links*/
-/*.header a {
-  float: left;
-  color: #111010;
-  text-align: center;
-  padding: 0px 0px;
-  text-decoration: none;
-  font-size: 15px;
-  align-items: center;
-}
-.header img {
-  float: left;
-  padding-top: 0;
-  align-items: center;
-  background-position: center;
-  width: 40%;
-  height: auto;
-}
-
-/* Navbar button*/
-.nav-button {
-  padding: 0px;
-  background-color: #ffffff;
-  border: 1px solid #b9b7b7;
-  color: #fffefe;
-  height: 50px;
-  width: 200px;
-  text-align: center;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); /* 3D effect */
-  border-radius: 12px; /* Rounded corners */ 
-}
-
 #header-left { /*header-title*/
   margin-left: 1rem;
   margin-right: 0.5rem;
@@ -104,7 +72,6 @@ calcite-loader {
   margin-left: auto;
   margin-right: 2rem;
 }
-
 
 
 /*//////////////////////////*/

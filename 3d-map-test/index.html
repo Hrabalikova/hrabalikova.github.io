@@ -12,10 +12,10 @@
   
   
   <!-- Calcite Maps Bootstrap -->
-  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">
+  <!--<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">-->
 
   <!-- Calcite Maps -->
-  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css">
+  <!--<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css">-->
 
   <!-- ArcGIS JS 4 -->
   <script src="https://js.arcgis.com/calcite-components/1.8.0/calcite.esm.js" type="module"></script>
@@ -38,35 +38,21 @@
 <calcite-loader></calcite-loader>
 <calcite-shell content-behind>
 <!-- header: project logo, map title and nav-button-->
-<!--  <header class="header" >
-    <div class="w3-cell-row">
-      <div class="w3-conatiner w3-cell">
-        <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
-          <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
-        </a>
-        <h2>Ramma þrívíddarkort</h2>
-      </div>
-      <div class="w3-container w3-cell w3-right">
-        <a class="w3-padding-large w3-hover-light-grey w3-hide-small nav-button"
-           href="" 
-           title="2D Sýnileikakort"
-           target="_blank"
-           style="margin-top: 10px;">
-          <i class="calcite-icon">2D Sýnileikakort</i>
-        </a>
-      </div>
-    </div>
-  </header>
--->
-  <header class="header">
+  <header slot="header" class="header">
     <div id="header-left">
         <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
         <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
       </a>
-      <h2><span>Ramma þrívíddarkort</span></h2>
+      <span><h3>Ramma þrívíddarkort</h3></span>
     </div>
     <div id="header-right">
-    <calcite-button icon-start="map-pin" appearance="solid" onclick="window.open('https://atlas.lmi.is/mapview/?application=ramma_visibility', '_blank')">2D Sýnileikakort</calcite-button>
+      <calcite-button 
+        icon-start="map-pin" 
+        scale="m" 
+        appearance="solid" 
+        onclick="window.open('https://atlas.lmi.is/mapview/?application=ramma_visibility', '_blank')"
+        >2D Sýnileikakort
+      </calcite-button>
     </div>
   </header>
 

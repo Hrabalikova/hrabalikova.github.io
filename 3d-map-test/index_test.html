@@ -40,13 +40,35 @@
 <body class="calcite-maps calcite-shell">
   <calcite-shell >
     <!-- Header with title start-->
-    <header slot="header">
+    <!-- Header 1 ktery si sem jen ukladam, ma nejake mouchy ale jinak dobre :D-->
+    <!--  <header class="header" >
+        <div class="w3-cell-row">
+          <div class="w3-conatiner w3-cell">
+            <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
+              <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
+            </a>
+            <h2>Ramma þrívíddarkort</h2>
+          </div>
+          <div class="w3-container w3-cell w3-right">
+            <a class="w3-padding-large w3-hover-light-grey w3-hide-small nav-button"
+              href="" 
+              title="2D Sýnileikakort"
+              target="_blank"
+              style="margin-top: 10px;">
+              <i class="fa fa-map">2D Sýnileikakort</i>
+            </a>
+          </div>
+        </div>
+      </header>
+    -->
+
+
+    <header class="header" slot="header">
       <div id="header-left">
-        <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Logo">
         <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
-          <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
+        <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
         </a>
-        <h1><span>Ramma þrívíddarkort</span></h1>
+        <span style="font-size: 28px; font-weight: bold;">Ramma þrívíddarkort</span>
       </div>
       <div id="header-right">
         <calcite-button icon-start="map-pin" appearance="solid" onclick="window.open('https://another-map-link.com', '_blank')">2D Sýnileiki kort</calcite-button>
