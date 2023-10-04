@@ -76,8 +76,8 @@ calcite-loader {
 
 /* Secondary Header */
 .secondary-header {
-  background-color: #ffffff; /* You can change this */
-  padding: 0px;
+  background-color: #ffffff; 
+  /*padding: 0px;*/
   display: flex;
   justify-content: flex-end; /* Aligns the action pad to the right */
 }
