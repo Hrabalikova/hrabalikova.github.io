@@ -117,42 +117,42 @@ require([
       view: mapView  
     });
 
-  mapView.ui.add(homeBtn, "top-left"); //home button on the left
-  mapView.ui.move("zoom", "top-left");
+    mapView.ui.add(homeBtn, "top-left"); //home button on the left
+    mapView.ui.move("zoom", "top-left");
       
 
 
 
 
-  const basemaps = new BasemapGallery({
-    view: mapView,
-    container: "basemaps-container"
-  });
+    const basemaps = new BasemapGallery({
+      view: mapView,
+      container: "basemaps-container"
+    });
 
- /* const bookmarks = new Bookmarks({
-    view: mapView,
-    container: "bookmarks-container"
-  });*/
+  /* const bookmarks = new Bookmarks({
+      view: mapView,
+      container: "bookmarks-container"
+    });*/
 
-  /*const layerList = new LayerList({
-    view: mapView,
-    selectionEnabled: true,
-    container: "layers-container"
-  });
+    /*const layerList = new LayerList({
+      view: mapView,
+      selectionEnabled: true,
+      container: "layers-container"
+    });
 
 
-  // Add Layer list to the Scene
-  //const layerList = new LayerList({
-  //  view: mapView,
-  //  container: "LayerList"
-  //});
+    // Add Layer list to the Scene
+    //const layerList = new LayerList({
+    //  view: mapView,
+    //  container: "LayerList"
+    //});
 
- // mapView.ui.add(layerList, "bottom-right");
+  // mapView.ui.add(layerList, "bottom-right");
 
-  // create home button 
- // const homeBtn = new Home({
- //   view: mapView
- // });
+    // create home button 
+  // const homeBtn = new Home({
+  //   view: mapView
+  // });
 
   mapView.when(() => {
     /*const { title, description, thumbnailUrl, avgRating } = mapView.portalItem;
@@ -189,7 +189,7 @@ require([
 
     document.addEventListener("calciteActionBarToggle", event => {
       actionBarExpanded = !actionBarExpanded;
-      view.padding = {
+      mapView.padding = {
         left: actionBarExpanded ? 150 : 49
       };
     });     
@@ -235,26 +235,7 @@ require([
   
     span.onclick = function() {
       modal.style.display = "none";
-    }
-  
-   // Dragging logic
-   /* modalContent.addEventListener('mousedown', function(e) {
-      isDragging = true;
-      offsetX = e.clientX - modalContent.getBoundingClientRect().left;
-      offsetY = e.clientY - modalContent.getBoundingClientRect().top;
-      modalContent.style.transform = "none"; // Remove the transform to allow dragging
-    });
-  
-    window.addEventListener('mousemove', function(e) {
-      if (isDragging) {
-        modalContent.style.left = e.clientX - offsetX + 'px';
-        modalContent.style.top = e.clientY - offsetX + 'px';
-      }
-    });
-  
-    window.addEventListener('mouseup', function() {
-      isDragging = false;
-    });*/
+    } 
   }
 
   mapView.when(() => {
@@ -262,30 +243,7 @@ require([
     // the function run splash screen
   });
   
-  // Function to show the modal
- /* function showInfo() {
-    const info = document.getElementById("splashModal");
-    info.style.display = "block";
-  }
-
-  // Function to close the modal
-/*  function closeModal() {
-    const modal = document.getElementById("splashModal");
-    modal.style.display = "none";
-  }
-
-  // Close the modal when the 'x' button is clicked
-  document.getElementsByClassName("close")[0].onclick = function() {
-    closeModal();
-  };*/
-
-  // Close the modal when clicking outside of it
-/*  window.onclick = function(event) {
-    const modal = document.getElementById("splashModal");
-    if (event.target === modal) {
-      closeModal();
-    }
-  };*/
+  document.getElementById('infoButton').addEventListener('click', showSplashScreen);
 
 
 
@@ -379,25 +337,25 @@ require([
 * Add weather and day widget
 ***********************************/
   const weatherExpand = new Expand({
-    view: view,
+    view: mapView,
     expandTooltip: "Expand weather widget",
     content: new Weather({
-      view: view
+      view: mapView
     }),
     group: "top-right",
     expanded: false
   });
 
   const daylightExpand = new Expand({
-    view: view,
+    view: mapView,
     expandTooltip: "Expand daylight widget",
     content: new Daylight({
-      view: view
+      view: mapView
     }),
     group: "top-right"
   });
 
-  view.ui.add([weatherExpand, daylightExpand], "top-right"); 
+  mapView.ui.add([weatherExpand, daylightExpand], "top-right"); 
 
 
       
@@ -482,7 +440,7 @@ require([
   mapView.when(() => {
     // allow user to turn the layer with new planned buildings on/off
     // and see how the line of sight analysis changes
-    const plannedBuildingsLayer = view.map.layers
+    const plannedBuildingsLayer = mapView.map.layers //tady bylo puvodne jen view nejsem si uplne jista jestli jsem to zmenila spravne
       .filter((layer) => {
         return (
           layer.title === "Visbility Analysis"
