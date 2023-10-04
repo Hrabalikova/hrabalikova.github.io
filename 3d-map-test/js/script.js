@@ -8,8 +8,9 @@
 require([
   "esri/WebScene",
   "esri/views/SceneView",
-  "esri/widgets/Home",
 
+  
+  "esri/widgets/Home",
   "esri/widgets/Expand",
   "esri/widgets/BasemapGallery",
  // "esri/widgets/Print", //not supported for 3D
@@ -34,24 +35,18 @@ require([
 ], (WebScene, 
     SceneView, 
     Home,
-
     Expand, 
     BasemapGallery,
-    //Print, //not supported for 3D map
     LayerList,
     Bookmarks,
-
     Weather, 
     Daylight, 
-
     LineOfSight, 
     Point, 
     Graphic,
-
     DirectLineMeasurement3D,
     AreaMeasurement3D,
     promiseUtils,
-
     ScaleBar,
     Sketch,
     GraphicsLayer,
@@ -60,9 +55,9 @@ require([
   let activeWidget; // = null;
 
  
-/******************************************************
-* Create the SceneView and setting up the initial view
-********************************************************/
+/********************************************************************
+* Create the SceneView and setting up the initial view of th scene
+********************************************************************/
  // Load a webscene 
   const scene = new WebScene({
     portalItem: {
@@ -71,7 +66,7 @@ require([
   });
 
  // Create a new SceneView and set the weather to cloudy
-  const view = new SceneView({
+  const mapView = new SceneView({
     map: scene,
     container: "viewDiv", //main map container
     qualityProfile: "high",
@@ -91,53 +86,142 @@ require([
     }
   });
 
-  //initialize the ArcGIS Maps SDK for JavaScript basic widgets and placing them in containers
-  const homeBtn = new Home({// create home button 
-    view: view  
-  });
-  view.ui.add(homeBtn, "top-left"); //home button on the left
-  view.ui.move("zoom", "top-left");
+  //
+  /**********************************************************************************
+   * Initialize the ArcGIS Maps SDK for JavaScript to set up environment of the app
+   * *******************************************************************************/
+  // Action bar of secondary header
+    document.querySelector("calcite-action-bar").messageOverrides = {
+      expand: "Opna",
+      collapse: "Loka"
+    };
+  
+
+  // Popup and panel sync
+  /*  mapView.when(function(){
+      CalciteMapArcGISSupport.setPopupPanelSync(mapView);
+    });
+*/
+
+
+   // Search - add to navbar
+  /*  var searchWidget = new Search({
+      container: "searchWidgetDiv",
+      view: mapView
+    });
+   /* CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);*/
+
+
+
+    const homeBtn = new Home({// create home button 
+      view: mapView  
+    });
+
+  mapView.ui.add(homeBtn, "top-left"); //home button on the left
+  mapView.ui.move("zoom", "top-left");
       
 
 
 
 
   const basemaps = new BasemapGallery({
-    view: view,
-    container: "basemaps"
+    view: mapView,
+    container: "basemaps-container"
   });
-  //const bookmarks = new Bookmarks({
-  //  view: view,
-  //  container: "bookmarks"
-  //});
-  const layerList = new LayerList({
-    view: view,
+
+ /* const bookmarks = new Bookmarks({
+    view: mapView,
+    container: "bookmarks-container"
+  });*/
+
+  /*const layerList = new LayerList({
+    view: mapView,
     selectionEnabled: true,
-    container: "layers"
+    container: "layers-container"
   });
 
 
   // Add Layer list to the Scene
   //const layerList = new LayerList({
-  //  view: view,
+  //  view: mapView,
   //  container: "LayerList"
   //});
 
-  view.ui.add(layerList, "bottom-right");
+ // mapView.ui.add(layerList, "bottom-right");
 
   // create home button 
  // const homeBtn = new Home({
- //   view: view
+ //   view: mapView
  // });
 
+  mapView.when(() => {
+    /*const { title, description, thumbnailUrl, avgRating } = mapView.portalItem;
+    document.querySelector("#header-title").textContent = title;
+    document.querySelector("#item-description").innerHTML = description;
+    document.querySelector("#item-thumbnail").src = thumbnailUrl;
+    document.querySelector("#item-rating").value = avgRating;*/
+
+    //let activeWidget;
+
+   /* const handleActionBarClick = ({ target }) => {
+      if (target.tagName !== "CALCITE-ACTION") {
+        return;
+      }
+
+      if (activeWidget) {
+        document.querySelector(`[data-action-id=${activeWidget}]`).active = false;
+        document.querySelector(`[data-panel-id=${activeWidget}]`).hidden = true;
+      }
+
+      const nextWidget = target.dataset.actionId;
+      if (nextWidget !== activeWidget) {
+        document.querySelector(`[data-action-id=${nextWidget}]`).active = true;
+        document.querySelector(`[data-panel-id=${nextWidget}]`).hidden = false;
+        activeWidget = nextWidget;
+      } else {
+        activeWidget = null;
+      }
+    };
+
+    document.querySelector("calcite-action-bar").addEventListener("click", handleActionBarClick);
+
+    let actionBarExpanded = false;
+
+    document.addEventListener("calciteActionBarToggle", event => {
+      actionBarExpanded = !actionBarExpanded;
+      view.padding = {
+        left: actionBarExpanded ? 150 : 49
+      };
+    });     
+    document.querySelector("calcite-shell").hidden = false;
+    document.querySelector("calcite-loader").hidden = true;
+  });
 
 
-/***********************************
-* run splash screen  
-***********************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************
+* run splash screen and it as info into action bar
+*******************************************************/
   // run splash screen function 
   function showSplashScreen() {
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("splashModal");
     var modalContent = document.querySelector(".modal-content");
     var span = document.getElementsByClassName("close")[0];
     var offsetX, offsetY, isDragging = false;
@@ -153,13 +237,13 @@ require([
       modal.style.display = "none";
     }
   
-    // Dragging logic
-   // modalContent.addEventListener('mousedown', function(e) {
-   //   isDragging = true;
-   //   offsetX = e.clientX - modalContent.getBoundingClientRect().left;
-   //   offsetY = e.clientY - modalContent.getBoundingClientRect().top;
-   //   modalContent.style.transform = "none"; // Remove the transform to allow dragging
-   // });
+   // Dragging logic
+   /* modalContent.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      offsetX = e.clientX - modalContent.getBoundingClientRect().left;
+      offsetY = e.clientY - modalContent.getBoundingClientRect().top;
+      modalContent.style.transform = "none"; // Remove the transform to allow dragging
+    });
   
     window.addEventListener('mousemove', function(e) {
       if (isDragging) {
@@ -170,15 +254,40 @@ require([
   
     window.addEventListener('mouseup', function() {
       isDragging = false;
-    });
+    });*/
   }
 
-
-  view.when(() => {
+  mapView.when(() => {
     showSplashScreen();
     // the function run splash screen
   });
   
+  // Function to show the modal
+ /* function showInfo() {
+    const info = document.getElementById("splashModal");
+    info.style.display = "block";
+  }
+
+  // Function to close the modal
+/*  function closeModal() {
+    const modal = document.getElementById("splashModal");
+    modal.style.display = "none";
+  }
+
+  // Close the modal when the 'x' button is clicked
+  document.getElementsByClassName("close")[0].onclick = function() {
+    closeModal();
+  };*/
+
+  // Close the modal when clicking outside of it
+/*  window.onclick = function(event) {
+    const modal = document.getElementById("splashModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  };*/
+
+
 
 
 
@@ -212,8 +321,7 @@ require([
     switch (type) {
       case "distance":
         activeWidget = new DirectLineMeasurement3D({
-          view: view
-        });
+          view: mapView        });
 
         // skip the initial 'new measurement' button
         activeWidget.viewModel.start().catch((error) => {
@@ -223,12 +331,12 @@ require([
           throw error; // throw other errors since they are of interest
         });
 
-        view.ui.add(activeWidget, "top-right");
+        mapView.ui.add(activeWidget, "top-right");
         setActiveButton(document.getElementById("distanceButton"));
         break;
       case "area":
         activeWidget = new AreaMeasurement3D({
-          view: view
+          view: mapView
         });
 
         // skip the initial 'new measurement' button
@@ -239,12 +347,12 @@ require([
           throw error; // throw other errors since they are of interest
         });
 
-        view.ui.add(activeWidget, "top-right");
+        mapView.ui.add(activeWidget, "top-right");
         setActiveButton(document.getElementById("areaButton"));
         break;
       case null:
         if (activeWidget) {
-          view.ui.remove(activeWidget);
+          mapView.ui.remove(activeWidget);
           activeWidget.destroy();
           activeWidget = null;
         }
@@ -254,7 +362,7 @@ require([
 
   function setActiveButton(selectedButton) {
     // focus the view to activate keyboard shortcuts for sketching
-    view.focus();
+    mapView.focus();
     const elements = document.getElementsByClassName("active");
     for (let i = 0; i < elements.length; i++) {
       elements[i].classList.remove("active");
@@ -264,7 +372,7 @@ require([
     }
   }
 
-  view.ui.add("topbar", "top-right"); // add the toolbar for the measurement widgets
+  mapView.ui.add("topbar", "top-right"); // add the toolbar for the measurement widgets
 
 
 /***********************************
@@ -298,7 +406,7 @@ require([
 **************************************/
   //add widget and let......
   const lineOfSight = new LineOfSight({
-    view: view,
+    view: mapView,
     container: "losWidget"
   });
 
@@ -342,14 +450,14 @@ require([
   };
 
   function setIntersectionMarkers() {
-    view.graphics.removeAll();
+    mapView.graphics.removeAll();
     viewModel.targets.forEach((target) => {
       if (target.intersectedLocation) {
         const graphic = new Graphic({
           symbol: intersectionSymbol,
           geometry: target.intersectedLocation
         });
-        view.graphics.add(graphic);
+        mapView.graphics.add(graphic);
       }
     });
   }
@@ -357,10 +465,10 @@ require([
   // add an Expand widget to make the menu responsive
   const expand = new Expand({
     expandTooltip: "Expand line of sight widget",
-    view: view,
+    view: mapView,
   //  content: document.getElementById("menu"),
     content: new LineOfSight({
-      view: view,
+      view: mapView,
       content: document.getElementById("menu")
     }),
     group: "top-right",
@@ -368,16 +476,16 @@ require([
   });
 
 
-  view.ui.add(expand, "top-right");
+  mapView.ui.add(expand, "top-right");
 
 
-  view.when(() => {
+  mapView.when(() => {
     // allow user to turn the layer with new planned buildings on/off
     // and see how the line of sight analysis changes
     const plannedBuildingsLayer = view.map.layers
       .filter((layer) => {
         return (
-          layer.title === "Boston major projects - MajorProjectsBuildings"
+          layer.title === "Visbility Analysis"
         );
       })
       .getItemAt(0);
@@ -392,7 +500,7 @@ require([
 /**************************************
 * Bookmarks
 **************************************/
-  function generateBookmarkLink(bookmark) {
+ /* function generateBookmarkLink(bookmark) {
     const params = new URLSearchParams({
       x: bookmark.extent.x,
       y: bookmark.extent.y,
@@ -408,7 +516,7 @@ require([
 
 // bookmarsk
   const bookmarks = new Bookmarks({
-    view: view,
+    view: mapView,
     editingEnabled: true,
     visibleElements: {
       time: false
@@ -418,12 +526,12 @@ require([
   
   
   const bkExpand = new Expand({
-    view: view,
+    view: mapView,
     content: bookmarks,
     expanded: false
   });
 
-  view.ui.add(bkExpand, "top-right");
+  mapView.ui.add(bkExpand, "top-right");
 
 
   bookmarks.on("bookmark-add", function(event) {
@@ -452,7 +560,7 @@ require([
   }
   
   // Call this function when the view is ready
-  view.when(loadFromBookmark);
+  mapView.when(loadFromBookmark);*/
   
 
 
