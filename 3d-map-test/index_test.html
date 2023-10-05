@@ -9,110 +9,222 @@
    <!-- License: MIT License -->
   <title>Ramma þrívíddarkort</title>
   <link rel="icon" type="image" href="https://www.ramma.is/skin/basic9k/i/sitelogo.png">
-
-
-<!-- Calcite Maps Bootstrap -->
-<!--  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">-->
+  
+  <!-- Calcite Maps Bootstrap -->
+  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">
 
   <!-- Calcite Maps -->
-  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css"><!--important-->
-  <link rel="stylesheet" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
-
-
-  <script  type="module"  src="https://cdn.jsdelivr.net/npm/@esri/calcite-components@1.9.0/dist/calcite/calcite.esm.js"></script>
-  <link  rel="stylesheet"  type="text/css"  href="https://cdn.jsdelivr.net/npm/@esri/calcite-components@1.9.0/dist/calcite/calcite.css"/>
+  <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css">
 
   <!-- ArcGIS JS 4 -->
-  <script src="https://js.arcgis.com/calcite-components/1.9.0/calcite.esm.js" type="module"></script>
-  <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/1.9.0/calcite.css" />
-
+  <script src="https://js.arcgis.com/calcite-components/1.8.0/calcite.esm.js" type="module"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/1.8.0/calcite.css" />
   <script src="https://js.arcgis.com/4.27/"></script>
   <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
 
   <!-- additional styles-->
+   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-  <!-- own scripts and styles-->
-  <link rel="stylesheet" href="style_test.css">
-  <script  src="js/script_test.js"></script>
+  <!-- scripts and styles-->
+  <link rel="stylesheet" href="style.css">
+  <script src="js/webscripts.js"></script>
+  <script  src="js/script.js"></script>
 </head>
 
 
-<body class="calcite-maps calcite-shell">
-  <calcite-shell >
-    <!-- Header with title start-->
-    <!-- Header 1 ktery si sem jen ukladam, ma nejake mouchy ale jinak dobre :D-->
-    <!--  <header class="header" >
-        <div class="w3-cell-row">
-          <div class="w3-conatiner w3-cell">
-            <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
-              <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
-            </a>
-            <h2>Ramma þrívíddarkort</h2>
-          </div>
-          <div class="w3-container w3-cell w3-right">
-            <a class="w3-padding-large w3-hover-light-grey w3-hide-small nav-button"
-              href="" 
-              title="2D Sýnileikakort"
-              target="_blank"
-              style="margin-top: 10px;">
-              <i class="fa fa-map">2D Sýnileikakort</i>
-            </a>
-          </div>
-        </div>
-      </header>
-    -->
-    <header class="header" slot="header"> <!-- Slot je treba pouzoivat pokud pracuji s calcite shell-->
+<body>
+<calcite-loader></calcite-loader>
+  <!-- splash screen--> 
+  <modal id="splashModal" class="modal drag-area">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="modal-title ">Rammaáætlun þrívíddarkort</h2>
+      <!-- ... -->
+      <h4 class="modal-disclaimer-title">Fyrirvari</h4>
+      <p class="modal-disclaimer">Þetta þrívíddarkort, sem ber heitið "Rammaáætlun þrívíddarkort," sýnir þau 
+        vindmylluverkefni sem eru metin í 5. áfanga Rammaáætlunar. 
+        Þótt við leggjum áherslu á nákvæmni gagnanna ábyrgjumst við ekki réttmæti þeirra upplýsinga sem birtast 
+        á kortinu. <br /><br />
+        Kortið býður upp á ýmsa möguleika; svo sem mælingu vegalengda, veðurhermi, dagsbirtuhermi, og sjónlínutól 
+        miðað við að hæð manneskju sé 1,75 m. Þessi tól eru einungis til viðmiðunar og koma ekki í stað faglegs mats.<br /><br />
+        Notkun þessa korts er á ábyrgð notanda.
+        </p>
+      <!-- ... -->
+      <h4 class="modal-guide-title">Leiðbeiningar</h4>
+      <p class="modal-guide">Leiðbeiningar (á Ensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a></p>  
+      <!-- ... -->     
+      <h4 class="modal-guide-title">Viðbótarupplýsingar:</h4>
+      <ul class="modal-info-list">
+        <li><strong>Gagnagrunnur:</strong> Vindmylluverkefnin sem kynnt eru hafa verið metin í 5. áfanga Rammaáætlunar.</li>
+        <li><strong>Uppfærslur:</strong> Kortið er endurnýjað ársfjórðungslega.</li>
+        <li><strong>Takmörkun á notkun: </strong> Vinsamlegast sjáið fyrirvarann um notkunartakmarkanir.</li>
+        <li><strong>Eiginleikar:</strong> Kortið býður upp á mælitól, veðurhermi, dagsbirtuhermi, og sjónlínutól miðað við að hæð manneskju sé 1,75 m.</li>
+        <li><strong>Aðrar upplýsingar:</strong> Nánari upplýsingar um verkefni frá Ramma má finna á 
+          <a class= "modal-link" href="https://www.ramma.is/">Ramma vefsíðunni</a> eða 
+          <a class= "modal-link" href="https://orkustofnun.is/stjornsysla/rammaaaetlun">Orkustofnun vefsíðunni</a></li>
+      </ul>
+      <!-- ... -->
+      <!-- Trigger text/icon -->
+      <span class="modal-tooltip-trigger">Mouse Navigation Guide 🖱️</span>
+      <!-- Tooltip container -->
+      <div class="modal-tooltip">
+        <img src="https://ftp.lmi.is/.stm/michaela/Thumbs/mpuse.png" alt="Mouse Navigation Guide"> 
+        <script>
+          // Get the tooltip and its trigger
+          const tooltip = document.querySelector('.modal-tooltip');
+          const trigger = document.querySelector('.modal-tooltip-trigger');
+          // Show tooltip on hover
+          trigger.addEventListener('mouseover', function() {
+            tooltip.style.display = 'block';
+          });
+          // Hide tooltip when mouse leaves
+          trigger.addEventListener('mouseout', function() {
+            tooltip.style.display = 'none';
+          });
+        </script>
+      </div>
+    </div>
+  </modal>
+  
+  <!-- Map with header, actiona bars and widgets-->
+  <calcite-shell content-behind>
+    <!-- header: project logo, map title and nav-button-->
+    <header slot="header" class="header">
       <div id="header-left">
-        <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
-        <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
+          <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
+          <img class="logo" src="https://www.ramma.is/skin/basic9k/i/sitelogo.png" alt="Rammaáætlun"/>
         </a>
-        <span style="font-size: 23px; font-weight: bold;">Ramma þrívíddarkort</span>
+        <span><h3>Ramma þrívíddarkort</h3></span>
       </div>
       <div id="header-right">
-        <calcite-button icon-start="map-pin" appearance="solid" onclick="window.open('https://another-map-link.com', '_blank')">2D Sýnileiki kort</calcite-button>
+        <calcite-button 
+          icon-start="map-pin" 
+          scale="m" 
+          appearance="solid" 
+          onclick="window.open('https://atlas.lmi.is/mapview/?application=ramma_visibility', '_blank')"
+          >2D Sýnileikakort
+        </calcite-button>
       </div>
     </header>
-    <!-- Header with title end-->
+
+
+
     <!-- Menu with basic widget start-->
-    <calcite-shell-panel slot="primary-panel">
-      <calcite-action-bar slot="action-bar">
-        <calcite-action data-action-id="basemaps" text="Basemap" icon="basemap" onclick="showBasemap()"></calcite-action>
-        <calcite-action data-action-id="layers" text="Layers" icon="layers" onclick="showLayers()"></calcite-action>
-        <calcite-action data-action-id="bookmarks" text="Bookmarks" icon="bookmark" onclick="showBookmarks()"></calcite-action>
-        <calcite-action data-action-id="information"text="Info" icon="information" onclick="showInfo()"></calcite-action>
-      </calcite-action-bar>
-    </calcite-shell-panel>
-    <!-- Menu with basic widget end-->
 
+    <!-- the main map window with all the widgets and scripts-->
+  <calcite-shell>
+    <div class="secondary-header" id="header-right">
+      <calcite-action-bar layout="horizontal" position="start" expand-disabled="false" expanded="true" >
+        <calcite-action 
+          data-action-id="basemaps" 
+          text="Grunnkort" 
+          text-enabled 
+          icon="basemap" 
+          onclick="showBasemap()">
+         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Grunnkort</calcite-tooltip>-->
+        </calcite-action>
+        <calcite-action 
+          data-action-id="layers" 
+          text="Gögn" 
+          text-enabled 
+          icon="layers" 
+          onclick="showLayers()">
+         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Gögn</calcite-tooltip>-->
+        </calcite-action>
+        <calcite-action 
+          data-action-id="bookmarks" 
+          text="Bókamerki" 
+          text-enabled icon="bookmark" 
+          onclick="showBookmarks()">
+         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Bookmarks</calcite-tooltip>-->
+        </calcite-action>
+        <calcite-action 
+          id="infoButton" 
+          data-action-id="information" 
+          text="Um kortasjá" 
+          text-enabled icon="information-f" 
+          onclick="showSplashScreen()">
+         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Um kortasjá</calcite-tooltip>-->
+        </calcite-action>
+        <calcite-action 
+          data-action-id="userguide" 
+          text="Leiðbeiningar" 
+          text-enabled icon="address-book" 
+          onclick="window.open('https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf', '_blank')" >
+          <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Leiðbeiningar</calcite-tooltip>-->
+        </calcite-action>
+      </calcite-action-bar>  
+    </div>
 
-    <!-- Map will go here -->  
-  <calcite-shell>  
-    <div class="calcite-map calcite-map-absolute">
-      <div id="viewDiv">
-        <!-- mesure buttons-->
-        <div id="topbar">
-          <button
-            class="action-button esri-icon-measure-line"
-            id="distanceButton"
-            type="button"
-            title="Measure distance between two points"
-          ></button>
-          <button
-            class="action-button esri-icon-measure-area"
-            id="areaButton"
-            type="button"
-            title="Measure area"
-          ></button>
+    <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
+    <calcite-panel heading="Basemaps" height-scale="l" data-panel-id="basemaps" hidden>
+      <div id="basemaps-container"></div>
+    
+    
+    
+    
+    </calcite-panel>
+    <calcite-panel heading="Layers" height-scale="l" data-panel-id="layers" hidden>
+        <div id="layers-container"></div></calcite-panel>
+    <calcite-panel heading="Bookmarks" height-scale="l" data-panel-id="bookmarks" hidden>
+        <div id="bookmarks-container"></div></calcite-panel>
+
+<!--
+    <div id="panelInfo" class="panel collapse in">
+      <div id="headingInfo" class="panel-heading" role="tab">
+        <div class="panel-title">
+          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo"  aria-expanded="true" aria-controls="collapseInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span><span class="panel-label">About</span></a> 
+          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelInfo"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>  
+        </div>
+      </div>
+      <div id="collapseInfo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingInfo">
+        <div class="panel-body">
+          <p>This is my map app!</p>
         </div>
       </div>
     </div>
+
+  -->
+
+
+
+
+
+    <div id="viewDiv">
+      <!-- mesure buttons-->
+      <div id="topbar">
+        <button
+          class="action-button esri-icon-measure-line"
+          id="distanceButton"
+          type="button"
+          title="Measure distance between two points"
+        ></button>
+        <button
+          class="action-button esri-icon-measure-area"
+          id="areaButton"
+          type="button"
+          title="Measure area"
+        ></button>
+      </div>
+
+      <!-- Layer list
+      <div id="layer-menu" class="esri-widget">
+        <h3>Gögn</h3>
+        <div id="layerList"></div>
+      </div>-->
+
+
+      <!-- Bookmark widget 
+      <div id="bookmarkWidget" class="esri-widget">
+      </div> -->
+      <!-- New div for Bookmark widget -->
+
+    </div>
+
   </calcite-shell>
+</calcite-shell>
 
-
-
-
-
-  </calcite-shell>
 
 
 

@@ -6,24 +6,25 @@
 
 
 require([
+  //setting the scene
   "esri/WebScene",
   "esri/views/SceneView",
-
-  
+  //basic widgets
   "esri/widgets/Home",
   "esri/widgets/Expand",
   "esri/widgets/BasemapGallery",
  // "esri/widgets/Print", //not supported for 3D
-  "esri/widgets/LayerList", //Layer list to turn on/off layers visibility
+  "esri/widgets/LayerList", 
   "esri/widgets/Bookmarks",
-
+  
+  //Weather simulation
   "esri/widgets/Weather",
   "esri/widgets/Daylight",
-
-  "esri/widgets/LineOfSight", //Line of sight widget + point and graphic
+  //Line of sight widget + point and graphic
+  "esri/widgets/LineOfSight", 
   "esri/geometry/Point",
   "esri/Graphic",
-
+  //Mesurements widgets
   "esri/widgets/DirectLineMeasurement3D",
   "esri/widgets/AreaMeasurement3D",
   "esri/core/promiseUtils",
@@ -92,8 +93,8 @@ require([
    * *******************************************************************************/
   // Action bar of secondary header
     document.querySelector("calcite-action-bar").messageOverrides = {
-      expand: "Opna",
-      collapse: "Loka"
+      expand: "Opnaðu lýsinguna",
+      collapse: "Lokaðu lýsinguna"
     };
   
 

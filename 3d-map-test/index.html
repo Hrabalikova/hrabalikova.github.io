@@ -90,6 +90,7 @@
   <!-- Map with header, actiona bars and widgets-->
   <calcite-shell content-behind>
     <!-- header: project logo, map title and nav-button-->
+
     <header slot="header" class="header">
       <div id="header-left">
           <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
@@ -98,14 +99,54 @@
         <span><h3>Ramma þrívíddarkort</h3></span>
       </div>
       <div id="header-right">
-        <calcite-button 
-          icon-start="map-pin" 
-          scale="m" 
-          appearance="solid" 
-          onclick="window.open('https://atlas.lmi.is/mapview/?application=ramma_visibility', '_blank')"
-          >2D Sýnileikakort
-        </calcite-button>
-      </div>
+        <calcite-action-bar layout="horizontal" position="start" expand-disabled="false" expanded="false" >
+          <calcite-action 
+            data-action-id="basemaps" 
+            text="Grunnkort" 
+            text-enabled 
+            icon="basemap" 
+            onclick="showBasemap()">
+           <calcite-tooltip slot="tooltip" reference-element="info-action" placement="bottom">Grunnkort</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            data-action-id="layers" 
+            text="Gögn" 
+            text-enabled 
+            icon="layers" 
+            onclick="showLayers()">
+           <calcite-tooltip slot="tooltip" reference-element="info-action" placement="bottom">Gögn</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            data-action-id="bookmarks" 
+            text="Bókamerki" 
+            text-enabled icon="bookmark" 
+            onclick="showBookmarks()">
+            <calcite-tooltip slot="tooltip" reference-element="info-action"  placement="bottom">Bookmarks</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            id="infoButton" 
+            data-action-id="information" 
+            text="Um kortasjá" 
+            text-enabled icon="information-f" 
+            onclick="showSplashScreen()">
+            <calcite-tooltip slot="tooltip" reference-element="info-action"  placement="bottom">Um kortasjá</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            data-action-id="userguide" 
+            text="Leiðbeiningar" 
+            text-enabled icon="address-book" 
+            onclick="window.open('https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf', '_blank')" >
+            <calcite-tooltip slot="tooltip" reference-element="info-action"  placement="bottom">Leiðbeiningar</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+          data-action-id="maplink" 
+          text="2D Sýnileikakort" 
+          text-enabled icon="map-pin" 
+          onclick="window.open('https://atlas.lmi.is/mapview/?application=ramma_visibility', '_blank')" >
+            <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="bottom">fara í 2D kortasjá</calcite-tooltip>
+          </calcite-action>
+        </calcite-action-bar>  
+      </div>  
     </header>
 
 
@@ -114,49 +155,7 @@
 
     <!-- the main map window with all the widgets and scripts-->
   <calcite-shell>
-    <div class="secondary-header">
-      <calcite-action-bar layout="horizontal" position="start" expand-disabled="false" expanded="true" >
-        <calcite-action 
-          data-action-id="basemaps" 
-          text="Grunnkort" 
-          text-enabled 
-          icon="basemap" 
-          onclick="showBasemap()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Grunnkort</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          data-action-id="layers" 
-          text="Gögn" 
-          text-enabled 
-          icon="layers" 
-          onclick="showLayers()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Gögn</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          data-action-id="bookmarks" 
-          text="Bókamerki" 
-          text-enabled icon="bookmark" 
-          onclick="showBookmarks()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Bookmarks</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          id="infoButton" 
-          data-action-id="information" 
-          text="Um kortasjá" 
-          text-enabled icon="information-f" 
-          onclick="showSplashScreen()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Um kortasjá</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          data-action-id="userguide" 
-          text="Leiðbeiningar" 
-          text-enabled icon="address-book" 
-          onclick="window.open('https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf', '_blank')" >
-          <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Leiðbeiningar</calcite-tooltip>-->
-        </calcite-action>
-      </calcite-action-bar>  
-    </div>
-
+ 
     <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
     <calcite-panel heading="Basemaps" height-scale="l" data-panel-id="basemaps" hidden>
       <div id="basemaps-container"></div>
