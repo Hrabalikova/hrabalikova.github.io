@@ -29,20 +29,20 @@ calcite-loader {
 
 
 /* Responsive stylling for smaller screen */
-/*@media (max-width: 768px) {
+@media (max-width: 760px) {
   .header-right {
     float: none;
-    width: 80%;
+    width: 100%;
   }
   .header h3 {
-    font-size: 12px; /* Smaller font size *
+    font-size: 15px; /* Smaller font size */
   }
-}*/
+}
 
-@media (max-width: 780px) {
+@media (max-width: 480px) {
   .header-right {
     float: none;
-    width: 80%;
+    width: 100%;
   }
   .header h3 {
     display: none; /* Hide the title */
