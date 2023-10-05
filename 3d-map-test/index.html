@@ -163,8 +163,8 @@
     <!-- the main map window -->
       <div id="viewDiv">
         <!-- mesure buttons-->
-        <div id="widgets">
-          <calcite-action-bar expand-disabled="false" expanded="false" position="end" scale="m">
+        <calcite-shell-panel slot="panel-start" display-mode="float">
+          <calcite-action-bar expand-disabled="false" expanded="false" position="end" scale="m" slot="action-bar">
             <calcite-action 
               id="distanceButton" 
               data-action-id="distance" 
@@ -206,7 +206,11 @@
               <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Sjónlínutól</calcite-tooltip>
             </calcite-action>
           </calcite-action-bar>
-        </div>
+
+
+
+
+        </calcite-shell-panel>
 
 
 

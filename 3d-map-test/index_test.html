@@ -110,65 +110,78 @@
 
 
 
+
     <!-- Menu with basic widget start-->
 
     <!-- the main map window with all the widgets and scripts-->
-  <calcite-shell>
-    <div class="secondary-header" id="header-right">
-      <calcite-action-bar layout="horizontal" position="start" expand-disabled="false" expanded="true" >
-        <calcite-action 
-          data-action-id="basemaps" 
-          text="Grunnkort" 
-          text-enabled 
-          icon="basemap" 
-          onclick="showBasemap()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Grunnkort</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          data-action-id="layers" 
-          text="Gögn" 
-          text-enabled 
-          icon="layers" 
-          onclick="showLayers()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Gögn</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          data-action-id="bookmarks" 
-          text="Bókamerki" 
-          text-enabled icon="bookmark" 
-          onclick="showBookmarks()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Bookmarks</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          id="infoButton" 
-          data-action-id="information" 
-          text="Um kortasjá" 
-          text-enabled icon="information-f" 
-          onclick="showSplashScreen()">
-         <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Um kortasjá</calcite-tooltip>-->
-        </calcite-action>
-        <calcite-action 
-          data-action-id="userguide" 
-          text="Leiðbeiningar" 
-          text-enabled icon="address-book" 
-          onclick="window.open('https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf', '_blank')" >
-          <!-- <calcite-tooltip slot="tooltip" reference-element="info-action">Leiðbeiningar</calcite-tooltip>-->
-        </calcite-action>
-      </calcite-action-bar>  
+    <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
+
+    <!-- the main map window -->
+    <div id="viewDiv">
+      <!-- mesure buttons-->
+      <div id="widgets">
+        <calcite-action-bar expand-disabled="false" expanded="false" position="end" scale="m">
+          <calcite-action 
+            id="distanceButton" 
+            data-action-id="distance" 
+            text="Mæla lengd"
+            text-enabled  
+            icon="measure-line">
+            <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Mæla lengd</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            id="areaButton" 
+            data-action-id="area" 
+            text-enabled  
+            text="Mæla flatarmál" 
+            icon="measure-area">
+            <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Mæla flatarmál</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            id="weatherButton"
+            data-action-id="weather" 
+            text="Veðurhermi" 
+            text-enabled 
+            icon="partly-cloudy">
+            <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Veðurhermi</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            id="daylightButton"
+            data-action-id="daylight"
+            text="Dagsbirtuhermi"
+            text-enabled
+            icon="brightness">
+            <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Dagsbirtuhermi</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            id="losButton"
+            data-action-id="los"
+            text="Sjónlínu" 
+            text-enabled 
+            icon="line-of-sight">
+            <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Sjónlínutól</calcite-tooltip>
+          </calcite-action>
+        </calcite-action-bar>
+      </div>
+
+
+
+
+
+
+
+
+      <!-- Layer list
+      <div id="layer-menu" class="esri-widget">
+        <h3>Gögn</h3>
+        <div id="layerList"></div>
+      </div>-->
+      <!-- Bookmark widget 
+      <div id="bookmarkWidget" class="esri-widget">
+      </div> -->
+      <!-- New div for Bookmark widget -->
     </div>
 
-    <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
-    <calcite-panel heading="Basemaps" height-scale="l" data-panel-id="basemaps" hidden>
-      <div id="basemaps-container"></div>
-    
-    
-    
-    
-    </calcite-panel>
-    <calcite-panel heading="Layers" height-scale="l" data-panel-id="layers" hidden>
-        <div id="layers-container"></div></calcite-panel>
-    <calcite-panel heading="Bookmarks" height-scale="l" data-panel-id="bookmarks" hidden>
-        <div id="bookmarks-container"></div></calcite-panel>
 
 <!--
     <div id="panelInfo" class="panel collapse in">
@@ -191,8 +204,8 @@
 
 
 
-    <div id="viewDiv">
-      <!-- mesure buttons-->
+   <!-- <div id="viewDiv">
+       mesure buttons
       <div id="topbar">
         <button
           class="action-button esri-icon-measure-line"
@@ -206,7 +219,7 @@
           type="button"
           title="Measure area"
         ></button>
-      </div>
+      </div>-->
 
       <!-- Layer list
       <div id="layer-menu" class="esri-widget">

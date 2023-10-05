@@ -105,6 +105,19 @@ calcite-loader {
 /*//////////////////////////*/
 /* WIDGETS AND LAYER MENU*/
 /*//////////////////////////*/
+/*#floatingPanel {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+ /* right: 10px; /* Adjust as needed */
+ /* z-index: 1000; /* Make sure it floats above the map */
+  /* Add any other styling you want for the panel */
+/*}*/
+
+
+
+
+
+
 #layer-menu {
   padding: 1em;
 }
