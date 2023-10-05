@@ -1,14 +1,5 @@
 html, body, 
 
-.custom-example-theme {
-  --calcite-ui-brand: #6c8b3b;
-  --calcite-ui-brand-hover: #314f03;
-  --calcite-ui-brand-press: #435427;
-  --calcite-ui-info: #566e2f;
-  --calcite-ui-text-inverse: #ffffff;
-}
-
-
 
 #viewDiv {
   width: 100%;
@@ -17,6 +8,7 @@ html, body,
   padding: 0;
   position: relative;
 }
+
 
 body {
   display: flex;
@@ -27,6 +19,17 @@ calcite-loader {
   justify-self: center;
 }
 
+
+/* Custom Styles */
+/*.custom-theme {
+  --calcite-ui-brand: #6c8b3b;
+  --calcite-ui-brand-hover: #314f03;
+  --calcite-ui-brand-press: #435427;
+  --calcite-ui-info: #566e2f;
+  --calcite-ui-text-inverse: #ffffff;
+  background-color: var(--calcite-ui-background);
+}
+*/
 
 /* Responsive stylling for smaller screen */
 @media (max-width: 760px) {
@@ -117,9 +120,9 @@ calcite-loader {
 }
 
 
-#topbar {
-  background: #fdfdfd;
-  padding: 10px;
+#sidebar {
+  background: #ffffff;
+  padding: 1px;
 }
 .action-button {
   font-size: 16px;
@@ -261,3 +264,4 @@ calcite-loader {
   width: auto;
   max-height: 150px;
 }
+

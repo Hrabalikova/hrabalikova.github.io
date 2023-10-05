@@ -80,12 +80,13 @@ require([
   /**********************************************************************************
    * Initialize the ArcGIS Maps SDK for JavaScript to set up environment of the app
    * *******************************************************************************/
-  // Action bar of secondary header
+  // Action bar of  header
     document.querySelector("calcite-action-bar").messageOverrides = {
       expand: "Opnaðu lýsinguna",
       collapse: "Lokaðu lýsinguna"
     };
-  
+
+
 
   // Popup and panel sync
   /*  mapView.when(function(){
@@ -116,7 +117,7 @@ require([
 
     const basemaps = new BasemapGallery({
       view: mapView,
-      container: "basemaps-container"
+      container: "basemaps-id"
     });
 
   /* const bookmarks = new Bookmarks({
@@ -128,16 +129,16 @@ require([
       view: mapView,
       selectionEnabled: true,
       container: "layers-container"
-    });
+    });*/
 
 
     // Add Layer list to the Scene
-    //const layerList = new LayerList({
-    //  view: mapView,
-    //  container: "LayerList"
-    //});
+   /* const layerList = new LayerList({
+      view: mapView,
+      container: "LayerList"
+    });
 
-  // mapView.ui.add(layerList, "bottom-right");
+    mapView.ui.add(layerList, "bottom-right");
 
     // create home button 
   // const homeBtn = new Home({
@@ -236,19 +237,15 @@ require([
     };
   }
 
-  // Close the modal when clicking outside of it
-
-  mapView.when(() => {
+  // Run the function
+/*  mapView.when(() => {
     showSplashScreen();
     // the function run splash screen
   });
-
+*/
 
   // Call the modal from info-button
   document.getElementById('infoButton').addEventListener('click', showSplashScreen);
-
-
-
 
 
 
@@ -332,8 +329,8 @@ require([
     }
   }
 
-  mapView.ui.add("topbar", "top-right"); // add the toolbar for the measurement widgets
-
+  mapView.ui.add("widgets", "top-right" ) //addet to the container called id=widgets
+ 
 
 /***********************************
 * Add weather and day widget
@@ -345,6 +342,7 @@ require([
       view: mapView
     }),
     group: "top-right",
+    container: "widgets", //addet to the container called id=widgets
     expanded: false
   });
 
@@ -354,10 +352,11 @@ require([
     content: new Daylight({
       view: mapView
     }),
-    group: "top-right"
+    group: "top-right",
+    container: "widgets"
   });
 
-  mapView.ui.add([weatherExpand, daylightExpand], "top-right"); 
+  mapView.ui.add([weatherExpand, daylightExpand],"top-right"); // 
 
 
       
@@ -423,7 +422,7 @@ require([
   }
 
   // add an Expand widget to make the menu responsive
-  const expand = new Expand({
+  const losExpand = new Expand({
     expandTooltip: "Expand line of sight widget",
     view: mapView,
   //  content: document.getElementById("menu"),
@@ -432,11 +431,12 @@ require([
       content: document.getElementById("menu")
     }),
     group: "top-right",
+    container: "widgets",
     expanded: false
   });
 
 
-  mapView.ui.add(expand, "top-right");
+  mapView.ui.add(losExpand, "top-right");
 
 
   mapView.when(() => {
@@ -470,10 +470,6 @@ require([
     return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
   }
 
-
-
-
-
 // bookmarsk
   const bookmarks = new Bookmarks({
     view: mapView,
@@ -481,6 +477,7 @@ require([
     visibleElements: {
       time: false
     },
+    container: "bookmarks-id",
 
   });
   
@@ -527,8 +524,5 @@ require([
 
 
 
-
-
-
-
+ 
 });
