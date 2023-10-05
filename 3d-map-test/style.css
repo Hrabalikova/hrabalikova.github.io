@@ -150,7 +150,7 @@ calcite-loader {
 .modal-content {
   position: relative; /*should change to fixed?*/
   background-color: #fefefe;
-  margin-top: 0px;
+  margin-top: 5px;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
