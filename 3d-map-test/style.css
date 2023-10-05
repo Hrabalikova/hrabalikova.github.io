@@ -32,17 +32,17 @@ calcite-loader {
 @media (max-width: 768px) {
   .header-right {
     float: none;
-    width: 100%;
+    width: 95%;
   }
   .header h3 {
     font-size: 12px; /* Smaller font size */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 680px) {
   .header-right {
     float: none;
-    width: 100%;
+    width: 95%;
   }
   .header h2 {
     display: none; /* Hide the title */
