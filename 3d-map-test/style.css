@@ -40,6 +40,9 @@ calcite-loader {
   .modal-content {
     margin-top: 10px;
   }
+  .logo {
+    width: 40px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -51,7 +54,10 @@ calcite-loader {
     display: none; /* Hide the title */
   }
   .modal-content {
-    margin-top: 30px;
+    margin-top: 50px;
+  }
+  .logo {
+    width: 30px;
   }
 }
 
