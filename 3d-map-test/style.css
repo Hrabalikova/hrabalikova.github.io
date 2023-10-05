@@ -30,7 +30,7 @@ calcite-loader {
 
 /* Responsive stylling for smaller screen */
 @media (max-width: 768px) {
-  .topnav a {
+  .header-right {
     float: none;
     width: 100%;
   }
@@ -40,7 +40,7 @@ calcite-loader {
 }
 
 @media (max-width: 480px) {
-  .topnav a {
+  .header-right {
     float: none;
     width: 100%;
   }
