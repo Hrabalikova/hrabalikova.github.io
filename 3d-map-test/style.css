@@ -37,6 +37,9 @@ calcite-loader {
   .header h3 {
     font-size: 15px; /* Smaller font size */
   }
+  .modal-content {
+    margin-top: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -46,6 +49,9 @@ calcite-loader {
   }
   .header h3 {
     display: none; /* Hide the title */
+  }
+  .modal-content {
+    margin-top: 30px;
   }
 }
 
