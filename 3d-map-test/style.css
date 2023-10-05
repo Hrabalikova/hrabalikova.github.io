@@ -35,7 +35,7 @@ calcite-loader {
     width: 80%;
   }
   .header h3 {
-    font-size: 12px; /* Smaller font size */
+    font-size: 12px; /* Smaller font size *
   }
 }*/
 
@@ -44,7 +44,7 @@ calcite-loader {
     float: none;
     width: 80%;
   }
-  .header h2 {
+  .header h3 {
     display: none; /* Hide the title */
   }
 }
