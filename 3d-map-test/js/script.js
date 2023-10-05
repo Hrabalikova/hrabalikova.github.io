@@ -9,14 +9,13 @@ require([
   //setting the scene
   "esri/WebScene",
   "esri/views/SceneView",
-  //basic widgets
-  "esri/widgets/Home",
+
+  //basic widgets - print is not supproted for 3D scenes
   "esri/widgets/Expand",
+  "esri/widgets/Home",
   "esri/widgets/BasemapGallery",
- // "esri/widgets/Print", //not supported for 3D
   "esri/widgets/LayerList", 
   "esri/widgets/Bookmarks",
-  
   //Weather simulation
   "esri/widgets/Weather",
   "esri/widgets/Daylight",
@@ -33,21 +32,11 @@ require([
   "esri/widgets/Sketch",
   "esri/layers/GraphicsLayer",
   "esri/geometry/geometryEngine"
-], (WebScene, 
-    SceneView, 
-    Home,
-    Expand, 
-    BasemapGallery,
-    LayerList,
-    Bookmarks,
-    Weather, 
-    Daylight, 
-    LineOfSight, 
-    Point, 
-    Graphic,
-    DirectLineMeasurement3D,
-    AreaMeasurement3D,
-    promiseUtils,
+], (WebScene, SceneView, 
+    Expand, Home, BasemapGallery, LayerList, Bookmarks,
+    Weather, Daylight, 
+    LineOfSight, Point, Graphic,
+    DirectLineMeasurement3D, AreaMeasurement3D, promiseUtils,
     ScaleBar,
     Sketch,
     GraphicsLayer,
@@ -57,7 +46,7 @@ require([
 
  
 /********************************************************************
-* Create the SceneView and setting up the initial view of th scene
+* Create the SceneView and setting up the initial view of the scene
 ********************************************************************/
  // Load a webscene 
   const scene = new WebScene({
@@ -234,16 +223,28 @@ require([
   
     modal.style.display = "block";
   
+    // Close modal when 'x' is clicked
     span.onclick = function() {
       modal.style.display = "none";
-    } 
+    };
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
   }
+
+  // Close the modal when clicking outside of it
 
   mapView.when(() => {
     showSplashScreen();
     // the function run splash screen
   });
-  
+
+
+  // Call the modal from info-button
   document.getElementById('infoButton').addEventListener('click', showSplashScreen);
 
 

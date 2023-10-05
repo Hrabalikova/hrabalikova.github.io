@@ -52,7 +52,10 @@
         </p>
       <!-- ... -->
       <h4 class="modal-guide-title">Leiðbeiningar</h4>
-      <p class="modal-guide">Leiðbeiningar (á Ensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a></p>  
+      <p class="modal-guide">
+        Leiðbeiningar (á Íslensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a><br />
+        Leiðbeiningar (á Ensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a>
+      </p>  
       <!-- ... -->     
       <h4 class="modal-guide-title">Viðbótarupplýsingar:</h4>
       <ul class="modal-info-list">
@@ -66,7 +69,7 @@
       </ul>
       <!-- ... -->
       <!-- Trigger text/icon -->
-      <span class="modal-tooltip-trigger">Mouse Navigation Guide 🖱️</span>
+      <span class="modal-tooltip-trigger">Leiðbeiningar um mús (Mouse Navigation Guide) 🖱️</span>
       <!-- Tooltip container -->
       <div class="modal-tooltip">
         <img src="https://ftp.lmi.is/.stm/michaela/Thumbs/mpuse.png" alt="Mouse Navigation Guide"> 
@@ -90,7 +93,6 @@
   <!-- Map with header, actiona bars and widgets-->
   <calcite-shell content-behind>
     <!-- header: project logo, map title and nav-button-->
-
     <header slot="header" class="header">
       <div id="header-left">
           <a href="https://www.ramma.is/" title="Rammaáætlun - forsíða">
@@ -121,7 +123,7 @@
             text="Bókamerki" 
             text-enabled icon="bookmark" 
             onclick="showBookmarks()">
-            <calcite-tooltip slot="tooltip" reference-element="info-action"  placement="bottom">Bookmarks</calcite-tooltip>
+            <calcite-tooltip slot="tooltip" reference-element="info-action"  placement="bottom">Bókamerki</calcite-tooltip>
           </calcite-action>
           <calcite-action 
             id="infoButton" 
@@ -149,95 +151,40 @@
       </div>  
     </header>
 
-
-
     <!-- Menu with basic widget start-->
-
     <!-- the main map window with all the widgets and scripts-->
-  <calcite-shell>
- 
     <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
-    <calcite-panel heading="Basemaps" height-scale="l" data-panel-id="basemaps" hidden>
-      <div id="basemaps-container"></div>
-    
-    
-    
-    
-    </calcite-panel>
-    <calcite-panel heading="Layers" height-scale="l" data-panel-id="layers" hidden>
-        <div id="layers-container"></div></calcite-panel>
-    <calcite-panel heading="Bookmarks" height-scale="l" data-panel-id="bookmarks" hidden>
-        <div id="bookmarks-container"></div></calcite-panel>
-
-<!--
-    <div id="panelInfo" class="panel collapse in">
-      <div id="headingInfo" class="panel-heading" role="tab">
-        <div class="panel-title">
-          <a class="panel-toggle" role="button" data-toggle="collapse" href="#collapseInfo"  aria-expanded="true" aria-controls="collapseInfo"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span><span class="panel-label">About</span></a> 
-          <a class="panel-close" role="button" data-toggle="collapse" tabindex="0" href="#panelInfo"><span class="esri-icon esri-icon-close" aria-hidden="true"></span></a>  
+    <calcite-shell>
+      <!-- the main map window -->
+      <div id="viewDiv">
+        <!-- mesure buttons-->
+        <div id="topbar">
+          <button
+            class="action-button esri-icon-measure-line"
+            id="distanceButton"
+            type="button"
+            title="Measure distance between two points"
+          ></button>
+          <button
+            class="action-button esri-icon-measure-area"
+            id="areaButton"
+            type="button"
+            title="Measure area"
+          ></button>
         </div>
+        <!-- Layer list
+        <div id="layer-menu" class="esri-widget">
+          <h3>Gögn</h3>
+          <div id="layerList"></div>
+        </div>-->
+        <!-- Bookmark widget 
+        <div id="bookmarkWidget" class="esri-widget">
+        </div> -->
+        <!-- New div for Bookmark widget -->
       </div>
-      <div id="collapseInfo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingInfo">
-        <div class="panel-body">
-          <p>This is my map app!</p>
-        </div>
-      </div>
-    </div>
-
-  -->
-
-
-
-
-
-    <div id="viewDiv">
-      <!-- mesure buttons-->
-      <div id="topbar">
-        <button
-          class="action-button esri-icon-measure-line"
-          id="distanceButton"
-          type="button"
-          title="Measure distance between two points"
-        ></button>
-        <button
-          class="action-button esri-icon-measure-area"
-          id="areaButton"
-          type="button"
-          title="Measure area"
-        ></button>
-      </div>
-
-      <!-- Layer list
-      <div id="layer-menu" class="esri-widget">
-        <h3>Gögn</h3>
-        <div id="layerList"></div>
-      </div>-->
-
-
-      <!-- Bookmark widget 
-      <div id="bookmarkWidget" class="esri-widget">
-      </div> -->
-      <!-- New div for Bookmark widget -->
-
-    </div>
-
+    </calcite-shell>
   </calcite-shell>
-</calcite-shell>
 
 
-
-<script type="text/javascript">
-  var dojoConfig = {
-    packages: [{
-      name: "bootstrap",
-      location: "https://esri.github.io/calcite-maps/dist/vendor/dojo-bootstrap"
-    },
-    {
-      name: "calcite-maps",
-      location: "https://esri.github.io/calcite-maps/dist/js/dojo"
-      
-    }]
-  };
-</script>
 </body>
 </html>

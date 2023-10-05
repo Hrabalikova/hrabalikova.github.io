@@ -137,7 +137,7 @@ calcite-loader {
 .modal-content {
   position: relative; /*should change to fixed?*/
   background-color: #fefefe;
- /* margin: 0px;*/
+  margin-top: 0px;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -232,6 +232,7 @@ calcite-loader {
 
 /* Tooltip Image */
 .modal-tooltip img {
-  max-width: 100%;
-  height: auto;
+  position: relative;
+  width: auto;
+  max-height: 150px;
 }
