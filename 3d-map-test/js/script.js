@@ -80,11 +80,6 @@ require([
   /**********************************************************************************
    * Initialize the ArcGIS Maps SDK for JavaScript to set up environment of the app
    * *******************************************************************************/
-  // Action bar of  header
-    document.querySelector("calcite-action-bar").messageOverrides = {
-      expand: "Opnaðu lýsinguna",
-      collapse: "Lokaðu lýsinguna"
-    };
 
 
 
@@ -519,8 +514,6 @@ require([
   // Call this function when the view is ready
   mapView.when(loadFromBookmark);*/
   
-
-
 
 
 

@@ -1,0 +1,13 @@
+define([
+  "esri/widgets/LayerList"
+], function(LayerList) {
+  return {
+    setupLayersWidget: function(mapView) {
+      // Code for setting up the layer list
+
+
+
+      
+    }
+  };
+});
