@@ -49,7 +49,7 @@ define([
                 // Query elevation and correct the elevation error
                 elevationLayer.queryElevation(cameraPoint).then(function(result){
                     const terrainHeight = result.geometry.z;
-                    const elevationError = 3.5; // Elevation error in meters
+                    const elevationError = 0; // Elevation error in meters
                     const heightAboveTerrain = camera.position.z - terrainHeight - elevationError;
                     zElement.innerHTML = `Height above terrain: ${heightAboveTerrain.toFixed(2)} meters`;
                 });
