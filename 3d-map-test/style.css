@@ -105,44 +105,40 @@ calcite-loader {
 /*//////////////////////////*/
 /* WIDGETS AND LAYER MENU*/
 /*//////////////////////////*/
-.active {
-  background-color: #007bff; /* Change to your desired color */
-  color: white;
-}
-
-#action-bar .active {
-  background-color: #007bff;
-  color: white;
-}
-
-/*#floatingPanel {
-  position: absolute;
-  top: 10px; /* Adjust as needed */
- /* right: 10px; /* Adjust as needed */
- /* z-index: 1000; /* Make sure it floats above the map */
-  /* Add any other styling you want for the panel */
-/*}*/
-/*
-#layer-menu {
-  padding: 1em;
-}
-
-
-#measurements {
-  padding: 4px 8px;
-  font-size: 16px;
-  bottom: 15px;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%,-50%);
-}
-*/
-
 #sidebar {
   background: #ffffff;
   padding: 1px;
 }
-.action-button {
+
+.floating-panel {
+  position: absolute;
+  z-index: 100;
+  top: 70px;
+  right: 65px;
+  width: 250px;
+  height: 40%;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none; /* Initially hidden */
+  overflow: auto;
+}
+
+.floating-list {
+  position: absolute;
+  z-index: 100;
+  top: 70px;
+  right: 65px;
+  width: 300px;
+  height: 75%;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none; /* Initially hidden */
+  overflow: auto;
+}
+
+
+
+/*.action-button {
   font-size: 16px;
   background-color: transparent;
   border: 1px solid #d3d3d3;
@@ -161,7 +157,7 @@ calcite-loader {
   background: #0079c1;
   color: #e4e4e4;
 }
-
+*/
 
 /*///////////////////////*/
 /* SPLASH SCREEN*/
@@ -170,7 +166,7 @@ calcite-loader {
 .modal {
   display: none;
   position: absolute;  /* Changed from absolute to fixed */
-  z-index: 1;
+  z-index: 10000;
   left: 0;
   top: 0;
   width: 100%;

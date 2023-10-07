@@ -1,11 +1,11 @@
 // Setting up the basic map widgets  like the home button, scale bar, zoom, and basemap gallery.
 define([
   "esri/widgets/Home",
-  "esri/widgets/BasemapGallery"
-], function(Home, BasemapGallery) {
+  "esri/widgets/BasemapGallery",
+  "esri/widgets/LayerList"
+], function(Home, BasemapGallery, LayerList) {
   return {
     setupBasicWidgets: function(mapView) {
-      let activeWidget;
       const homeBtn = new Home({
         view: mapView  
       });
@@ -18,31 +18,12 @@ define([
         container: "basemaps-container"
       });
 
-
-
+      const layerList = new LayerList({
+        view: mapView,
+        selectionEnabled: true,
+        container: "layers-container"
+      }); 
       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+    },
   };
-})
+});

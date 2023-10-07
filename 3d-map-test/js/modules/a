@@ -1,0 +1,26 @@
+define([
+   //setting the scene
+   "esri/WebScene",
+   "esri/views/SceneView",
+ 
+   //basic widgets - print is not supproted for 3D scenes
+   "esri/widgets/Expand",
+   "esri/widgets/Home",
+   "esri/widgets/BasemapGallery",
+   "esri/widgets/LayerList", 
+   "esri/widgets/Bookmarks",
+], function(WebScene, SceneView, 
+  Expand, Home, BasemapGallery, LayerList, Bookmarks,) {
+  return {
+    setupLayersWidget: function(mapView) {
+      // Code for setting up the layer list
+
+      const layerList = new LayerList({
+        view: mapView,
+        selectionEnabled: true,
+        container: "layers-container"
+      }); 
+      mapView.ui.add(layerList, "bottom-right");     
+    }
+  };
+});

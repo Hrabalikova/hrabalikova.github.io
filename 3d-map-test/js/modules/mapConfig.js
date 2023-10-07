@@ -6,7 +6,6 @@ define([
 ], function(WebScene, SceneView) {
   return {
     setupScene: function() {
-      let activeWidget;
 
       const scene = new WebScene({
         portalItem: {
@@ -18,7 +17,7 @@ define([
         map: scene,
         container: "viewDiv",
         qualityProfile: "high",
-        padding: {left: 49},
+       // padding: {left: 49}, //for the case that I will add side bar to the left not right and will not be docked in the mapView container
         environment: {
           weather: {
             type: "cloudy",
@@ -34,6 +33,6 @@ define([
         }
       });
       return mapView;
-    }
+    }    
   };
 });

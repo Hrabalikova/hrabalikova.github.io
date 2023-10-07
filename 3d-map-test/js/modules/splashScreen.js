@@ -35,15 +35,15 @@ define([], function() {
         }
 
         // Run the function
-       /*   mapView.when(() => {
+          mapView.when(() => {
             showSplashScreen();
             // the function run splash screen
         });
-        */
+        
 
         // Call the modal from info-button
         document.getElementById('infoButton').addEventListener('click', showSplashScreen);
-    }
+        }
     };
   });
   
