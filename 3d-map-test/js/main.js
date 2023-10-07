@@ -7,6 +7,7 @@
 require([
     "modules/mapConfig",
     "modules/basicWidgets",
+    // "modules/bookmarksWidget",
     // "modules/weatherDaylight",
    // "modules/measurementWidget",
     // "modules/lineOfSightWidget",
@@ -14,6 +15,7 @@ require([
   ], function(
     MapConfig,
     BasicWidgets,
+   // BookmarksWidget
     // WeatherDaylight,
     //MeasurementWidget,
     // LineOfSightWidget,
@@ -22,6 +24,7 @@ require([
     // Initialize the map, widgets, etc.
     const mapView = MapConfig.setupScene(); // Capture the returned mapView
     BasicWidgets.setupBasicWidgets(mapView);
+    // BookmarksWidget.setupBookmarksWidget(mapView);
     // WeatherDaylight.setupWeatherDaylight(mapView);
     //MeasurementWidget.setupMeasurementWidget(mapView);
     // LineOfSightWidget.setupLineOfSightWidget(mapView);
