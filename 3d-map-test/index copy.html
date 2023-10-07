@@ -173,7 +173,7 @@
       <div id="layersPanel" class="floating-list">
         <div id="layers-container"></div>
       </div>
-      <div id="bookmarksPanel" class="floating-panel">
+      <div id="bookmarksPanel" class="floating-bookmarks">
         <div id="bookmarks-container"></div>
       </div>
     </header>
@@ -194,73 +194,79 @@
     <!-- the main map window -->
     <div id="viewDiv">
       <!-- Panel with buttons -->
-      <clacite-shell-panel slot="panel-top" display-mode="float" id="sidebar">
+      <div slot="panel-top" display-mode="float" id="sidebar">
       <!-- action bar with definition of icon -->
         <calcite-action-bar expand-disabled="false" expanded="false" id="dock-sidebar">
           <calcite-action
-            id="distanceButton"             
+            id="distanceBtn"             
             data-action-id="distance" 
             text="Mæla lengd"
             text-enabled  
-            icon="measure-line"
-            onclick="showDistance()">
+            icon="measure-line">
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Mæla lengd</calcite-tooltip>
           </calcite-action>
           <calcite-action 
-            id="areaButton"            
+            id="areaBtn"            
             data-action-id="area" 
             text-enabled  
             text="Mæla flatarmál" 
-            icon="measure-area"
-            onclick="showArea()">
+            icon="measure-area">
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Mæla flatarmál</calcite-tooltip>
           </calcite-action>
           <calcite-action 
+            id="weatherBtn"
             data-action-id="weather" 
             text="Veðurhermi" 
             text-enabled 
-            icon="partly-cloudy"
-            onclick="showWeather()">
+            icon="partly-cloudy">
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Veðurhermi</calcite-tooltip>
           </calcite-action>
           <calcite-action
+            id="daylightBtn"
             data-action-id="daylight"
             text="Dagsbirtuhermi"
             text-enabled
-            icon="brightness"
-            onclick="showDaylight()">
+            icon="brightness">
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Dagsbirtuhermi</calcite-tooltip>
           </calcite-action>
           <calcite-action 
+            id="losBtn"
             data-action-id="los"
             text="Sjónlínu" 
             text-enabled 
-            icon="line-of-sight"
-            onclick="showLos()">
+            icon="line-of-sight">
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Sjónlínutól</calcite-tooltip>
           </calcite-action>          
         </calcite-action-bar>
+      </div>
+
 
         <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
-        <calcite-panel heading="Distance" height-scale="l" data-panel-id="distance" hidden id="distance">
-          <div id="distanceWidgetContainer"></div>
-        </calcite-panel>
-        <calcite-panel heading="Area" height-scale="l" data-panel-id="area" hidden id="area">
-          <div id="areaWidgetContainer"></div>
-        </calcite-panel>
-        <calcite-panel heading="weather" height-scale="l" data-panel-id="weather" hidden>
+        <div id="distancePanel" class="floating-measure">
+          <div id="distance-container"></div>
+        </div>
+        <div id="areaPanel" class="floating-measure">
+          <div id="area-container"></div>
+        </div>
+        <div id="weatherPanel" class="floating-widget">
           <div id="weather-container"></div>
-        </calcite-panel>
-        <calcite-panel heading="Daylight" height-scale="l" data-panel-id="daylight" hidden>
+        </div>
+        <div id="daylightPanel" class="floating-widget">
           <div id="daylight-container"></div>
-        </calcite-panel>
-        <calcite-panel heading="LOS" height-scale="l" data-panel-id="los" hidden>
+        </div>
+        <div id="losPanel" class="floating-measure">
           <div id="los-container"></div>
-        </calcite-panel>
-      </calcite-shell-panel>
+        </div>
+
+
     
     </div> <!-- Div for viewDic -->
   </calcite-shell> <!-- Shell for the header, panels and map -->
 
 </body>
 </html>
+
+<!-- Div for viewDic 
+<div id="basemapsPanel" class="floating-panel">
+  <div id="basemaps-container"></div>
+  -->

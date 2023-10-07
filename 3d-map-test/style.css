@@ -136,7 +136,46 @@ calcite-loader {
   overflow: auto;
 }
 
+.floating-bookmarks {
+  position: absolute;
+  z-index: 100;
+  top: 70px;
+  right: 65px;
+  width: 280px;
+  height: auto;
+  max-height: 75%;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none; /* Initially hidden */
+  overflow: auto;
+}
 
+.floating-widget {
+  position: absolute;
+  z-index: 100;
+  top: 70px;
+  right: 65px;
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none; /* Initially hidden */
+  overflow: auto;
+}
+
+.floating-measure {
+  position: absolute;
+  z-index: 100;
+  top: 10px;
+  right: 65px;
+  width: 250px;
+  min-height: 260px;
+  max-height: fit-content;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none; /* Initially hidden */
+  overflow: auto;
+}
 
 /*.action-button {
   font-size: 16px;
@@ -153,11 +192,12 @@ calcite-loader {
   background: #0079c1;
   color: #e4e4e4;
 }
+*/
 .active {
   background: #0079c1;
   color: #e4e4e4;
 }
-*/
+
 
 /*///////////////////////*/
 /* SPLASH SCREEN*/

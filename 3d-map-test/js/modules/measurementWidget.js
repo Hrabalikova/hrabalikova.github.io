@@ -13,13 +13,15 @@ define([
 
       const distance = new DirectLineMeasurement3D({
         view: mapView,
-        container: "distanceWidgetContainer"
+        container: "distance-container"
       });
 
       const area = new AreaMeasurement3D({
         view: mapView,  // Corrected from 'view' to 'mapView'
-        container: "areaWidgetContainer"
+        container: "area-container"
       });
+
+
 
 
     }

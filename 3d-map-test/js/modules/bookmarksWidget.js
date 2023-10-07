@@ -1,26 +1,61 @@
 // Setting up the basic map widgets  like the home button, scale bar, zoom, and basemap gallery.
 define([
-    "esri/widgets/Bookmarks"
-  ], function(Bookmarks) {
+    "esri/widgets/Bookmarks",
+    "esri/widgets/Expand"
+  ], function(Bookmarks, Expand) {
     return {
       setupBookmarksWidget: function(mapView) {
-        const homeBtn = new Home({
-          view: mapView  
-        });
-  
-        mapView.ui.add(homeBtn, "top-left");
-        mapView.ui.move("zoom", "bottom-right");
-  
-        const basemaps = new BasemapGallery({
+
+        const bookmarks = new Bookmarks({
           view: mapView,
-          container: "basemaps-container"
+          // allows bookmarks to be added, edited, or deleted
+          editingEnabled: true,
+          visibleElements: {
+            time: false // don't show the time (h:m:s) next to the date
+          },
+          container: "bookmarks-container"
         });
-  
-        const layerList = new LayerList({
+
+       /* const bkExpand = new Expand({
           view: mapView,
-          selectionEnabled: true,
-          container: "layers-container"
-        }); 
+          content: bookmarks,
+          expanded: false,
+          container: "bookmarks-container"
+        });
+*/
+
+/*
+      // create bookmarks for Skagi and Hekla
+      const skagiBookmark = new Bookmark({
+        name: "Skagi",
+        viewpoint: new Viewpoint({
+          targetGeometry: skagiCenter,
+          scale: 100000
+        })
+      });
+
+      const HeklaBookmark = new Bookmark({
+        name: "Hekla",
+        viewpoint: new Viewpoint({
+          targetGeometry: heklaCenter,
+          scale: 2500
+        })
+      });
+
+      const bookmarksCollection = new Collection();
+      bookmarksCollection.addMany([skagiBookmark, heklaBookmark]);
+
+      // add a Bookmarks widget
+      const bookmarks = new Bookmarks({
+        bookmarks: bookmarksCollection,
+        view
+      });
+*/
+        
+
+
+
+
         
       },
     };
