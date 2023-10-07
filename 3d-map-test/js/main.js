@@ -11,7 +11,8 @@ require([
     "modules/weatherDaylight",
     "modules/measurementWidget",
     "modules/lineOfSightWidget",
-    "modules/splashScreen"
+    "modules/splashScreen",
+    "modules/cameraPosition"
   ], function(
     MapConfig,
     BasicWidgets,
@@ -19,17 +20,18 @@ require([
     WeatherDaylight,
     MeasurementWidget,
     LineOfSightWidget,
-    SplashScreen
+    SplashScreen,
+    CameraPosition
   ) {
     // Initialize the map, widgets, etc.
     const mapView = MapConfig.setupScene(); // Capture the returned mapView
-    BasicWidgets.setupBasicWidgets(mapView);
+    BasicWidgets.setupBasicWidgets(mapView); // <-- Pass mapView as an argument here
     BookmarksWidget.setupBookmarksWidget(mapView);
     WeatherDaylight.setupWeatherDaylight(mapView);
     MeasurementWidget.setupMeasurementWidget(mapView);
     LineOfSightWidget.setupLineOfSightWidget(mapView);
-    SplashScreen.showSplashScreen(mapView);  // <-- Pass mapView as an argument here
-  
+    SplashScreen.showSplashScreen(mapView);  
+    CameraPosition.setupCameraPosition(mapView); 
 
     let activePanel = null;
 

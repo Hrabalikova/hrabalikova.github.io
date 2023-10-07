@@ -103,7 +103,7 @@ calcite-loader {
 }
 
 /*//////////////////////////*/
-/* WIDGETS AND LAYER MENU*/
+/* WIDGETS */
 /*//////////////////////////*/
 #sidebar {
   background: #ffffff;
@@ -175,6 +175,12 @@ calcite-loader {
   border: 1px solid #ccc;
   display: none; /* Initially hidden */
   overflow: auto;
+}
+
+#head-widget {
+  margin:0.5rem; 
+  font-size: 9;
+  font-weight: 600;
 }
 
 /*.action-button {
