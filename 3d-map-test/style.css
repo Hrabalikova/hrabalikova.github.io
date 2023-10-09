@@ -20,17 +20,6 @@ calcite-loader {
 }
 
 
-/* Custom Styles */
-.custom-theme {
-  --calcite-ui-brand: #6c8b3b;
-  --calcite-ui-brand-hover: #314f03;
-  --calcite-ui-brand-press: #435427;
-  --calcite-ui-info: #566e2f;
-  --calcite-ui-text-inverse: #ffffff;
-  background-color: var(--calcite-ui-background);
-}
-
-
 /* Responsive stylling for smaller screen */
 @media (max-width: 760px) {
   .header-right {
@@ -110,7 +99,8 @@ calcite-loader {
   padding: 1px;
 }
 
-.floating-panel {
+/*Style for panels with widgets*/ 
+.floating-panel { /*Basemaps*/
   position: absolute;
   z-index: 100;
   top: 70px;
@@ -123,7 +113,7 @@ calcite-loader {
   overflow: auto;
 }
 
-.floating-list {
+.floating-list { /*Layer list*/
   position: absolute;
   z-index: 100;
   top: 70px;
@@ -177,7 +167,7 @@ calcite-loader {
   overflow: auto;
 }
 
-#head-widget {
+#head-widget { /*add heading to widgets without it*/
   margin:0.5rem; 
   font-size: 9;
   font-weight: 600;
@@ -196,26 +186,58 @@ calcite-loader {
   overflow: auto;
 }
 
-/*.action-button {
-  font-size: 16px;
-  background-color: transparent;
-  border: 1px solid #d3d3d3;
-  color: #6e6e6e;
-  height: 32px;
-  width: 32px;
+/*///////////////////////*/
+/* Slides alias bookmarks*/
+/*//////////////////////*/
+/* Keep the create slide bar at the top */
+#createSlideDiv {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  opacity: 0.9;
+  color: black;
+  padding: 6px;
+  z-index: 1;
+}
+
+/* Style for the slides container */
+#slidesPanel >  #slidesDiv { 
+  background-color: white;
+  opacity: 0.9;
+  color: black;
+  padding: 10px;
+  visibility: hidden;
+  bottom: 20px;
+  overflow-y: auto;
   text-align: center;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  /*height: 260px;*/
+  display: flex;  
+  flex-direction: column;  
+  align-items: flex-start;  
 }
-.action-button:hover,
-.action-button:focus {
-  background: #0079c1;
-  color: #e4e4e4;
+
+#slidesDiv .slide {
+  /* Show cursor as pointer when on a slide */
+  cursor: pointer;
+  margin-bottom: 6px;
+  display: flex;  
+  align-items: center;  
 }
-*/
-.active {
-  background: #0079c1;
-  color: #e4e4e4;
+
+#slidesDiv .slide .title {
+  /* Center the title text */
+  margin-left: 10px; 
 }
+/* Draw active slide with a nice border around the thumbnail */
+
+#slidesDiv .slide.active img {
+  box-shadow: 0px 0px 12px black;
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+}
+
+
 
 
 /*///////////////////////*/

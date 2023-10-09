@@ -171,8 +171,17 @@
       <div id="layersPanel" class="floating-list">
         <div id="layers-container"></div>
       </div>
-      <div id="bookmarksPanel" class="floating-bookmarks">
-        <div id="bookmarks-container"></div>
+      <!-- Floating Panel for Slides -->
+      <div id="slidesPanel" class="floating-widget">
+<!--        <div id="slides-container">-->
+          <div id="createSlideDiv" class="esri-widget">
+            New slide: <input type="text" id="createSlideTitleInput" size="10" />
+            <button id="createSlideButton">Create</button>
+          </div>
+<!--        </div>-->
+           <!-- Container for slides -->
+          <div id="slidesDiv" class="esri-widget"></div>
+
       </div>
     </header>
 
@@ -181,11 +190,11 @@
       <!-- Panel with buttons -->
       <div slot="panel-top" display-mode="float" id="sidebar">
       <!-- action bar with definition of icon -->
-          <calcite-action-bar id="dock-sidebar" expand-disabled="true" expanded="false" >
-            <calcite-action 
+        <calcite-action-bar id="dock-sidebar" expand-disabled="true" expanded="false" >
+          <calcite-action 
             id="searchBtn"            
             data-action-id="search" 
-            text="Search" 
+            text="Leita" 
             text-enabled  
             icon="search">
             <calcite-tooltip slot="tooltip" placement="left">Search</calcite-tooltip>
@@ -232,34 +241,28 @@
           </calcite-action>    
         </calcite-action-bar>
       </div>
-
-        <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
-        <div id="searchPanel" class="floating-search">
-          <div id="search-container"></div>
-        </div>
-        <div id="distancePanel" class="floating-measure">
-          <div id="distance-container">
-            <h6 id="head-widget">Measure distance</h6></div>
-        </div>
-        <div id="areaPanel" class="floating-measure">
-          <div id="area-container">
-            <h6 id="head-widget">Measure area</h6></div>
-          </div>
-        </div>
-        <div id="weatherPanel" class="floating-widget">
-          <div id="weather-container"></div>
-        </div>
-        <div id="daylightPanel" class="floating-widget">
-          <div id="daylight-container"></div>
-        </div>
-        <div id="losPanel" class="floating-measure">
-          <div id="los-container">
-            <h6 id="head-widget">Line of Sight</h6></div>
-        </div>
-      <!-- camera position 
-      <div id="cameraPosition" style="position: absolute; bottom: 18px; left: 10px; background-color: rgba(255, 255, 255, 0.7); padding: 5px; border-radius: 5px;">
-        Camera Z: <span id="cameraZ"></span>
-      </div> -->
+      <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
+      <div id="searchPanel" class="floating-search">
+        <div id="search-container"></div>
+      </div>
+      <div id="distancePanel" class="floating-measure">
+        <div id="distance-container">
+          <h6 id="head-widget">Measure distance</h6></div>
+      </div>
+      <div id="areaPanel" class="floating-measure">
+        <div id="area-container">
+          <h6 id="head-widget">Measure area</h6></div>
+      </div>
+      <div id="weatherPanel" class="floating-widget">
+        <div id="weather-container"></div>
+      </div>
+      <div id="daylightPanel" class="floating-widget">
+        <div id="daylight-container"></div>
+      </div>
+      <div id="losPanel" class="floating-measure">
+        <div id="los-container">
+          <h6 id="head-widget">Line of Sight</h6></div>
+      </div>
     </div> <!-- Div for viewDiv -->
   </calcite-shell> <!-- Shell for the header, panels and map -->
 

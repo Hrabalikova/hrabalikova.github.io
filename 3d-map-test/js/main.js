@@ -7,7 +7,7 @@
 require([
     "modules/mapConfig",
     "modules/basicWidgets",
-    "modules/bookmarksWidget",
+    "modules/slidesWidget",
     "modules/weatherDaylight",
     "modules/measurementWidget",
     "modules/lineOfSightWidget",
@@ -16,7 +16,7 @@ require([
   ], function(
     MapConfig,
     BasicWidgets,
-    BookmarksWidget,
+    SlidesWidget,
     WeatherDaylight,
     MeasurementWidget,
     LineOfSightWidget,
@@ -26,7 +26,7 @@ require([
     // Initialize the map, widgets, etc.
     const mapView = MapConfig.setupScene(); // Capture the returned mapView
     BasicWidgets.setupBasicWidgets(mapView); // <-- Pass mapView as an argument here
-    BookmarksWidget.setupBookmarksWidget(mapView);
+    SlidesWidget.setupSlidesWidget(mapView);
     WeatherDaylight.setupWeatherDaylight(mapView);
     MeasurementWidget.setupMeasurementWidget(mapView);
     LineOfSightWidget.setupLineOfSightWidget(mapView);
@@ -44,7 +44,7 @@ require([
     });
     
     document.getElementById("bookmarksBtn").addEventListener("click", function() {
-      togglePanel("bookmarksPanel");
+      togglePanel("slidesPanel");
     });
 
     document.getElementById("searchBtn").addEventListener("click", function() {
@@ -71,8 +71,10 @@ require([
         togglePanel("losPanel");
     });
 
-    // Add other button event listeners here
-    
+    // Add other button event listeners here....
+
+
+
     function togglePanel(panelId) {
       if (activePanel) {
         document.getElementById(activePanel).style.display = "none";
@@ -85,5 +87,7 @@ require([
         activePanel = null;
       }
     }
+
+
 
 });

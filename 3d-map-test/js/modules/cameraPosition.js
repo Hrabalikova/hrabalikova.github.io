@@ -1,4 +1,4 @@
-// Setting up the basic map widgets  like the home button, scale bar, zoom, and basemap gallery.
+// Setting up the camera info.
 define([
     "esri/Camera",
     "esri/widgets/Expand",
