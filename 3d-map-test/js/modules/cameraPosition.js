@@ -51,14 +51,21 @@ define([
                     const terrainHeight = result.geometry.z;
                     const elevationError = 0; // Elevation error in meters
                     const heightAboveTerrain = camera.position.z - terrainHeight - elevationError;
-                    zElement.innerHTML = `Height above terrain: ${heightAboveTerrain.toFixed(2)} meters`;
+                    //const minimumHeightAboveTerrain = terrainHeight + elevationError;
+                    const tiltAngle = camera.tilt;  // Tilt angle in degrees
+                    zElement.innerHTML = `Height above terrain: ${heightAboveTerrain.toFixed(2)} meters<br>Tilt angle: ${tiltAngle.toFixed(2)} degrees`;
                 });
 
-
+                /*if (camera.position.z < minimumHeightAboveTerrain) {
+                    // Adjust the camera's Z-coordinate to be above the ground
+                    mapView.goTo({
+                        position: {
+                            z: minimumHeightAboveTerrain
+                        }
+                    });
+                }*/
 
         });
-
-
 
 
         

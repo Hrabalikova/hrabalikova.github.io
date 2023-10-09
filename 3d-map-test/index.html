@@ -181,7 +181,15 @@
       <!-- Panel with buttons -->
       <div slot="panel-top" display-mode="float" id="sidebar">
       <!-- action bar with definition of icon -->
-        <calcite-action-bar id="dock-sidebar" expand-disabled="true" expanded="false" >
+          <calcite-action-bar id="dock-sidebar" expand-disabled="true" expanded="false" >
+            <calcite-action 
+            id="searchBtn"            
+            data-action-id="search" 
+            text="Search" 
+            text-enabled  
+            icon="search">
+            <calcite-tooltip slot="tooltip" placement="left">Search</calcite-tooltip>
+          </calcite-action>  
           <calcite-action
             id="distanceBtn"             
             data-action-id="distance" 
@@ -221,11 +229,14 @@
             text-enabled 
             icon="line-of-sight">
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Sjónlínutól</calcite-tooltip>
-          </calcite-action>          
+          </calcite-action>    
         </calcite-action-bar>
       </div>
 
         <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
+        <div id="searchPanel" class="floating-search">
+          <div id="search-container"></div>
+        </div>
         <div id="distancePanel" class="floating-measure">
           <div id="distance-container">
             <h6 id="head-widget">Measure distance</h6></div>
@@ -245,7 +256,6 @@
           <div id="los-container">
             <h6 id="head-widget">Line of Sight</h6></div>
         </div>
-    
       <!-- camera position 
       <div id="cameraPosition" style="position: absolute; bottom: 18px; left: 10px; background-color: rgba(255, 255, 255, 0.7); padding: 5px; border-radius: 5px;">
         Camera Z: <span id="cameraZ"></span>

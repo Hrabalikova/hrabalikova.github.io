@@ -2,8 +2,9 @@
 define([
   "esri/widgets/Home",
   "esri/widgets/BasemapGallery",
-  "esri/widgets/LayerList"
-], function(Home, BasemapGallery, LayerList) {
+  "esri/widgets/LayerList",
+  "esri/widgets/Search",
+], function(Home, BasemapGallery, LayerList, Search) {
   return {
     setupBasicWidgets: function(mapView) {
       const homeBtn = new Home({
@@ -11,7 +12,7 @@ define([
       });
 
       mapView.ui.add(homeBtn, "top-left");
-      mapView.ui.move("zoom", "bottom-right");
+      mapView.ui.move("zoom", "bottom-right"); //top-left
 
       const basemaps = new BasemapGallery({
         view: mapView,
@@ -23,6 +24,16 @@ define([
         selectionEnabled: true,
         container: "layers-container"
       }); 
+
+
+      // Initialize the Search widget
+      const search = new Search({
+        view: mapView,
+        container: "search-container"
+      });
+
+    
+      
       
     },
   };

@@ -183,6 +183,19 @@ calcite-loader {
   font-weight: 600;
 }
 
+.floating-search {
+  position: absolute;
+  z-index: 100;
+  top: 10px;
+  right: 65px;
+  width: fit-content;
+  min-height: 150px;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none; /* Initially hidden */
+  overflow: auto;
+}
+
 /*.action-button {
   font-size: 16px;
   background-color: transparent;

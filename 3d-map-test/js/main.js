@@ -47,6 +47,10 @@ require([
       togglePanel("bookmarksPanel");
     });
 
+    document.getElementById("searchBtn").addEventListener("click", function() {
+      togglePanel("searchPanel");
+    });  
+    
     document.getElementById("distanceBtn").addEventListener("click", function() {
         togglePanel("distancePanel");
       });
@@ -66,7 +70,6 @@ require([
     document.getElementById("losBtn").addEventListener("click", function() {
         togglePanel("losPanel");
     });
-
 
     // Add other button event listeners here
     
