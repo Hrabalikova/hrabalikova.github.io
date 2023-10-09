@@ -1,4 +1,4 @@
-// mapConfig.js
+// mapConfig.js  Define the webScene and setting the environment
 
 define([
   "esri/WebScene",

@@ -1,8 +1,3 @@
-// Global variables
-//let activeWidget;
-//let actionBarExpanded = false;
-
-
 // main.js
 require([
     "modules/mapConfig",
@@ -25,7 +20,7 @@ require([
   ) {
     // Initialize the map, widgets, etc.
     const mapView = MapConfig.setupScene(); // Capture the returned mapView
-    BasicWidgets.setupBasicWidgets(mapView); // <-- Pass mapView as an argument here
+    BasicWidgets.setupBasicWidgets(mapView); // <-- I have to pass mapView as an argument here
     SlidesWidget.setupSlidesWidget(mapView);
     WeatherDaylight.setupWeatherDaylight(mapView);
     MeasurementWidget.setupMeasurementWidget(mapView);
