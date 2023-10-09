@@ -82,8 +82,19 @@ require([
     });
 
     // Add other button event listeners here....
+//////
+    //Call loadSlideById in main.js
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const sharedSlideId = urlParams.get('slideId');
+      
+      if (sharedSlideId) {
+        // Load the slide based on the sharedSlideId
+        SlidesWidget.loadSlideById(sharedSlideId);  // assuming SlidesWidget is imported
+      }
+    });
 
-
+/////
 
     function togglePanel(panelId) {
       if (activePanel) {

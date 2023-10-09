@@ -84,7 +84,7 @@ define([
             // Apply the slide's settings to the SceneView
             slide.applyTo(mapView);
             });
-        }
+        } //end of the function
 
         // Initialize slides when the view is ready
         mapView.when(() => {
@@ -113,7 +113,18 @@ define([
             });
         });
 
+////start
+        function loadSlideById(slideId) {
+            const slide = scene.presentation.slides.find(s => s.id === slideId);
+            if (slide) {
+              slide.applyTo(mapView);
+            }
+          };
+    ////  end    
+
         
-      },
-    };
+      }, //end of the setup function 
+////
+      loadSlideById: loadSlideById  // expose this function so that it can be called from main.js.
+    }; //end of return
   });
