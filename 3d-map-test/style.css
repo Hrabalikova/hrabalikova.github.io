@@ -237,6 +237,14 @@ calcite-loader {
   border-color: black;
 }
 
+/* Style for delete button */
+.delete-slide-button {
+  margin-left: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
 
 

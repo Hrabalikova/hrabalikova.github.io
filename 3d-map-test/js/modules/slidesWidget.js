@@ -15,7 +15,7 @@ define([
             slideElement.id = slide.id;
             slideElement.classList.add("slide");
 
-            // Get the slides-container container and insert the new slide element
+            // Get the slidesDiv container and insert the new slide element
             const slidesDiv = document.getElementById("slidesDiv"); //tady jsem to zmenila ze slidesDiv
             if (placement === "first") {
             slidesDiv.insertBefore(slideElement, slidesDiv.firstChild);
@@ -34,6 +34,21 @@ define([
             title.innerText = slide.title.text;
             title.className = "title";  // Add this line to assign a class to the title
             slideElement.appendChild(title);  // Append the title second
+
+            // Create a delete button element for the slide
+            const deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+            deleteButton.className = "delete-slide-button";  // Add this line to assign a class to the button
+            slideElement.appendChild(deleteButton);
+
+            // Add click event listener to the delete button
+            deleteButton.addEventListener("click", (e) => {
+                e.stopPropagation();  // Prevent triggering the slide's click event
+                // Remove the slide from the scene presentation
+                scene.presentation.slides.remove(slide);
+                // Remove the slide element from the UI
+                slideElement.remove();
+            });
 
 
             // Add click event listener to the slide element
