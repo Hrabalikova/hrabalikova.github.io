@@ -28,12 +28,6 @@
   <script src="https://js.arcgis.com/4.27/"></script>
   <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
 
-  <!-- Calcite Maps Bootstrap -->
-  <!--<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-bootstrap.min-v0.10.css">-->
-
-  <!-- Calcite Maps -->
-  <!--<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.10.css">-->
- 
 
   <!-- additional styles-->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -132,7 +126,7 @@
           </calcite-action>
           <calcite-action 
             id="bookmarksBtn"  
-            data-action-id="bookmarks" 
+            data-action-id="slides" 
             text="Bókamerki" 
             text-enabled 
             icon="bookmark" >
@@ -171,17 +165,14 @@
       <div id="layersPanel" class="floating-list">
         <div id="layers-container"></div>
       </div>
-      <!-- Floating Panel for Slides -->
+      <!-- Floating Panel for Slides/bookmarks -->
       <div id="slidesPanel" class="floating-widget">
-<!--        <div id="slides-container">-->
           <div id="createSlideDiv" class="esri-widget">
             New slide: <input type="text" id="createSlideTitleInput" size="10" />
             <button id="createSlideButton">Create</button>
           </div>
-<!--        </div>-->
            <!-- Container for slides -->
           <div id="slidesDiv" class="esri-widget"></div>
-
       </div>
     </header>
 
