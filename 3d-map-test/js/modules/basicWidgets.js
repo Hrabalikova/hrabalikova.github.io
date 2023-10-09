@@ -12,7 +12,7 @@ define([
       });
 
       mapView.ui.add(homeBtn, "top-left");
-      mapView.ui.move("zoom", "bottom-right"); //top-left
+      mapView.ui.move("zoom", "top-left"); //bottom-right
 
       const basemaps = new BasemapGallery({
         view: mapView,

@@ -12,7 +12,7 @@ define([
         zElement.id = "cameraZ";
         zElement.style.position = "absolute";
         zElement.style.bottom = "20px";
-        zElement.style.left = "20px";
+        zElement.style.right = "60px"; //left = "20px"
         zElement.style.backgroundColor = "#fff";
         zElement.style.padding = "10px";
         zElement.style.zIndex = "1000";
