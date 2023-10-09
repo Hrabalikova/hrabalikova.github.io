@@ -131,7 +131,7 @@ calcite-loader {
   z-index: 100;
   top: 70px;
   right: 65px;
-  width: 280px;
+  width: fit-content;
   height: auto;
   max-height: 75%;
   background-color: white;
