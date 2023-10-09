@@ -1,4 +1,19 @@
 // main.js
+// At the top of your main.js file
+document.addEventListener("DOMContentLoaded", function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const sharedSlideId = urlParams.get('slideId');
+  
+  if (sharedSlideId) {
+    // Load the slide based on the sharedSlideId
+    // You'll need to implement this function
+    loadSlideById(sharedSlideId);
+  }
+});
+
+
+
+
 require([
     "modules/mapConfig",
     "modules/basicWidgets",
