@@ -50,26 +50,6 @@ define([
                 slideElement.remove();
             });
 
-            // start of the the code for generating share link
-            // New code for creating Share button
-            const shareButton = document.createElement("button");
-            shareButton.innerText = "Share";
-            shareButton.addEventListener("click", function() {
-            // Logic to generate and share the link
-            const shareLink = generateShareLink(slide); // Implement this function
-            alert(`Share this link: ${shareLink}`);
-            });
-            slideElement.appendChild(shareButton);
-
-
-            function generateShareLink(slideId) {
-                const baseUrl = window.location.origin + window.location.pathname;
-                const newUrl = new URL(baseUrl);
-                newUrl.searchParams.append('slideId', slideId);
-                return newUrl.toString();
-            }
-// end of the code for generating share link 
-
             // Add click event listener to the slide element
             slideElement.addEventListener("click", () => {
             // Remove "active" class from all slides
@@ -113,18 +93,7 @@ define([
             });
         });
 
-////start
-        function loadSlideById(slideId) {
-            const slide = scene.presentation.slides.find(s => s.id === slideId);
-            if (slide) {
-              slide.applyTo(mapView);
-            }
-          };
-    ////  end    
 
-        
       }, //end of the setup function 
-////
-      loadSlideById: loadSlideById  // expose this function so that it can be called from main.js.
     }; //end of return
   });

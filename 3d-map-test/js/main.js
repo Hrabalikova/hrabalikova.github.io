@@ -1,18 +1,4 @@
 // main.js
-// At the top of your main.js file
-document.addEventListener("DOMContentLoaded", function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const sharedSlideId = urlParams.get('slideId');
-  
-  if (sharedSlideId) {
-    // Load the slide based on the sharedSlideId
-    // You'll need to implement this function
-    loadSlideById(sharedSlideId);
-  }
-});
-
-
-
 
 require([
     "modules/mapConfig",
@@ -82,19 +68,7 @@ require([
     });
 
     // Add other button event listeners here....
-//////
-    //Call loadSlideById in main.js
-    document.addEventListener("DOMContentLoaded", function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const sharedSlideId = urlParams.get('slideId');
-      
-      if (sharedSlideId) {
-        // Load the slide based on the sharedSlideId
-        SlidesWidget.loadSlideById(sharedSlideId);  // assuming SlidesWidget is imported
-      }
-    });
 
-/////
 
     function togglePanel(panelId) {
       if (activePanel) {
@@ -111,4 +85,4 @@ require([
 
 
 
-});
+}); //end of the function
