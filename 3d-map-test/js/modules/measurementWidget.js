@@ -10,7 +10,6 @@ define([
 ], function(DirectLineMeasurement3D, AreaMeasurement3D, promiseUtils) {
   return {
     setupMeasurementWidget: function(mapView) {
-      let activeWidget=null;
 
       const distance = new DirectLineMeasurement3D({
         view: mapView,
@@ -18,13 +17,11 @@ define([
       });
 
       const area = new AreaMeasurement3D({
-        view: mapView,  // Corrected from 'view' to 'mapView'
+        view: mapView,  
         container: "area-container"
       });
 
 
-
-
     }
   };
-});
+});//the end of measurementWidgets.js
