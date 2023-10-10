@@ -53,7 +53,7 @@ define([
                     const heightAboveTerrain = camera.position.z - terrainHeight - elevationError;
                     //const minimumHeightAboveTerrain = terrainHeight + elevationError;
                     const tiltAngle = camera.tilt;  // Tilt angle in degrees
-                    zElement.innerHTML = `Hæð yfir landslagi:: ${heightAboveTerrain.toFixed(2)} metrar<br>Hallahorn: ${tiltAngle.toFixed(2)} gráður`;
+                    zElement.innerHTML = `Hæð yfir landslagi: ${heightAboveTerrain.toFixed(2)} metrar<br>Hallahorn: ${tiltAngle.toFixed(2)} gráður`;
                 });
 
                 /*if (camera.position.z < minimumHeightAboveTerrain) {
