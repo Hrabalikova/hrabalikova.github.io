@@ -95,27 +95,7 @@ define([
           });
         }
 
-        mapView.when(() => {
-          // allow user to turn the layer with new planned buildings on/off
-          // and see how the line of sight analysis changes
-          const plannedBuildingsLayer = mapView.map.layers //tady bylo puvodne jen view nejsem si uplne jista jestli jsem to zmenila spravne
-            .filter((layer) => {
-              return (
-                layer.title === "Visbility Analysis"
-              );
-            })
-            .getItemAt(0);
-          });
-
-
-
-
-
-
-
-
-
-      }
+      } //end
     };
   });
   
