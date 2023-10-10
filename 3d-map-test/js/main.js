@@ -46,7 +46,8 @@ require([
     document.getElementById("searchBtn").addEventListener("click", function() {
       togglePanel("searchPanel");
     });  
-    
+
+/* event listener is set up directly in the module, doesnt work it well with switching between different buttons, small issue that needs to be addressed later
     document.getElementById("distanceBtn").addEventListener("click", function() {
         togglePanel("distancePanel");
       });
@@ -54,7 +55,7 @@ require([
     document.getElementById("areaBtn").addEventListener("click", function() {
         togglePanel("areaPanel");
     });
-
+*/
     document.getElementById("weatherBtn").addEventListener("click", function() {
         togglePanel("weatherPanel");
       });
@@ -66,6 +67,10 @@ require([
     document.getElementById("losBtn").addEventListener("click", function() {
         togglePanel("losPanel");
     });
+
+
+
+
 
     // Add other button event listeners here....
 
@@ -83,6 +88,7 @@ require([
       }
     }
 
+/*   mapView.ui.add("sidebar", "top-right"); */
 
 
 }); //end of the function

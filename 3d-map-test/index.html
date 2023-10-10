@@ -58,8 +58,8 @@
       <!-- ... -->
       <h4 class="modal-guide-title">Leiðbeiningar</h4>
       <p class="modal-guide">
-        <!--Leiðbeiningar (á Íslensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a><br />-->
-        Leiðbeiningar (á Ensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a>
+        Leiðbeiningar (á Íslensku): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Ýttu hér</a><br />
+        User Guide (in English): <a href="https://ftp.lmi.is/.stm/michaela/ramma/guides/Kortasj%C3%A1%20Ramma%20-%20user%20guide_3D.pdf" class="modal-link" target="_blank">Click here</a>
       </p>  
       <!-- ... -->     
       <h4 class="modal-guide-title">Viðbótarupplýsingar:</h4>
@@ -199,7 +199,8 @@
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Mæla lengd</calcite-tooltip>
           </calcite-action>
           <calcite-action 
-            id="areaBtn"            
+            id="areaBtn"
+            heading="Area"            
             data-action-id="area" 
             text-enabled  
             text="Mæla flatarmál" 
@@ -231,11 +232,12 @@
             <calcite-tooltip slot="tooltip" reference-element="info-action" overlay-positioning="fixed" placement="left">Sjónlínutól</calcite-tooltip>
           </calcite-action>    
         </calcite-action-bar>
-      </div>
+      </div> 
       <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
-      <div id="searchPanel" class="floating-search">
+       <div id="searchPanel" class="floating-search">
         <div id="search-container"></div>
       </div>
+<!-- defined in the js module, have got issue with clearing measurements.
       <div id="distancePanel" class="floating-measure">
         <div id="distance-container">
           <h6 id="head-widget">Measure distance</h6>
@@ -246,6 +248,7 @@
           <h6 id="head-widget">Measure area</h6>
         </div>
       </div>
+    -->
       <div id="weatherPanel" class="floating-widget">
         <div id="weather-container"></div>
       </div>
@@ -256,8 +259,13 @@
         <div id="los-container">
           <h6 id="head-widget">Line of Sight</h6></div>
       </div>
+
+
+
     </div> <!-- Div for viewDiv -->
   </calcite-shell> <!-- Shell for the header, panels and map -->
 
 </body>
 </html>
+
+
