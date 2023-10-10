@@ -31,12 +31,12 @@ define([
         });
 
         // Listen to camera changes
-      mapView.watch("camera", function(camera) {
-            const cameraPoint = new Point({
-                x: camera.position.x,
-                y: camera.position.y,
-                spatialReference: mapView.spatialReference
-            });
+        mapView.watch("camera", function(camera) {
+                const cameraPoint = new Point({
+                    x: camera.position.x,
+                    y: camera.position.y,
+                    spatialReference: mapView.spatialReference
+                });
 
             // Query elevation without elevation error correction
 /*            elevationLayer.queryElevation(cameraPoint).then(function(result){
