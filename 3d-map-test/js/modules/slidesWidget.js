@@ -37,7 +37,7 @@ define([
 
             // Create a delete button element for the slide
             const deleteButton = document.createElement("button");
-            deleteButton.innerText = "Delete";
+            deleteButton.innerHTML = "&#128465";// text ="Delete";
             deleteButton.className = "delete-slide-button";  // Add this line to assign a class to the button
             slideElement.appendChild(deleteButton);
 

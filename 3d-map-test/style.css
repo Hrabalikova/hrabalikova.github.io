@@ -240,13 +240,32 @@ calcite-loader {
 /* Style for delete button */
 .delete-slide-button {
   margin-left: 10px;
-  background-color: red;
-  color: white;
-  border: none;
+  background-color: rgba(97, 95, 95, 0);
+  border-style: solid;
+  border-width: thin;
+  border-color: rgb(188, 185, 185);
+  color: rgb(0, 0, 0);
+  /*border: none;*/
   cursor: pointer;
+  width: 30px;  /* Change this to suit your needs */
+  height: 30px;  
+  font-size: 20px;
+  align-items: center;
 }
 
-
+.delete-slide-button:hover{
+  margin-left: 10px;
+  background-color: rgb(146, 6, 6);
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+  color: rgb(246, 244, 244);
+  cursor: pointer;
+  width: 30px;  
+  height: 30px;  
+  font-size: 20px;
+  align-items: center;
+}
 
 /*///////////////////////*/
 /* SPLASH SCREEN*/

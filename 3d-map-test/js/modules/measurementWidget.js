@@ -14,7 +14,8 @@ define([
 
       let activeWidget = null;
 
-/*      const distance = new DirectLineMeasurement3D({
+/*
+      const distance = new DirectLineMeasurement3D({
         view: mapView,
         container: "distance-container"
       });
@@ -51,8 +52,8 @@ function setActiveWidget(type) {
 switch (type) {
   case "distance":
     activeWidget = new DirectLineMeasurement3D({
-      view: mapView,
-     // container: "distance-container"
+      view: mapView,      
+      container: "distance-container"
     });
 
     // skip the initial 'new measurement' button
@@ -71,7 +72,7 @@ switch (type) {
   case "area":
     activeWidget = new AreaMeasurement3D({
       view: mapView,
-      //container:"area-container"
+      container:"area-container"
     });
 
     // skip the initial 'new measurement' button

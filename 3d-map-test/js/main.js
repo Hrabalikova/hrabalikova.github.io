@@ -1,3 +1,6 @@
+/***********************************
+* The main script runnig all the modules
+***********************************/
 // main.js
 
 require([
@@ -47,7 +50,9 @@ require([
       togglePanel("searchPanel");
     });  
 
-/* event listener is set up directly in the module, doesnt work it well with switching between different buttons, small issue that needs to be addressed later
+// event listener is set up directly in the module, doesnt work it well with switching between different buttons, small issue that needs to be addressed later
+// problematic part
+/*
     document.getElementById("distanceBtn").addEventListener("click", function() {
         togglePanel("distancePanel");
       });
@@ -72,9 +77,7 @@ require([
 
 
 
-    // Add other button event listeners here....
-
-
+    // Toggle pannels, except that problematic measurements buttons
     function togglePanel(panelId) {
       if (activePanel) {
         document.getElementById(activePanel).style.display = "none";
@@ -88,7 +91,7 @@ require([
       }
     }
 
-/*   mapView.ui.add("sidebar", "top-right"); */
+//   mapView.ui.add("sidebar", "top-right");  //In the case I want that bar floating in the map window, but then again I get trouble with the measurment bar
 
 
 }); //end of the function
