@@ -1,8 +1,9 @@
 // Setting up the slides alias bookmarks.
 define([
     "esri/webscene/Slide",
-    "esri/WebScene" // Import WebScene if needed
-  ], function(Slide, WebScene) {
+    "esri/WebScene", // Import WebScene if needed
+    "esri/Camera"
+  ], function(Slide, WebScene, Camera) {
     return {
         setupSlidesWidget: function(mapView) {
         // Access the scene object via mapView.map
@@ -63,6 +64,16 @@ define([
 
             // Apply the slide's settings to the SceneView
             slide.applyTo(mapView);
+ 
+ //added this to capture viewpoint
+            // Capture the viewpoint
+            const viewpoint = mapView.viewpoint.clone();
+
+            // Generate URL
+            const url = generateURL(viewpoint);
+            console.log("Generated URL: ", url);
+// end of new adds
+
             });
         } //end of the function
 
@@ -92,6 +103,20 @@ define([
             });
             });
         });
+
+       //added this function to generate URL and see in the log console, later we will add it as button                 
+          function generateURL(viewpoint) {
+            const x = viewpoint.camera.position.x;
+            const y = viewpoint.camera.position.y;
+            const z = viewpoint.camera.position.z;
+            const tilt = viewpoint.camera.tilt;
+            const heading = viewpoint.camera.heading;
+         
+            const baseURL = window.location.href.split('?')[0];  // Removes existing query parameters
+           // const spatialReference = viewpoint.camera.position.spatialReference.wkid;
+            const fullURL = `${baseURL}?x=${x}&y=${y}&z=${z}&tilt=${tilt}&heading=${heading}`;
+            return fullURL;
+            };
 
 
       }, //end of the setup function 

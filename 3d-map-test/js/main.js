@@ -29,7 +29,7 @@ require([
     WeatherDaylight.setupWeatherDaylight(mapView);
     MeasurementWidget.setupMeasurementWidget(mapView);
     LineOfSightWidget.setupLineOfSightWidget(mapView);
-    SplashScreen.showSplashScreen(mapView);  
+  //  SplashScreen.showSplashScreen(mapView);  
     CameraPosition.setupCameraPosition(mapView); 
 
     let activePanel = null;
@@ -92,6 +92,11 @@ require([
     }
 
 //   mapView.ui.add("sidebar", "top-right");  //In the case I want that bar floating in the map window, but then again I get trouble with the measurment bar
+
+
+
+
+
 
 
 }); //end of the function
