@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the team</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px; /* Full height */
+            width: 100%;   /* Full width */
+        }
+    </style>
+</head>
+<body>
+   <!-- <h1>Enhanced Web Map</h1>-->
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map', {
+            center: [64.9631, 9.0208], // Centered on the Nordic Region
+            zoom: 4,                     // Initial zoom level
+            zoomControl: false           // Disable default zoom control to reposition later
+        });
+
+        // Add a tile layer (OpenStreetMap)
+        var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Add a satellite tile layer (ESRI)
+        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles © Esri'
+        });
+
+        // Add markers for team members
+        var customIcon = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png', // Default Leaflet marker
+            iconSize: [25, 41], // Size of the icon
+            iconAnchor: [12, 41], // Anchor point
+            popupAnchor: [0, -41] // Popup offset
+        });
+
+        // Marker for Pavla with popup automatically opened
+        var pavlaMarker = L.marker([64.1386, -21.7669], { icon: customIcon }).addTo(map)
+            .bindPopup('<b>Pavla Dagsson-Waldhauserova</b><br>Agricultural University of Iceland<br><a href="mailto:firstname@lbhi.is">firstname@lbhi.is</a>')
+            .openPopup();
+
+        // Other team members
+        var teamLocations = [
+            { coords: [60.2039, 24.9607], info: '<b>Outi Meinander</b><br>Finnish Meteorological Institute' },
+            { coords: [55.6968, 12.5715], info: '<b>Alexander Baklanov</b><br>University of Copenhagen' },
+            { coords: [55.7213, 12.5429], info: '<b>Christian Juncher Jørgensen</b><br><b>Andreas Massling</b><br>Aarhus University' },
+            { coords: [59.9754, 11.0527], info: '<b>Christine Groot Zwaaftink</b><br>Norwegian Institute for Air research (NILU)' },
+            { coords: [55.7121, 13.2034], info: '<b>Adam Kristensson</b><br>University of Lund' }
+        ];
+
+        teamLocations.forEach(function(location) {
+            L.marker(location.coords, { icon: customIcon }).addTo(map)
+                .bindPopup(location.info);
+        });
+
+        // Add a scale bar
+        L.control.scale().addTo(map);
+
+        // Add zoom control to the top-right corner
+        L.control.zoom({
+            position: 'topright'
+        }).addTo(map);
+
+        // Add layer control for base maps
+        var baseMaps = {
+            "OpenStreetMap": osmLayer,
+            "Satellite": satelliteLayer
+        };
+
+        L.control.layers(baseMaps).addTo(map);
+
+        // Add click event to show coordinates
+        //map.on('click', function(e) {
+        //    alert("You clicked the map at " + e.latlng.toString());
+        //});
+    </script>
+</body>
+</html>

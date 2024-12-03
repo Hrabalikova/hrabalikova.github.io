@@ -1,0 +1,157 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Agricultural University of Iceland",
+                "acronym": "LBHÍ",
+                "description": "Landbúnaðarháskóli Íslands",
+                "country": "Iceland",
+                "members": [
+                    {
+                        "name": "Ólafur Arnalds",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Pavla Dagsson-Waldhauserova",
+                        "role": "President of the IceDust Association, Board Member of the EAA",
+                        "email": "pavla@lbhi.is"
+                    },
+                    {
+                        "name": "Sigmundur Helgi Brink",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Agnes Ösp Magnúsdóttir",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Fanney Ósk Gísladóttir",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Maria Rún Þrándardóttir",
+                        "role": "Dust Research Group"
+                    }
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-21.7669, 64.1386]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "University of Iceland",
+                "acronym": "HÍ",
+                "description": "Háskóli Íslands",
+                "country": "Iceland",
+                "members": [
+                    {
+                        "name": "Pavla Dagsson-Waldhauserova",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Haraldur Ólafsson",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Þröstur Þorsteinsson",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Lea María Lemarquis",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Brian Barr",
+                        "role": "Dust Research Group"
+                    },
+                    {
+                        "name": "Monika Wittmann (Dragosics)",
+                        "role": "Researcher"
+                    }
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-21.9333, 64.1355]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Finnish Meteorological Institute",
+                "acronym": "FMI",
+                "description": "Meteorological studies in Finland",
+                "country": "Finland",
+                "members": [
+                    {
+                        "name": "Outi Meinander",
+                        "role": "Vice-President of IceDust Association, Board Member of the EAA"
+                    },
+                    {
+                        "name": "Markku Kulmala",
+                        "role": "Researcher"
+                    },
+                    {
+                        "name": "Aki Virkkula",
+                        "role": "Researcher"
+                    },
+                    {
+                        "name": "Arslan Ali Nadir",
+                        "role": "Researcher"
+                    }
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [24.9500, 60.1708]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "University of Copenhagen",
+                "acronym": "UC",
+                "description": "Danish higher education institution",
+                "country": "Denmark",
+                "members": [
+                    {
+                        "name": "Alexander Baklanov",
+                        "role": "Science Officer, IceDust Association, Board Member of the EAA"
+                    }
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [12.5683, 55.6761]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Norwegian Institute for Air Research",
+                "acronym": "NILU",
+                "description": "Air quality research",
+                "country": "Norway",
+                "members": [
+                    {
+                        "name": "Christine Groot Zwaaftink",
+                        "role": "Researcher"
+                    },
+                    {
+                        "name": "Arve Kylling",
+                        "role": "Researcher"
+                    }
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [11.0527, 59.9754]
+            }
+        }
+    ]
+}

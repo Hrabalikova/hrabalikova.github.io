@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institution and Member Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <style>
+        #map {
+            height: 900px; /* Full height */
+            width: 100%;   /* Full width */
+        }
+    </style>
+</head>
+<body>
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map', {
+            center: [64.9631, -19.0208], // Centered on Iceland
+            zoom: 4,
+            zoomControl: true
+        });
+
+        // Add a simple basemap (CartoDB Positron)
+        var cartoDBLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Create a marker cluster group
+        var markerClusterGroup = L.markerClusterGroup();
+
+        // Fetch GeoJSON data from a URL
+        fetch('universities_with_members.geojson')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Add GeoJSON data to the cluster group
+                L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        // University info
+                        let popupContent = '<b>' + feature.properties.name + '</b><br>' +
+                            feature.properties.acronym + '<br>' +
+                            feature.properties.description + '<br><br>' +
+                            '<u>Members:</u><br>';
+
+                        // Add members
+                        feature.properties.members.forEach(member => {
+                            popupContent += member.name + ' - ' + member.role + '<br>';
+                            if (member.email) {
+                                popupContent += '<a href="mailto:' + member.email + '">' + member.email + '</a><br>';
+                            }
+                        });
+
+                        layer.bindPopup(popupContent);
+                    },
+                    pointToLayer: function (feature, latlng) {
+                        // Convert GeoJSON points to Leaflet markers
+                        return L.marker(latlng);
+                    }
+                }).eachLayer(function (layer) {
+                    // Add each marker to the cluster group
+                    markerClusterGroup.addLayer(layer);
+                });
+
+                // Add the cluster group to the map
+                map.addLayer(markerClusterGroup);
+            })
+            .catch(error => {
+                console.error('Error fetching GeoJSON:', error);
+            });
+
+        // Add a scale bar
+        L.control.scale().addTo(map);
+    </script>
+</body>
+</html>
