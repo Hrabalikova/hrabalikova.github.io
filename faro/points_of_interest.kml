@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='utf-8'?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Placemark>
+      <name>Accommodation: Edifício Orion, Vilamoura</name>
+      <description>Avenida Tivoli - Edifício Orion, Bloco C, 8125-507 Vilamoura, Portugal.</description>
+      <Point>
+        <coordinates>-8.116,37.078,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Faro Airport (FAO)</name>
+      <description>Arrival and Departure Point.</description>
+      <Point>
+        <coordinates>-7.9659,37.0144,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Vilamoura Marina</name>
+      <description>Popular spot for strolling, dining, and boat trips.</description>
+      <Point>
+        <coordinates>-8.1153,37.0763,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Cerro da Vila Roman Ruins</name>
+      <description>Historical site in Vilamoura.</description>
+      <Point>
+        <coordinates>-8.113,37.077,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Praia de Vilamoura</name>
+      <description>Main beach in Vilamoura, good for swimming and relaxing.</description>
+      <Point>
+        <coordinates>-8.1115,37.0738,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Loulé</name>
+      <description>Historic town with a traditional market.</description>
+      <Point>
+        <coordinates>-8.02,37.14,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Loulé Market (Mercado Municipal)</name>
+      <description>Famous market for local produce and crafts.</description>
+      <Point>
+        <coordinates>-8.0234,37.1382,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Loulé Castle</name>
+      <description>Historic castle in Loulé.</description>
+      <Point>
+        <coordinates>-8.0241,37.1406,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Benagil Cave (Area)</name>
+      <description>Famous sea cave, typically visited by boat.</description>
+      <Point>
+        <coordinates>-8.4433,37.0875,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Praia da Marinha</name>
+      <description>One of Portugal’s most beautiful beaches, great for swimming. Eastern trailhead for Seven Hanging Valleys.</description>
+      <Point>
+        <coordinates>-8.4128,37.0899,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Praia de Vale Centeanes</name>
+      <description>Western trailhead for the Seven Hanging Valleys Trail.</description>
+      <Point>
+        <coordinates>-8.456,37.0914,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Praia da Falésia</name>
+      <description>Long beach with stunning cliffs, good for swimming and walks.</description>
+      <Point>
+        <coordinates>-8.145,37.08,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Faro Old Town (Cidade Velha)</name>
+      <description>Historic center of Faro.</description>
+      <Point>
+        <coordinates>-7.935,37.0161,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Arco da Vila, Faro</name>
+      <description>Historic archway into Faro Old Town.</description>
+      <Point>
+        <coordinates>-7.9349,37.0147,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Faro Cathedral (Sé Catedral de Faro)</name>
+      <description>Main cathedral in Faro.</description>
+      <Point>
+        <coordinates>-7.9347,37.0141,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Ludo Trail (Ria Formosa)</name>
+      <description>Nature trail in Ria Formosa, great for birdwatching.</description>
+      <Point>
+        <coordinates>-7.988,37.033,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Praia de Faro</name>
+      <description>Long sandy beach near Faro, good for swimming.</description>
+      <Point>
+        <coordinates>-7.994,37.0085,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Lagos</name>
+      <description>Historic coastal town with beautiful rock formations.</description>
+      <Point>
+        <coordinates>-8.673,37.102,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Ponta da Piedade</name>
+      <description>Stunning cliffs and grottoes near Lagos.</description>
+      <Point>
+        <coordinates>-8.6691,37.0815,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Praia Dona Ana</name>
+      <description>Picturesque beach in Lagos, good for swimming.</description>
+      <Point>
+        <coordinates>-8.6671,37.0906,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Praia do Camilo</name>
+      <description>Beautiful cove beach in Lagos, good for swimming.</description>
+      <Point>
+        <coordinates>-8.668,37.087,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Silves</name>
+      <description>Historic town with a prominent castle.</description>
+      <Point>
+        <coordinates>-8.4396,37.1895,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Silves Castle</name>
+      <description>Impressive red sandstone castle in Silves.</description>
+      <Point>
+        <coordinates>-8.438,37.191,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Parque Ambiental de Vilamoura</name>
+      <description>Nature park in Vilamoura for walks and birdwatching.</description>
+      <Point>
+        <coordinates>-8.1153,37.0908,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Rocha da Pena Trailhead</name>
+      <description>Trailhead for a scenic inland hike.</description>
+      <Point>
+        <coordinates>-8.0978,37.2504,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Quarteira</name>
+      <description>Neighboring town with a promenade and market.</description>
+      <Point>
+        <coordinates>-8.1,37.068,0</coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

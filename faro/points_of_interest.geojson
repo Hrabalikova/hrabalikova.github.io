@@ -1,0 +1,369 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.116,
+          37.078
+        ]
+      },
+      "properties": {
+        "name": "Accommodation: Edif\u00edcio Orion, Vilamoura",
+        "description": "Avenida Tivoli - Edif\u00edcio Orion, Bloco C, 8125-507 Vilamoura, Portugal."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.9659,
+          37.0144
+        ]
+      },
+      "properties": {
+        "name": "Faro Airport (FAO)",
+        "description": "Arrival and Departure Point."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.1153,
+          37.0763
+        ]
+      },
+      "properties": {
+        "name": "Vilamoura Marina",
+        "description": "Popular spot for strolling, dining, and boat trips."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.113,
+          37.077
+        ]
+      },
+      "properties": {
+        "name": "Cerro da Vila Roman Ruins",
+        "description": "Historical site in Vilamoura."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.1115,
+          37.0738
+        ]
+      },
+      "properties": {
+        "name": "Praia de Vilamoura",
+        "description": "Main beach in Vilamoura, good for swimming and relaxing."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.02,
+          37.14
+        ]
+      },
+      "properties": {
+        "name": "Loul\u00e9",
+        "description": "Historic town with a traditional market."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.0234,
+          37.1382
+        ]
+      },
+      "properties": {
+        "name": "Loul\u00e9 Market (Mercado Municipal)",
+        "description": "Famous market for local produce and crafts."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.0241,
+          37.1406
+        ]
+      },
+      "properties": {
+        "name": "Loul\u00e9 Castle",
+        "description": "Historic castle in Loul\u00e9."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.4433,
+          37.0875
+        ]
+      },
+      "properties": {
+        "name": "Benagil Cave (Area)",
+        "description": "Famous sea cave, typically visited by boat."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.4128,
+          37.0899
+        ]
+      },
+      "properties": {
+        "name": "Praia da Marinha",
+        "description": "One of Portugal\u2019s most beautiful beaches, great for swimming. Eastern trailhead for Seven Hanging Valleys."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.456,
+          37.0914
+        ]
+      },
+      "properties": {
+        "name": "Praia de Vale Centeanes",
+        "description": "Western trailhead for the Seven Hanging Valleys Trail."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.145,
+          37.08
+        ]
+      },
+      "properties": {
+        "name": "Praia da Fal\u00e9sia",
+        "description": "Long beach with stunning cliffs, good for swimming and walks."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.935,
+          37.0161
+        ]
+      },
+      "properties": {
+        "name": "Faro Old Town (Cidade Velha)",
+        "description": "Historic center of Faro."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.9349,
+          37.0147
+        ]
+      },
+      "properties": {
+        "name": "Arco da Vila, Faro",
+        "description": "Historic archway into Faro Old Town."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.9347,
+          37.0141
+        ]
+      },
+      "properties": {
+        "name": "Faro Cathedral (S\u00e9 Catedral de Faro)",
+        "description": "Main cathedral in Faro."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.988,
+          37.033
+        ]
+      },
+      "properties": {
+        "name": "Ludo Trail (Ria Formosa)",
+        "description": "Nature trail in Ria Formosa, great for birdwatching."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.994,
+          37.0085
+        ]
+      },
+      "properties": {
+        "name": "Praia de Faro",
+        "description": "Long sandy beach near Faro, good for swimming."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.673,
+          37.102
+        ]
+      },
+      "properties": {
+        "name": "Lagos",
+        "description": "Historic coastal town with beautiful rock formations."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.6691,
+          37.0815
+        ]
+      },
+      "properties": {
+        "name": "Ponta da Piedade",
+        "description": "Stunning cliffs and grottoes near Lagos."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.6671,
+          37.0906
+        ]
+      },
+      "properties": {
+        "name": "Praia Dona Ana",
+        "description": "Picturesque beach in Lagos, good for swimming."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.668,
+          37.087
+        ]
+      },
+      "properties": {
+        "name": "Praia do Camilo",
+        "description": "Beautiful cove beach in Lagos, good for swimming."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.4396,
+          37.1895
+        ]
+      },
+      "properties": {
+        "name": "Silves",
+        "description": "Historic town with a prominent castle."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.438,
+          37.191
+        ]
+      },
+      "properties": {
+        "name": "Silves Castle",
+        "description": "Impressive red sandstone castle in Silves."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.1153,
+          37.0908
+        ]
+      },
+      "properties": {
+        "name": "Parque Ambiental de Vilamoura",
+        "description": "Nature park in Vilamoura for walks and birdwatching."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.0978,
+          37.2504
+        ]
+      },
+      "properties": {
+        "name": "Rocha da Pena Trailhead",
+        "description": "Trailhead for a scenic inland hike."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.1,
+          37.068
+        ]
+      },
+      "properties": {
+        "name": "Quarteira",
+        "description": "Neighboring town with a promenade and market."
+      }
+    }
+  ]
+}
