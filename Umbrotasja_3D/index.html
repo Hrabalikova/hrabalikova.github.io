@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Náttúrfræðistofnun, 2025">
+  <meta name="description" content="Umbrotasjá 3D">
+   <!-- License: MIT License -->
+  <title>Umbrotasjá 3D</title>
+  <link rel="icon" id="applicationFavicon" type="image/x-icon" href="https://www.natt.is/logo/NATT-logo-notext-200x181.png">
+   
+  <!-- Configure modules and widgets -->
+  <script>
+      var dojoConfig = {
+        packages: [
+          {
+            name: "modules",
+            location: location.pathname.replace(/\/[^/]*$/, "") + "/js/modules"
+          }
+        ]
+      };
+    </script>  
+
+  <!-- ArcGIS JS 4 -->
+  <script src="https://js.arcgis.com/calcite-components/3.1.0/calcite.esm.js" type="module"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/3.1.0/calcite.css" />
+  <script src="https://js.arcgis.com/4.32/"></script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
+
+  <!-- additional styles-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <!-- Custom scripts and styles  -->
+  <link rel="stylesheet" href="style.css">
+  <script src="js/main.js"></script>
+
+</head>
+<body>
+  <!-- splash screen--> 
+  <modal id="splashModal" class="modal drag-area">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="modal-title ">Umbrotasjá þrívíddarkort - í þróun</h2>
+      <!-- Fyrirvari-->
+      <h4 class="modal-disclaimer-title">Fyrirvari</h4>
+      <p class="modal-disclaimer">Þetta þrívíddarkort, sem ber heitið "Umbrotasjá þrívíddarkort," sýnir þær upplýsingar sem eru til staðar. 
+        Uppfærsla gagna er ekki regluleg. Þrátt fyrir að við leggjum áherslu á nákvæmni gagnanna ábyrgjumst við ekki réttmæti þeirra upplýsinga 
+        sem birtast á kortinu.<br />
+        Athugið að 3D mannvirkjalagið (Overture/Daylight Map) inniheldur villur á Íslandi. Gögnin eru unnin úr OSM með aðstoð vélanáms (machine learning) í samstarfi 
+        við Microsoft en við höfum því miður fundið villur í því. Viðeigandi aðilum hefur verið bent á vandamálið en þar sem þetta lag er ekki á okkar vegum getum við 
+        ekki tryggt að það verði leiðrétt.<br />
+        Kortið býður upp á ýmsa möguleika; svo sem mælingu vegalengda, veðurhermi, dagsbirtuhermi, og sjónlínutól miðað við að hæð manneskju sé 1,75 m. 
+        Þessi tól eru einungis til viðmiðunar og koma ekki í stað faglegs mats.<br />
+        <br />
+        Notkun þessa korts er á ábyrgð notanda.
+        </p>
+      <!-- Leiðbeiningar -->
+      <h4 class="modal-guide-title">Leiðbeiningar</h4>
+      <p class="modal-guide">
+        Leiðbeiningar: <a href="https://leidbeiningar.lmi.is/files/Kortasj%C3%A1-user%20guide%20-%203D_IS.pdf" class="modal-link" target="_blank">Ýttu hér</a><br />
+      </p>  
+      <!-- Viðbótarupplýsingar: -->     
+      <h4 class="modal-guide-title">Viðbótarupplýsingar:</h4>
+      <ul class="modal-info-list">
+        <li><strong>Gagnagrunnur:</strong> Kemur frá Náttúrufræðistofnun og fleiri aðilum</li>
+        <li><strong>Uppfærslur:</strong> Kortið byggir að mestu á gögnum sem uppfærast sjálfkrafa, en handvirkar uppfærslur eru framkvæmdar eftir þörfum</li>
+        <li><strong>Takmörkun á notkun: </strong> Vinsamlegast sjáið fyrirvarann um notkunartakmarkanir</li>
+        <li><strong>Aðrar upplýsingar:</strong> Nánari upplýsingar um verkefni frá Umbrotasjá má finna á 
+          <a class= "modal-link" href="https://kort.natt.is/mapview/?application=umbrotasja" target="_blank">Umbrotasjá 2D kort</a></li>
+      </ul>
+      <!-- Músarstjórn: Trigger text/icon -->
+      <span class="modal-tooltip-trigger">Músarstjórn 🖱️</span>
+      <!-- Copyright, version and last update -->
+      <p class="modal-utgafa"> <!-- Smaller font, style differently -->
+        Útgáfa ESRI Map JavaScript SDK: 4.32 |  Útgáfa Calcite Components: 3.1.0 |  Útgáfa Kortið: 1.1 <br /> <!-- create soemthing like version of the map, to see if we changed something in the map, not in the data itself -->
+        &copy; Náttúrufræðistofnun 2025 <br />
+        <br />
+      </p>  
+  <!-- text of splash screen end -->
+      <!-- Tooltip container -->
+      <div class="modal-tooltip">
+        <img src="https://ftp.lmi.is/.stm/michaela/Thumbs/mpuse.png" alt="Mouse Navigation Guide"> 
+        <script>
+          // Get the tooltip and its trigger
+          const tooltip = document.querySelector('.modal-tooltip');
+          const trigger = document.querySelector('.modal-tooltip-trigger');
+          // Show tooltip on hover
+          trigger.addEventListener('mouseover', function() {
+            tooltip.style.display = 'block';
+          });
+          // Hide tooltip when mouse leaves
+          trigger.addEventListener('mouseout', function() {
+            tooltip.style.display = 'none';
+          });
+        </script>
+      </div>
+    </div>
+  </modal>
+  <!-- splash screen end -->
+
+  <calcite-loader></calcite-loader>
+  <!-- Map with header, actiona bars and widgets-->
+  <calcite-shell content-behind>
+    <!-- header: project logo, map title and nav-button-->
+    <header slot="header" class="header">
+      <h3 id="header-left" slot="header">
+          <a href="https://kort.natt.is/mapview/?application=umbrotasja" title="Umbrotasjá - forsíða">
+          <img class="logo" src="https://atlas.lmi.is/gn/myndir/umbrotasja.jpg" alt="Umbrotasjá"/>
+        </a>
+        <span>Umbrotasjá þrívíddarkort</span>
+      </h3>
+      <!-- widgets -->
+      <div  id="header-right" >
+        <calcite-action-bar layout="horizontal" position="start" expand-disabled="true" expanded="false" slot="action-bar">
+          <calcite-action 
+            id="basemapsBtn"  
+            data-action-id="basemaps" 
+            text="Grunnkort" 
+            text-disabled 
+            icon="basemap">
+            <calcite-tooltip slot="tooltip" placement="bottom">Grunnkort</calcite-tooltip>
+          </calcite-action>
+          <calcite-action
+            id="layersBtn" 
+            data-action-id="layers" 
+            text="Gögn" 
+            text-disbaled 
+            icon="layers" >
+            <calcite-tooltip slot="tooltip" placement="bottom">Gögn</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            id="legendBtn"
+            data-action-id="legend"
+            text="Skýringar"
+            text-disabled
+            icon="legend">
+            <calcite-tooltip slot="tooltip" overlay-positioning="fixed" placement="bottom">Skýringar</calcite-tooltip>
+          </calcite-action> 
+          <calcite-action 
+            id="infoButton" 
+            data-action-id="info"
+            text="Um kortasjá" 
+            text-disabled 
+            icon="information-f">
+            <calcite-tooltip slot="tooltip" placement="bottom">Um kortasjá</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            data-action-id="userguide" 
+            text="Leiðbeiningar" 
+            text-disabled 
+            icon="address-book" 
+            onclick="window.open('https://leidbeiningar.lmi.is/files/Kortasj%C3%A1-user%20guide%20-%203D_IS.pdf', '_blank')" >
+            <calcite-tooltip slot="tooltip" placement="bottom">Leiðbeiningar</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            data-action-id="maplink" 
+            text="2D Sýnileikakort" 
+            text-disabled 
+            icon="map-pin" 
+            onclick="window.open('https://kort.natt.is/mapview/?application=umbrotasja', '_blank')" >
+            <calcite-tooltip slot="tooltip" overlay-positioning="fixed" placement="bottom">fara í 2D kortasjá</calcite-tooltip>
+          </calcite-action>
+        </calcite-action-bar> 
+      </div>
+      <!-- Custom Floating Panels -->
+      <div id="basemapsPanel" class="floating-panel">
+        <div id="basemaps-container"></div>
+      </div>
+    </header>
+
+    <!-- the main map window -->
+    <div id="viewDiv">
+      <!-- Panel with buttons -->
+      <div slot="panel-top" display-mode="float" id="sidebar">
+      <!-- action bar with definition of icon -->
+        <calcite-action-bar id="dock-sidebar" expand-disabled="true" expanded="false" >
+          <calcite-action 
+            id="searchBtn"            
+            data-action-id="search" 
+            text="Leita" 
+            text-disabled  
+            icon="search">
+            <calcite-tooltip slot="tooltip" placement="right">Leita</calcite-tooltip>
+          </calcite-action> 
+            <calcite-action
+              id="distanceBtn"             
+              data-action-id="distance" 
+              text="Mæla lengd"
+              text-disabled  
+              icon="measure-line">
+              <calcite-tooltip slot="tooltip" overlay-positioning="fixed" placement="right">Mæla lengd</calcite-tooltip>
+            </calcite-action>
+            <calcite-action 
+              id="areaBtn"
+              heading="Area"            
+              data-action-id="area" 
+              text-disabled  
+              text="Mæla flatarmál" 
+              icon="measure-area">
+              <calcite-tooltip slot="tooltip" overlay-positioning="fixed" placement="right">Mæla flatarmál</calcite-tooltip>
+            </calcite-action>
+          <calcite-action 
+            id="weatherBtn"
+            data-action-id="weather" 
+            text="Veðurhermi" 
+            text-disabled 
+            icon="partly-cloudy">
+            <calcite-tooltip slot="tooltip" overlay-positioning="fixed" placement="right">Veðurhermi</calcite-tooltip>
+          </calcite-action>
+          <calcite-action
+            id="daylightBtn"
+            data-action-id="daylight"
+            text="Dagsbirtuhermi"
+            text-disabled
+            icon="brightness">
+            <calcite-tooltip slot="tooltip" overlay-positioning="fixed" placement="right">Dagsbirtuhermi</calcite-tooltip>
+          </calcite-action>
+          <calcite-action 
+            id="losBtn"
+            data-action-id="los"
+            text="Sjónlínu" 
+            text-disabled 
+            icon="line-of-sight">
+            <calcite-tooltip slot="tooltip" overlay-positioning="fixed" placement="right">Sjónlínutól</calcite-tooltip>
+          </calcite-action>
+   
+        </calcite-action-bar>
+      </div> 
+      <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
+       <div id="searchPanel" class="floating-search">
+        <div id="search-container"></div>
+      </div>
+      <div id="distancePanel" class="floating-distance">
+        <div id="distance-container">
+          <h6 id="head-widget">Measure distance</h6>
+        </div>
+        <button id="clearDistanceBtn" class="esri-widget--button esri-interactive esri-icon-trash" title="Clear Measurements">
+        </button>
+      </div>
+      <div id="areaPanel" class="floating-area">
+        <div id="area-container">
+          <h6 id="head-widget">Measure area</h6>
+        </div>
+        <button id="clearAreaBtn" class="esri-widget--button esri-interactive esri-icon-trash" title="Clear Measurements">
+        </button>
+      </div>
+      <div id="weatherPanel" class="floating-widget">
+        <div id="weather-container"></div>
+      </div>
+      <div id="daylightPanel" class="floating-widget">
+        <div id="daylight-container"></div>
+      </div>
+      <div id="losPanel" class="floating-measure">
+        <div id="los-container">
+          <h6 id="head-widget">Line of Sight</h6></div>
+      </div>
+
+      <!-- Left Docked Panel -->
+      <div id="leftTabsPanel" class="left-tabs-panel">
+        <div class="panel-header">
+          <span class="panel-title">Stjórnborð</span>
+          <button id="closeTabsPanelBtn" class="close-btn" title="Loka">×</button>
+        </div>
+        <calcite-tabs>
+          <calcite-tab-nav slot="tab-nav">
+            <calcite-tab-title selected id="layersTabTitle">Gögn</calcite-tab-title>
+            <calcite-tab-title id="legendTabTitle">Skýringar</calcite-tab-title>
+          </calcite-tab-nav>
+
+          <calcite-tab selected>
+            <div id="layers-container"></div>
+          </calcite-tab>
+          <calcite-tab>
+            <div id="legend-container"></div>
+          </calcite-tab>
+        </calcite-tabs>
+      </div>
+
+      <!-- Map container -->
+      <div id="mapContainer"></div>
+
+    </div> <!-- Div for viewDiv -->
+  </calcite-shell> <!-- Shell for the header, panels and map -->
+
+</body>
+</html>
+
+
